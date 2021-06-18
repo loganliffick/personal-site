@@ -1,9 +1,35 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 18px;
+}
+
+::selection {
+  color: #fff;
+}
+
+@font-face {
+  font-family: 'Apfel Grotezk';
+  src: url('/fonts/ApfelGrotezk-Regular.woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Six Caps';
+  src: url('/fonts/SixCaps-Regular.ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
 a {
@@ -11,6 +37,34 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+ul {
+  list-style: none outside none;
+}
+
+h1 {
+  font-family: 'Six Caps';
+  font-size: calc(80px + 7.25vw);
+  line-height: calc(80px + 7.25vw);
+  font-weight: 400;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+h2 {
+  font-family: 'Apfel Grotezk';
+  font-size: calc(56px + 2vw);
+  line-height: calc(64px + 2vw);
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: inherit;
+  margin-bottom: calc(8px + 0.5vw);
+}
+
+p {
+  font-family: 'Apfel Grotezk';
+  font-size: calc(22px + 0.3vw);
+  line-height: calc(24px + 0.5vw);
+  font-weight: 400;
+  color: inherit;
 }
