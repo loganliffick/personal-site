@@ -41,6 +41,13 @@ ul {
   list-style: none outside none;
 }
 
+button {
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: 0;
+}
+
 h1 {
   font-family: 'Six Caps';
   font-size: calc(80px + 7.25vw);
@@ -58,12 +65,12 @@ h2 {
   font-weight: 400;
   letter-spacing: -1px;
   color: inherit;
-  margin-bottom: calc(8px + 0.5vw);
+  margin-bottom: calc(8px + 1vw);
 }
 
 p {
   font-family: 'Apfel Grotezk';
-  font-size: calc(22px + 0.3vw);
+  font-size: calc(20px + 0.3vw);
   line-height: calc(24px + 0.5vw);
   font-weight: 400;
   color: inherit;

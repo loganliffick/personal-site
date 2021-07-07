@@ -1,44 +1,27 @@
+import React, { useState } from 'react';
 import Head from 'next/head';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import Link from './link';
-
-const watermelon = {
-  primary: '#DF8D9C',
-  secondary: '#243A39',
-};
-
-const spritzer = {
-  primary: '#3529C0',
-  secondary: '#BDDCD4',
-};
-
-const fairey = {
-  primary: '#D40E0E',
-  secondary: '#F2E9DB',
-};
-
-const charged = {
-  primary: '#0B08A9',
-  secondary: '#DF9220',
-};
-
-const bubblegum = {
-  primary: '#FF35EB',
-  secondary: '#09265F',
-};
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: ${(props) => props.theme.secondary};
-  }
-`;
+import styled, { ThemeProvider } from 'styled-components';
+import Link from '../components/link';
+import Selector, {
+  daydream,
+  gumtree,
+  berry,
+  sorbet,
+  rockyRoad,
+  vineyard,
+  GlobalStyle,
+} from '../components/themes';
 
 const Main = styled.main`
   color: ${(props) => props.theme.primary};
   padding: 64px;
 
+  & span {
+    color: ${(props) => props.theme.tertiary};
+  }
+
   @media only screen and (max-width: 600px) {
-    padding: 24px;
+    padding: 24px 24px 40px 24px;
   }
 `;
 
@@ -47,10 +30,15 @@ const Section = styled.section`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 120px;
+
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 80px;
+  }
 `;
 
 const HeroText = styled.h1`
   width: 50%;
+
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
@@ -58,10 +46,30 @@ const HeroText = styled.h1`
 
 const List = styled.ul`
   margin-right: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+const Div = styled.div`
+  display: flex;
+  position: fixed;
+  top: 64px;
+  right: 64px;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 24px;
+    position: static;
+  }
 `;
 
 export default function Home() {
+  const [theme, setTheme] = useState('light');
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+    console.log(theme);
+  };
+
   return (
     <>
       <Head>
@@ -87,17 +95,45 @@ export default function Home() {
           crossOrigin=""
         />
       </Head>
-      <ThemeProvider theme={watermelon}>
+      <ThemeProvider theme={theme === 'light' ? gumtree : berry}>
         <GlobalStyle />
         <Main>
+          <Selector onClick={themeToggler} />
           <Section>
             <HeroText>
-              logan liffick is a designer with{' '}
+              <span>logan liffick</span> is a designer with{' '}
               <a href="https://digitalocean.com" target="_blank" rel="noopener">
                 digitalocean
               </a>
               . He builds brands, systems, and products.
             </HeroText>
+            <Div>
+              <p>
+                <a
+                  href="https://instagram.com/logan_liffick"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  instagram
+                </a>{' '}
+                /{' '}
+                <a
+                  href="https://twitter.com/logan_liffick"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  twitter
+                </a>{' '}
+                /{' '}
+                <a
+                  href="https://read.cv/logan_liffick"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  read.cv
+                </a>
+              </p>
+            </Div>
           </Section>
           <Section>
             <List>
@@ -158,7 +194,9 @@ export default function Home() {
             </List>
           </Section>
           <footer>
-            <p>© 2021 Logan Liffick</p>
+            <p>
+              <span>©</span> 2021 Logan Liffick
+            </p>
           </footer>
         </Main>
       </ThemeProvider>
