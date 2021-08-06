@@ -7,29 +7,21 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
   font-size: 18px;
+  margin: 0;
+  padding: 0;
 }
 
-::selection {
-  color: #fff;
-}
+/* ::selection {
+  background: #fff;
+} */
 
 @font-face {
+  font-display: swap;
   font-family: 'Apfel Grotezk';
+  font-style: normal;
+  font-weight: 400;
   src: url('/fonts/ApfelGrotezk-Regular.woff2');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Six Caps';
-  src: url('/fonts/SixCaps-Regular.ttf');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
 }
 
 a {
@@ -37,41 +29,28 @@ a {
   text-decoration: none;
 }
 
-ul {
-  list-style: none outside none;
-}
-
-button {
-  cursor: pointer;
-  background: transparent;
-  outline: none;
-  border: 0;
-}
-
 h1 {
-  font-family: 'Six Caps';
-  font-size: calc(80px + 7.25vw);
-  line-height: calc(80px + 7.25vw);
-  font-weight: 400;
-  letter-spacing: -2px;
-  text-transform: uppercase;
   color: inherit;
+  font-family: 'Apfel Grotezk';
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 16px;
 }
 
 h2 {
+  color: inherit;
   font-family: 'Apfel Grotezk';
-  font-size: calc(56px + 2vw);
-  line-height: calc(64px + 2vw);
+  font-size: 56px;
   font-weight: 400;
   letter-spacing: -1px;
-  color: inherit;
-  margin-bottom: calc(8px + 1vw);
+  line-height: 88px;
 }
 
-p {
-  font-family: 'Apfel Grotezk';
-  font-size: calc(20px + 0.3vw);
-  line-height: calc(24px + 0.5vw);
-  font-weight: 400;
-  color: inherit;
+@media only screen and (max-width: 560px) {
+  h2 {
+    font-size: 32px;
+    letter-spacing: 0px;
+    line-height: 56px;
+  }
 }

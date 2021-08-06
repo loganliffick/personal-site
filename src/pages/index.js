@@ -1,74 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styled, { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, GlobalStyle } from '../components/themes';
 import Link from '../components/link';
-import Selector, {
-  daydream,
-  gumtree,
-  berry,
-  sorbet,
-  rockyRoad,
-  vineyard,
-  GlobalStyle,
-} from '../components/themes';
+
+const useThemeDetector = () => {
+  const getMatchMedia = () => window.matchMedia('(prefers-color-scheme: dark)');
+
+  const [isDarkTheme, setIsDarkTheme] = useState(getMatchMedia().matches);
+
+  const mqListener = (e) => {
+    setIsDarkTheme(e.matches);
+  };
+
+  useEffect(() => {
+    const mq = getMatchMedia();
+    mq.addListener(mqListener);
+    return () => mq.removeListener(mqListener);
+  }, []);
+  return isDarkTheme;
+};
 
 const Main = styled.main`
+  align-items: center;
   color: ${(props) => props.theme.primary};
-  padding: 64px;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
 
   & span {
     color: ${(props) => props.theme.tertiary};
   }
 
-  @media only screen and (max-width: 600px) {
-    padding: 24px 24px 40px 24px;
+  @media only screen and (max-width: 560px) {
+    display: block;
+    height: auto;
   }
 `;
 
 const Section = styled.section`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 120px;
+  margin: 0 64px;
+  width: 1044px;
 
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 80px;
-  }
-`;
-
-const HeroText = styled.h1`
-  width: 50%;
-
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-  }
-`;
-
-const List = styled.ul`
-  margin-right: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-`;
-
-const Div = styled.div`
-  display: flex;
-  position: fixed;
-  top: 64px;
-  right: 64px;
-
-  @media only screen and (max-width: 600px) {
-    margin-top: 24px;
-    position: static;
+  @media only screen and (max-width: 560px) {
+    margin: 32px 24px 0px 24px;
+    width: auto;
   }
 `;
 
 export default function Home() {
-  const [theme, setTheme] = useState('light');
-
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-    console.log(theme);
-  };
+  //const isDarkTheme = useThemeDetector();
 
   return (
     <>
@@ -87,117 +69,33 @@ export default function Home() {
           type="font/woff2"
           crossOrigin=""
         />
-        <link
-          rel="preload"
-          href="/fonts/SixCaps-Regular.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin=""
-        />
       </Head>
-      <ThemeProvider theme={theme === 'light' ? gumtree : berry}>
+      {/* <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}> */}
+      <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
         <Main>
-          <Selector onClick={themeToggler} />
           <Section>
-            <HeroText>
-              <span>logan liffick</span> is a designer with{' '}
-              <a href="https://digitalocean.com" target="_blank" rel="noopener">
-                digitalocean
-              </a>
-              . He builds brands, systems, and products.
-            </HeroText>
-            <Div>
-              <p>
-                <a
-                  href="https://instagram.com/logan_liffick"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  instagram
-                </a>{' '}
-                /{' '}
-                <a
-                  href="https://twitter.com/logan_liffick"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  twitter
-                </a>{' '}
-                /{' '}
-                <a
-                  href="https://read.cv/logan_liffick"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  read.cv
-                </a>
-              </p>
-            </Div>
-          </Section>
-          <Section>
-            <List>
-              <li>
-                <h2>works</h2>
-              </li>
-              <Link name="splt.js" link="https://spltjs.com" />
-              <Link name="Peekaboo" link="https://peekabooi.cyou" />
-              <Link name="Builder 100" link="https://builder100.com" />
-              <Link
-                name="Facebook Partners"
-                link="https://businesspartners.fb.com"
-              />
-              <Link name="Blackformat" link="https://blackformat.netlify.app" />
-              <Link
-                name="Coco iOS Stickers"
-                link="https://apps.apple.com/pk/app/pixar-stickers-coco/id1299230002"
-              />
-            </List>
-            <List>
-              <li>
-                <h2>awards</h2>
-              </li>
-              <Link
-                name="SOTD, Purple Rock Scissors"
-                link="https://www.awwwards.com/sites/purple-rock-scissors"
-              />
-              <Link
-                name="W3, Purple Rock Scissors"
-                link="https://www.w3award.com/winners/list/view/?event=1037&award=4"
-              />
-            </List>
-            <List>
-              <li>
-                <h2>features</h2>
-              </li>
-              <Link
-                name="Minimal Gallery, Blackformat"
-                link="https://minimal.gallery/blackformat/"
-              />
-              <Link
-                name="One Page Love, Blackformat"
-                link="https://onepagelove.com/blackformat"
-              />
-              <Link
-                name="Nice Very Nice, Blackformat"
-                link="https://www.niceverynice.com/stories/font-pairings"
-              />
-            </List>
-            <List>
-              <li>
-                <h2>speaking</h2>
-              </li>
-              <Link
-                name="UCF Alumni Panel"
-                link="https://youtu.be/6Bvfv_HbHao"
-              />
-            </List>
-          </Section>
-          <footer>
-            <p>
+            <h1>
               <span>©</span> 2021 Logan Liffick
-            </p>
-          </footer>
+            </h1>
+            <h2>
+              Showing up M-F at{' '}
+              <Link url="https://digitalocean.com" name="DigitalOcean" /> Learn
+              more about my work on{' '}
+              <Link url="https://read.cv/logan_liffick" name="read.cv" /> and{' '}
+              <Link url="https://github.com/logan-liffick" name="Github" />{' '}
+              Follow me on{' '}
+              <Link url="https://twitter.com/logan_liffick" name="Twitter" />{' '}
+              and{' '}
+              <Link
+                url="https://instagram.com/logan_liffick"
+                name="Instagram"
+              />{' '}
+              Send me an{' '}
+              <Link url="mailto:hello@loganliffick.com" name="email" /> to
+              connect.
+            </h2>
+          </Section>
         </Main>
       </ThemeProvider>
     </>
