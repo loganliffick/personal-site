@@ -34,3 +34,6 @@ npm-debug.log*
 # prettier
 .prettierignore
 .prettierrc
+
+#babel
+.babelrc

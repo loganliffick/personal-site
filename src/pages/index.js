@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyle } from '../components/themes';
-import Link from '../components/link';
+import Button from '../components/button';
 
 const useThemeDetector = () => {
   const getMatchMedia = () => window.matchMedia('(prefers-color-scheme: dark)');
@@ -70,6 +70,7 @@ export default function Home() {
           crossOrigin=""
         />
       </Head>
+      <script></script>
       {/* <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}> */}
       <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
@@ -80,19 +81,19 @@ export default function Home() {
             </h1>
             <h2>
               Showing up M-F at{' '}
-              <Link url="https://digitalocean.com" name="DigitalOcean" /> Learn
-              more about my work on{' '}
-              <Link url="https://read.cv/logan_liffick" name="read.cv" /> and{' '}
-              <Link url="https://github.com/logan-liffick" name="Github" />{' '}
+              <Button url="https://digitalocean.com" name="DigitalOcean" />{' '}
+              Learn more about my work on{' '}
+              <Button url="https://read.cv/logan_liffick" name="read.cv" /> and{' '}
+              <Button url="https://github.com/logan-liffick" name="Github" />{' '}
               Follow me on{' '}
-              <Link url="https://twitter.com/logan_liffick" name="Twitter" />{' '}
+              <Button url="https://twitter.com/logan_liffick" name="Twitter" />{' '}
               and{' '}
-              <Link
+              <Button
                 url="https://instagram.com/logan_liffick"
                 name="Instagram"
               />{' '}
               Send me an{' '}
-              <Link url="mailto:hello@loganliffick.com" name="email" /> to
+              <Button url="mailto:hello@loganliffick.com" name="email" /> to
               connect.
             </h2>
           </Section>
