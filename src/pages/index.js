@@ -4,22 +4,22 @@ import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyle } from '../components/themes';
 import Button from '../components/button';
 
-const useThemeDetector = () => {
-  const getMatchMedia = () => window.matchMedia('(prefers-color-scheme: dark)');
+// const useThemeDetector = () => {
+//   const getMatchMedia = () => window.matchMedia('(prefers-color-scheme: dark)');
 
-  const [isDarkTheme, setIsDarkTheme] = useState(getMatchMedia().matches);
+//   const [isDarkTheme, setIsDarkTheme] = useState(getMatchMedia().matches);
 
-  const mqListener = (e) => {
-    setIsDarkTheme(e.matches);
-  };
+//   const mqListener = (e) => {
+//     setIsDarkTheme(e.matches);
+//   };
 
-  useEffect(() => {
-    const mq = getMatchMedia();
-    mq.addListener(mqListener);
-    return () => mq.removeListener(mqListener);
-  }, []);
-  return isDarkTheme;
-};
+//   useEffect(() => {
+//     const mq = getMatchMedia();
+//     mq.addListener(mqListener);
+//     return () => mq.removeListener(mqListener);
+//   }, []);
+//   return isDarkTheme;
+// };
 
 const Main = styled.main`
   align-items: center;
@@ -62,15 +62,14 @@ export default function Home() {
           content="Logan Liffick is a designer and developer specializing in web and product with a background in illustration and animation."
         />
         <link rel="icon" href="/favicon.ico" />
-        <link
+        {/* <link
           rel="preload"
           href="/fonts/ApfelGrotezk-Regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
-        />
+        /> */}
       </Head>
-      <script></script>
       {/* <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}> */}
       <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
