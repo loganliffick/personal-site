@@ -62,13 +62,13 @@ export default function Home() {
           content="Logan Liffick is a designer and developer specializing in web and product with a background in illustration and animation."
         />
         <link rel="icon" href="/favicon.ico" />
-        {/* <link
+        <link
           rel="preload"
           href="/fonts/ApfelGrotezk-Regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
-        /> */}
+        />
       </Head>
       {/* <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}> */}
       <ThemeProvider theme={darkTheme}>
