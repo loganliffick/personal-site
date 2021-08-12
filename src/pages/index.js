@@ -35,7 +35,7 @@ export default function Home() {
           name="description"
           content="Logan Liffick is an interactive designer and frontend developer. He builds brands, systems, and products."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
         <link
           rel="preload"
           href="/fonts/ApfelGrotezk-Regular.woff2"
