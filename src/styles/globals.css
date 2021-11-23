@@ -24,7 +24,7 @@ body {
 }
 
 @font-face {
-  font-display: swap;
+  /* font-display: swap; */
   font-family: 'Apfel Grotezk';
   font-style: normal;
   font-weight: 400;
