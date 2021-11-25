@@ -1,15 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 
-function Button(props) {
-  return (
-    <a href={props.url} target="_blank" rel="noopener">
-      {props.name}
-    </a>
-  );
-}
+const Button = (props) => (
+  <a href={props.url} target="_blank" rel="noopener">
+    {props.name}
+  </a>
+);
 
-export default function Home() {
+const Home = () => {
   console.log(`
 
 ▄▄▄▄▄▄▄░▄▄▄▄▄▄▄░▄▄▄▄▄▄░▄▄▄▄▄
@@ -21,7 +19,7 @@ export default function Home() {
 ░░░░░░░██▄░░▄▀░███░░█▀░░░░░░
 ░░░░░░░▀██▄█▀░░░███▄▀░░░░░░░
 ░░░░░░░░▀██▀░░░░░███░░░░░░░░
-░░░░░░░░░▀▀░░░░░░░▀░░░░░░░░░ hat's up? 👀 
+░░░░░░░░░▀▀░░░░░░░▀░░░░░░░░░ hat's up
 
 
 `);
@@ -70,4 +68,6 @@ export default function Home() {
       </main>
     </>
   );
-}
+};
+
+export default Home;
