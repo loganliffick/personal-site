@@ -4,19 +4,16 @@
   --tertiary: #4f56ff;
 }
 
-* {
+*,
+html,
+body {
   box-sizing: border-box;
   font-family: 'Apfel Grotezk', sans-serif;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-}
-
-html,
-body {
+  -moz-osx-font-smoothing: grayscale;
   background: var(--secondary);
-  margin: 0;
-  padding: 0;
 }
 
 ::selection {
