@@ -35,7 +35,7 @@ const Home = () => {
           crossOrigin=""
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {/* <meta charSet="utf-8" /> */}
+        <meta charSet="utf-8" />
 
         <title>Logan Liffick</title>
         <meta
