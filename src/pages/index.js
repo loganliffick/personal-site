@@ -33,6 +33,10 @@ const Home = () => {
           name="description"
           content="Logan Liffick is an interactive designer and frontend developer. He builds brands, systems, and products."
         />
+        <meta
+          name="google-site-verification"
+          content="ugqQc2EJej0hywM0zD6iTDzuIhGCttd9t_p-kFFXm18"
+        />
         <link rel="icon" href="/favicon.svg" />
         <link
           rel="preload"
