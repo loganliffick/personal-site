@@ -27,23 +27,44 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Logan Liffick</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta
-          name="description"
-          content="Logan Liffick is an interactive designer and frontend developer. He builds brands, systems, and products."
-        />
-        <meta
-          name="google-site-verification"
-          content="ugqQc2EJej0hywM0zD6iTDzuIhGCttd9t_p-kFFXm18"
-        />
-        <link rel="icon" href="/favicon.svg" />
         <link
           rel="preload"
           href="/fonts/ApfelGrotezk-Regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
+        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charSet="utf-8" />
+
+        <title>Logan Liffick</title>
+        <meta
+          name="description"
+          content="Design engineer building brands, systems, and products."
+        />
+        <meta name="keywords" content="logan liffick, design engineer, react" />
+        <link rel="icon" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.svg" />
+
+        <meta property="og:title" content="Logan Liffick" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.loganliffick.com/favicon.svg"
+        />
+        <meta property="og:url" content="https://loganliffick.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:description"
+          content="Design engineer building brands, systems, and products."
+        />
+        <meta property="og:site_name" content="Logan Liffick" />
+        <meta name="twitter:image:alt" content="logan liffick headshot" />
+
+        <meta name="twitter:site" content="@logan_liffick" />
+        <meta
+          name="google-site-verification"
+          content="ugqQc2EJej0hywM0zD6iTDzuIhGCttd9t_p-kFFXm18"
         />
       </Head>
       <main>
