@@ -40,7 +40,7 @@ const Home = () => {
         <title>Logan Liffick</title>
         <meta
           name="description"
-          content="Design engineer building brands, systems, and products."
+          content="Logan Liffick is a design engineer building brands, systems, and products."
         />
         <meta name="keywords" content="logan liffick, design engineer, react" />
         <link rel="icon" href="/favicon.svg" />
@@ -52,16 +52,14 @@ const Home = () => {
         <meta property="og:url" content="https://loganliffick.com" />
         <meta
           property="og:description"
-          content="Design engineer building brands, systems, and products."
+          content="Logan Liffick is a design engineer building brands, systems, and products."
         />
         <meta
           property="og:image"
           content="https://www.loganliffick.com/og.jpg"
         />
-
         <meta name="twitter:image:alt" content="© logan liffick" />
         <meta name="twitter:card" content="summary_large_image" />
-
         <meta name="twitter:site" content="@logan_liffick" />
         <meta name="twitter:creator" content="@logan_liffick" />
         <meta
