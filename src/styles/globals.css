@@ -112,6 +112,6 @@ section {
     --tertiary: #8489ff;
   }
   span {
-    text-shadow: 0px 2px 9px #5537ff;
+    text-shadow: 1px 1px 5px #7a15ff, -1px -1px 5px #0088d6;
   }
 }

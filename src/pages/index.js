@@ -70,7 +70,7 @@ const Home = () => {
       <main>
         <section>
           <h1>
-            <span>©</span> 2021 Logan Liffick
+            Logan Liffick <span>©</span> 2021
           </h1>
           <h2>
             Showing up M-F at{' '}
