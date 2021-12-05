@@ -76,8 +76,8 @@ const Home = () => {
             Showing up M-F at{' '}
             <Button url="https://digitalocean.com" name="DigitalOcean" /> Learn
             more about my work on{' '}
-            <Button url="https://read.cv/logan_liffick" name="read.cv" /> and{' '}
-            <Button url="https://github.com/logan-liffick" name="Github" />{' '}
+            <Button url="https://read.cv/loganliffick" name="read.cv" /> and{' '}
+            <Button url="https://github.com/loganliffick" name="Github" />{' '}
             Follow me on{' '}
             <Button url="https://twitter.com/logan_liffick" name="Twitter" />{' '}
             and{' '}
