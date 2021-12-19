@@ -59,7 +59,7 @@ const Home = () => (
           <Button url="https://github.com/loganliffick" name="Github" /> Follow
           me on{' '}
           <Button url="https://twitter.com/logan_liffick" name="Twitter" /> and{' '}
-          <Button url="https://instagram.com/logan_liffick" name="Instagram" />{' '}
+          <Button url="https://instagram.com/loganliffick" name="Instagram" />{' '}
           Send me an <Button url="mailto:hello@loganliffick.com" name="email" />{' '}
           to connect.
         </h2>
