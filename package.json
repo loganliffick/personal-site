@@ -8,8 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "interactjs": "^1.10.11",
     "next": "^12.1.4",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "sass": "^1.49.11",
+    "spltjs": "^1.1.0"
   }
 }

@@ -1,0 +1,218 @@
+:root {
+  --dark: #0d0e2c;
+  --med: #5f606c;
+  --med-lite: #e3e3e3;
+  --lite: #f1f1f1;
+  --blue: #1820ff;
+  --white: #ffffff;
+}
+
+*,
+html,
+body {
+  box-sizing: border-box;
+  font-family: 'Apfel Grotezk', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: url('/images/fpo-bg.jpg');
+  background-size: cover;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+::selection {
+  color: var(--tertiary);
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Apfel Grotezk';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/ApfelGrotezk-Regular.woff2');
+}
+
+h1 {
+  color: inherit;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  color: inherit;
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 88px;
+}
+
+p {
+  color: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 24px;
+
+  &.large {
+    font-size: 18px;
+    line-height: 28px;
+    text-transform: uppercase;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none outside none;
+}
+
+button {
+  border: none;
+  background: var(--dark);
+  color: var(--lite);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 16px 24px;
+  text-decoration: none;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: repeat(12, 250px);
+  grid-template-rows: repeat(12, 250px);
+  grid-template-areas:
+    '. . . . . . . . . . . .'
+    '. . . . a1 a1 . . . . . .'
+    '. . . . . . . . . . . .'
+    '. . . . . . . a2 . . . .'
+    '. . . . . . . . . . . .'
+    '. . . . . . . . . . . .'
+    '. . . . a3 . . . . . . .'
+    '. . . . a3 . . . . . . .'
+    '. . . . . . . . . . . .'
+    '. . . . . . . . . . . .'
+    '. . . . . . . a4 a4 a4 . .'
+    '. . . . . . . a4 a4 a4 . .';
+  padding: 200px;
+  touch-action: none;
+  user-select: none;
+
+  &:hover {
+    cursor: grab;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.map {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  bottom: 40px;
+  box-shadow: 0px 6px 20px -6px rgba(0, 2, 62, 0.08);
+  height: 100px;
+  pointer-events: none;
+  position: absolute;
+  width: 100px;
+  z-index: 10;
+}
+
+.position {
+  background: var(--dark);
+  border-radius: 100%;
+  height: 16px;
+  left: calc(50% - 8px);
+  margin: 0 auto;
+  position: absolute;
+  top: calc(50% - 8px);
+  width: 16px;
+}
+
+.card-container {
+  color: var(--dark);
+  filter: drop-shadow(0px 8px 8px rgba(0, 2, 55, 0.08));
+  height: 100%;
+  position: relative;
+  width: 100%;
+  transition: all 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(0.95) rotate(5deg);
+  }
+
+  &:hover .card-content {
+    color: var(--blue);
+  }
+}
+
+.card-img {
+  height: 85%;
+  overflow: hidden;
+  position: relative;
+
+  &:after {
+    background: url('/images/paper.jpg');
+    background-size: cover;
+    content: '';
+    filter: brightness(15%);
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    mix-blend-mode: difference;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.card-content {
+  align-items: center;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 24px 0px 24px;
+  position: relative;
+
+  &:after {
+    background: url('/images/rip.svg') top center;
+    bottom: -39px;
+    content: '';
+    height: 40px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+}
+
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --primary: #dadde8;
+//     --secondary: #171520;
+//     --tertiary: #8489ff;
+//   }
+//   span {
+//     text-shadow: 1px 1px 5px #7a15ff, -1px -1px 5px #0088d6;
+//   }
+// }
