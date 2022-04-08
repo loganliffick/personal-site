@@ -1,3 +1,4 @@
+import anime from 'animejs';
 import Card from '../components/card';
 import Interact from 'interactjs';
 import Head from 'next/head';
@@ -6,31 +7,83 @@ import Splt from 'spltjs';
 
 const Home = () => {
   useEffect(() => {
-    const positionDot = document.querySelector('.position');
-
-    // const windowSize = () => {};
-    // windowSize();
-    // window.addEventListener("resize", windowSize);
-
-    const items = document.querySelectorAll('.card-container');
-    let num = 0;
-
-    Splt({});
-
-    items.forEach((item) => {
-      num = num + 1;
-      let text = num.toString();
-      item.classList.add('number_' + text);
-      item.style.gridColumnStart = 'a' + text;
-      item.style.gridColumnEnd = 'a' + text;
-      item.style.gridRowStart = 'a' + text;
-      item.style.gridRowEnd = 'a' + text;
-
-      // if (item.classList.contains("number_3")) {
-      //   item.style.background = "var(--prpl)";
-      // }
+    Splt({
+      reveal: true,
     });
 
+    anime({
+      targets: '.char',
+      opacity: [0, 1],
+      duration: 2000,
+      easing: 'cubicBezier(.7,-0.8,.4,1.7)',
+    });
+
+    anime({
+      targets: 'body',
+      scale: [1.5, 1],
+      duration: 2000,
+      easing: 'cubicBezier(.82,.05,.33,.96)',
+    });
+
+    anime({
+      targets:
+        '#c1 #r, #c2 #r, #c3 #r, #c4 #r, #c5 #r, #c6 #r, #c7 #r, #c8 #r, #c9 #r, #c10 #r, #c11 #r, #c12 #r, #c13 #r',
+      translateY: [72, 0],
+      duration: 1400,
+      delay: anime.stagger(30),
+      easing: 'cubicBezier(.7,-1,.3,1.9)',
+    });
+
+    anime({
+      targets: '.map',
+      translateY: [140, 0],
+      delay: 1000,
+      duration: 1200,
+      easing: 'cubicBezier(.9,-0.5,.2,1.5)',
+    });
+
+    anime({
+      targets: '.social-container',
+      opacity: [0, 1],
+      delay: 400,
+      duration: 1400,
+      easing: 'cubicBezier(.7,-0.8,.4,1.7)',
+    });
+
+    const titleSet = () => {
+      Splt.revert();
+      const spltT = document.querySelector('.splt');
+      spltT.innerHTML =
+        `<span class="name">Logan Liffick</span>` +
+        ' is a designer and creative developer. He helps bring life to brands, systems, and products.';
+    };
+
+    const windowSize = () => {
+      titleSet();
+    };
+    window.addEventListener('resize', windowSize);
+
+    const cards = document.querySelectorAll('.card-container');
+    let num = 0;
+    cards.forEach((card) => {
+      num = num + 1;
+      let text = num.toString();
+      card.classList.add('number_' + text);
+      card.style.gridColumnStart = 'a' + text;
+      card.style.gridColumnEnd = 'a' + text;
+      card.style.gridRowStart = 'a' + text;
+      card.style.gridRowEnd = 'a' + text;
+
+      if (num % 2 == 0) {
+        card.classList.add('even');
+        console.log('even');
+      } else {
+        card.classList.add('odd');
+        console.log('odd');
+      }
+    });
+
+    const positionDot = document.querySelector('.position');
     const position = { x: 0, y: 0 };
 
     Interact('.grid').draggable({
@@ -47,6 +100,7 @@ const Home = () => {
       ],
       listeners: {
         move(event) {
+          titleSet();
           position.x += event.dx;
           position.y += event.dy;
           event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
@@ -104,15 +158,29 @@ const Home = () => {
         />
       </Head>
       <div className="App">
-        <div className="overlay"></div>
-        <div className="radial red"></div>
-        <div className="radial purple"></div>
-        <div className="radial yellow"></div>
-        <div className="radial lite"></div>
         <div className="grid">
+          <div className="title">
+            <h1 className="splt">
+              Logan Liffick is a designer and creative developer. He helps bring
+              life to brands, systems, and products.
+            </h1>
+            <div className="social-container">
+              <a href="https://twitter.com/logan_liffick" target="_blank">
+                <h3>Twitter</h3>
+              </a>
+              <h3 className="divider"> / </h3>
+              <a href="https://github.com/loganliffick" target="_blank">
+                <h3>Github</h3>
+              </a>
+              <h3 className="divider"> / </h3>
+              <a href="https://read.cv/loganliffick" target="_blank">
+                <h3>Read.cv</h3>
+              </a>
+            </div>
+          </div>
           <Card
             title="peekaboo"
-            src="./images/project.jpg"
+            // src="./images/project.gif"
             alt="an animation gallery"
           />
           <Card
