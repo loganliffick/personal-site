@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import SearchBar from './search';
 
 // let tab = 0;
 const shortcuts = ['a', 'b', 'c'];
@@ -7,7 +8,6 @@ const menuItems = [];
 const MenuGroup = (props) => (
   <div className="menu-group">
     <p className="tiny">{props.title}</p>
-    <div className="divider" />
     <div className="menu-entry-container">{props.children}</div>
   </div>
 );
@@ -38,11 +38,12 @@ const MenuEntry = (props) => {
 
 const Menu = () => {
   const [toggle, setToggle] = useState(0);
+  const inputRef = useRef(null);
 
-  const downHandler = ({ key }) => {
-    if (key === 'k' && event.getModifierState('Meta')) {
+  const downHandler = (e) => {
+    if (e.key === 'k' && e.getModifierState('Meta')) {
       setToggle(!toggle);
-    } else if (key === 'Escape') {
+    } else if (e.key === 'Escape') {
       setToggle(false);
     }
     //   else if (shortcuts.includes(key) && toggle === false) {
@@ -55,10 +56,6 @@ const Menu = () => {
     //   tabChange('down');
     // }
   };
-
-  // const upHandler = () => {
-  //   log = [];
-  // };
 
   // const tabChange = (direction) => {
   //   if (direction === 'down' && tab < menuItems.length - 1) {
@@ -83,6 +80,11 @@ const Menu = () => {
   // key handler hook
   useEffect(() => {
     document.addEventListener('keydown', downHandler);
+    if (toggle) {
+      setTimeout(() => {
+        inputRef.current.focus();
+      }, 250);
+    }
     // if (toggle === true) {
     //   setTimeout(() => {
     //     tab = 0;
@@ -105,7 +107,7 @@ const Menu = () => {
         }}
       />
       <div className="menu" populate={toggle.toString()}>
-        {/* <SearchBar /> */}
+        <SearchBar innerRef={inputRef} />
         <MenuGroup title="Works">
           <MenuEntry
             title="keybored"

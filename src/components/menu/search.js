@@ -1,4 +1,6 @@
-const SearchBar = ({ data }) => {
+import React, { useState, useEffect } from 'react';
+
+const SearchBar = (props, { data }) => {
   const [filterData, setFilterData] = useState([]);
 
   const handleFilter = (event) => {
@@ -12,10 +14,13 @@ const SearchBar = ({ data }) => {
 
   return (
     <input
-      type="text"
-      placeholder="Type a command or search..."
+      autoComplete="false"
+      className="search"
       onChange={handleFilter}
-      focus
+      placeholder="Type a command or search..."
+      ref={props.innerRef}
+      tabIndex={0}
+      type="text"
     />
   );
 };
