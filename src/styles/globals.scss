@@ -22,6 +22,7 @@ body {
   background: url('/images/fpo-bg.jpg');
   background-size: cover;
   overflow: hidden;
+  transform: scale(1.5);
 }
 
 .App {
@@ -33,9 +34,9 @@ body {
   overflow: hidden;
 }
 
-::selection {
-  color: var(--tertiary);
-}
+// ::selection {
+//   color: var(--tertiary);
+// }
 
 @font-face {
   font-display: swap;
@@ -77,6 +78,11 @@ p {
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
+
+  &.tiny {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 
 a {
@@ -88,15 +94,21 @@ ul {
 }
 
 button {
+  background: transparent;
   border: none;
-  background: var(--dark);
-  color: var(--lite);
+  color: var(--med);
   cursor: pointer;
   font-family: inherit;
-  font-size: 16px;
-  padding: 16px 24px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  padding: 4px 8px;
   text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s;
 }
+
+// grid
 
 .grid {
   display: grid;
@@ -107,14 +119,14 @@ button {
     '. . . . . . . . . . . .'
     '. . . . a1 a1 . . . . . .'
     '. . . . . . . . . . . .'
-    '. . . . . . . a2 . . . .'
     '. . . . . . . . . . . .'
+    '. . . . . . . . a2 . . .'
     '. . . . t t t t . . . .'
     '. . . . t t t t . . . .'
-    '. . . . . . . . . . . .'
-    '. . . . . . . . . . . .'
     '. a3 a3 . . . . . . . . .'
-    '. a3 a3 . . . . a4 a4 a4 . .'
+    '. a3 a3 . . . . . . . . .'
+    '. . . . . . . . . . . .'
+    '. . . . . . . a4 a4 a4 . .'
     '. . . . . . . a4 a4 a4 . .';
   padding: 200px;
   touch-action: none;
@@ -129,9 +141,11 @@ button {
   }
 }
 
+// mini map
+
 .map {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 24px;
   bottom: 40px;
   box-shadow: 0px 6px 20px -6px rgba(0, 2, 62, 0.08);
@@ -139,7 +153,7 @@ button {
   pointer-events: none;
   position: absolute;
   width: 100px;
-  z-index: 10;
+  z-index: 2;
 }
 
 .position {
@@ -153,6 +167,8 @@ button {
   width: 16px;
 }
 
+// cards
+
 .card-container {
   color: var(--dark);
   cursor: pointer;
@@ -161,6 +177,30 @@ button {
   position: relative;
   width: 100%;
   transition: all 0.2s ease;
+
+  &.even {
+    transform: rotate(-5deg);
+
+    &:hover {
+      transform: scale(0.95) rotate(-9deg);
+    }
+
+    &:active {
+      transform: scale(0.92) rotate(-12deg);
+    }
+  }
+
+  &.odd {
+    transform: rotate(3deg);
+
+    &:hover {
+      transform: scale(0.95) rotate(7deg);
+    }
+
+    &:active {
+      transform: scale(0.92) rotate(10deg);
+    }
+  }
 
   &:hover {
     filter: drop-shadow(0px 5px 5px rgba(0, 2, 55, 0.06));
@@ -199,30 +239,6 @@ button {
   }
 }
 
-.even {
-  transform: rotate(-5deg);
-
-  &:hover {
-    transform: scale(0.95) rotate(-9deg);
-  }
-
-  &:active {
-    transform: scale(0.92) rotate(-12deg);
-  }
-}
-
-.odd {
-  transform: rotate(3deg);
-
-  &:hover {
-    transform: scale(0.95) rotate(7deg);
-  }
-
-  &:active {
-    transform: scale(0.92) rotate(10deg);
-  }
-}
-
 .card-img {
   height: 80%;
   overflow: hidden;
@@ -250,29 +266,6 @@ button {
     width: 100%;
   }
 }
-// .card-img {
-//   height: 80%;
-//   overflow: hidden;
-//   position: relative;
-//   transition: 0.2s ease;
-//   background-size: 100% !important;
-//   background-repeat: no-repeat !important;
-//   background-position: center !important;
-
-//   &:after {
-//     background: url('/images/paper.jpg');
-//     background-size: cover;
-//     content: '';
-//     filter: brightness(15%);
-//     height: 100%;
-//     pointer-events: none;
-//     position: absolute;
-//     left: 0;
-//     mix-blend-mode: difference;
-//     top: 0;
-//     width: 100%;
-//   }
-// }
 
 .card-content {
   align-items: center;
@@ -310,27 +303,28 @@ button {
     position: absolute;
     transition: 0.2s ease;
 
-    // &.one {
-    // }
-
     &.two {
       transform: translate(-20px, 20px);
     }
   }
 }
 
+// title
+
 .title {
   grid-area: t;
   margin: auto auto;
-  max-width: 1013px;
+  max-width: 1012px;
 
   h1 {
     text-align: center;
+    opacity: 0;
   }
 
   .social-container {
     display: flex;
     margin: 0 auto;
+    opacity: 0;
     padding-top: 12px;
     width: max-content;
 
@@ -344,7 +338,6 @@ button {
     }
 
     h3 {
-      // color: var(--med);
       margin: 0 4px;
     }
 
@@ -354,25 +347,224 @@ button {
     }
   }
 
-  .splt {
-    color: var(--dark);
+  span {
+    color: var(--blue);
+  }
+}
 
-    #c1,
-    #c2,
-    #c3,
-    #c4,
-    #c5,
-    #c6,
-    #c7,
-    #c8,
-    #c9,
-    #c10,
-    #c11,
-    #c12,
-    #c13,
-    .name {
-      color: var(--blue);
+// menu
+
+.info-button {
+  position: absolute;
+  top: 56px;
+  z-index: 10;
+
+  &:after {
+    background: var(--dark);
+    border-radius: 8px;
+    color: var(--white);
+    content: '⌘ + k';
+    font-size: 14px;
+    left: 0;
+    opacity: 0;
+    padding: 2px 10px;
+    pointer-events: none;
+    position: absolute;
+    top: -36px;
+    transition: 0.2s;
+    transition-delay: 0s;
+    width: max-content;
+  }
+
+  &:hover:after {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
+
+  &:hover {
+    color: var(--dark);
+  }
+
+  &[populate='true'] {
+    color: var(--dark);
+  }
+
+  &[populate='false'] {
+    &:hover {
+      color: var(--dark);
     }
+  }
+}
+
+.overlay {
+  align-items: center;
+  backdrop-filter: blur(1px);
+  background: rgba(0, 0, 0, 0.05);
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  position: absolute;
+  width: 100vw;
+  z-index: 3;
+
+  &[populate='true'] {
+    animation: openOverlay 0.1s ease forwards;
+    display: block;
+  }
+
+  &[populate='false'] {
+    animation: closeOverlay 0.25s ease forwards;
+    display: block;
+  }
+}
+
+@keyframes openOverlay {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes closeOverlay {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.menu {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+  box-shadow: 0px 6px 20px -6px rgba(0, 2, 62, 0.15);
+  display: none;
+  max-height: 400px;
+  opacity: 0;
+  overflow: scroll;
+  position: absolute;
+  transform: scale(0.98);
+  width: 640px;
+  z-index: 10;
+
+  &[populate='true'] {
+    animation: openMenu 0.1s ease forwards;
+    display: block;
+  }
+
+  &[populate='false'] {
+    animation: closeMenu 0.5s ease forwards;
+    display: block;
+  }
+}
+
+@keyframes openMenu {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes closeMenu {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+    visibility: hidden;
+  }
+}
+
+// menu group
+
+.menu-group {
+  color: var(--med);
+  margin-bottom: 16px;
+  width: 100%;
+
+  p.tiny {
+    padding: 0 24px;
+  }
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.divider {
+  border: 1px dashed var(--med-lite);
+  margin: 6px 0px 16px 0px;
+}
+
+// menu entry
+
+.menu-entry {
+  align-items: center;
+  color: var(--dark);
+  display: flex;
+  justify-content: space-between;
+  outline: none;
+  padding: 8px 24px;
+  transition: 0.2s;
+
+  p {
+    pointer-events: none;
+    &.tag {
+      &::after {
+        background: #c4c3ff;
+        border-radius: 4px;
+        color: #49002c;
+        content: 'new';
+        font-size: 14px;
+        line-height: 16px;
+        margin-left: 12px;
+        padding: 4px 12px;
+        text-transform: uppercase;
+      }
+    }
+  }
+  div.arrow-container {
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--blue);
+  }
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 56px;
+    letter-spacing: -2%;
+    line-height: 56px;
+  }
+
+  .title h1 {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .menu {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 36px;
+    letter-spacing: -2%;
+    line-height: 36px;
+  }
+
+  .title h1 {
+    width: 90vw;
   }
 }
 
