@@ -8,9 +8,9 @@ import splt from 'spltjs';
 
 const Home = () => {
   useEffect(() => {
-    // splt({
-    //   reveal: true,
-    // });
+    splt({
+      reveal: true,
+    });
 
     anime({
       targets: 'h1',
@@ -54,8 +54,7 @@ const Home = () => {
     let scaleSite = 1;
 
     const windowSize = () => {
-      // splt.revert();
-      console.log(window.innerWidth);
+      splt.revert();
       if (window.innerWidth < 500) {
         scaleSite = 0.6;
         scaleDot = 2;
@@ -102,7 +101,7 @@ const Home = () => {
       ],
       listeners: {
         move(event) {
-          // splt.revert();
+          splt.revert();
           position.x += event.dx;
           position.y += event.dy;
           event.target.style.transform = `translate(${position.x}px, ${position.y}px) scale(${scaleSite})`;
