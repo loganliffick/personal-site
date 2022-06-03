@@ -167,7 +167,6 @@ const Menu = () => {
       }, 50);
     } else {
       document.querySelector('.search').value = '';
-      console.log(entries.length);
     }
 
     return () => {

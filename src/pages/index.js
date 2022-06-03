@@ -8,9 +8,9 @@ import splt from 'spltjs';
 
 const Home = () => {
   useEffect(() => {
-    splt({
-      reveal: true,
-    });
+    // splt({
+    //   reveal: true,
+    // });
 
     anime({
       targets: 'h1',
@@ -50,9 +50,21 @@ const Home = () => {
       easing: 'cubicBezier(.9,-0.5,.2,1.5)',
     });
 
+    let scaleDot = 1;
+    let scaleSite = 1;
+
     const windowSize = () => {
-      splt.revert();
+      // splt.revert();
+      console.log(window.innerWidth);
+      if (window.innerWidth < 500) {
+        scaleSite = 0.6;
+        scaleDot = 2;
+      } else {
+        scaleSite = 1;
+        scaleDot = 1;
+      }
     };
+    windowSize();
     window.addEventListener('resize', windowSize);
 
     const cards = document.querySelectorAll('.card-container');
@@ -90,14 +102,14 @@ const Home = () => {
       ],
       listeners: {
         move(event) {
-          splt.revert();
+          // splt.revert();
           position.x += event.dx;
           position.y += event.dy;
-          event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
+          event.target.style.transform = `translate(${position.x}px, ${position.y}px) scale(${scaleSite})`;
 
           positionDot.style.transform = `translate(${-position.x / 30}px, ${
             -position.y / 30
-          }px)`;
+          }px)  scale(${scaleDot})`;
         },
       },
     });
