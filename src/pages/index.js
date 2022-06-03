@@ -63,7 +63,7 @@ const Home = () => {
         scaleDot = 1;
       }
     };
-    windowSize();
+    // windowSize();
     window.addEventListener('resize', windowSize);
 
     const cards = document.querySelectorAll('.card-container');
@@ -183,27 +183,33 @@ const Home = () => {
           </div>
           <Card
             title="peekaboo"
-            video="./videos/peekaboo.webm"
+            video="./videos/peekaboo"
             alt="an animation gallery"
             link="https://peekabooi.cyou"
           />
           <Card
-            title="splt.js"
-            video="./videos/spltjs.webm"
+            title="splt"
+            video="./videos/spltjs"
             alt="a text splitting javascript library"
             link="https://spltjs.com"
           />
           <Card
             title="DigitalOcean"
-            video="./videos/digitalocean.webm"
+            video="./videos/digitalocean"
             alt="a cloud computing company's website design"
             link="https://digitalocean.com"
           />
           <Card
             title="Keybored"
-            video="./videos/keybored.webm"
+            video="./videos/keybored"
             alt="a React-driven on-screen keyboard UI library"
             link="https://keyboredjs.com"
+          />
+          <Card
+            title="Codepen"
+            video="./videos/codepen"
+            alt="link to Logan Liffick's Codepen profile"
+            link="https://codepen.com/loganliffick"
           />
         </div>
         <div className="map">

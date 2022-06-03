@@ -24,7 +24,8 @@ const Card = (props) => (
     <a className="card-container" href={props.link} target="_blank">
       <div {...props} className="card-img">
         <video autoPlay muted loop>
-          <source src={props.video} type="video/webm"></source>
+          <source src={props.video + '.webm'} type="video/webm"></source>
+          <source src={props.video + '.mp4'} type="video/mp4"></source>
         </video>
       </div>
       <div className="card-content">

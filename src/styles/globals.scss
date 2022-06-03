@@ -118,17 +118,17 @@ button {
   grid-template-rows: repeat(12, 250px);
   grid-template-areas:
     '. . . . . . . . . . . .'
-    '. . . . a1 a1 . . . . . .'
     '. . . . . . . . . . . .'
+    '. . . a1 a1 a1 . . . . . .'
     '. . . . . . . . . . . .'
-    '. . . . . . . . a2 . . .'
+    '. . . . a5 . . . a2 . . .'
     '. . . . t t t t . . . .'
     '. . . . t t t t . . . .'
-    '. a3 a3 . . . . . . . . .'
-    '. a3 a3 . . . . . . . . .'
-    '. . . . . . . . . . . .'
+    '. . a3 a3 . . . . . . . .'
+    '. . a3 a3 . . . a4 a4 a4 . .'
     '. . . . . . . a4 a4 a4 . .'
-    '. . . . . . . a4 a4 a4 . .';
+    '. . . . . . . a4 a4 a4 . .'
+    '. . . . . . . . . . . .';
   padding: 200px;
   touch-action: none;
   user-select: none;
@@ -448,7 +448,7 @@ button {
   top: 30%;
   transform: scale(0.98);
   width: 640px;
-  z-index: 10;
+  z-index: 1000;
 
   &[populate='true'] {
     animation: openMenu 0.1s ease forwards;
@@ -599,7 +599,7 @@ button {
   }
 
   .map {
-    bottom: 104px;
+    bottom: 160px;
   }
 
   .menu {
