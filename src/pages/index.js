@@ -1,6 +1,6 @@
 import anime from 'animejs';
 import Card from '../components/card';
-import Menu from '../components/menu/menu';
+import Menu from '../components/menu';
 import Interact from 'interactjs';
 import Head from 'next/head';
 import React, { useEffect } from 'react';

@@ -1,6 +1,7 @@
 :root {
   --gray-1: #0d0e2c;
   --gray-2: #4b4e6b;
+  --gray-25: #4b4e6b;
   --gray-3: #cdcfe1;
   --gray-4: #f1f1f1;
   --blue: #1820ff;
@@ -34,9 +35,9 @@ body {
   overflow: hidden;
 }
 
-// ::selection {
-//   color: var(--tertiary);
-// }
+::selection {
+  color: var(--blue);
+}
 
 @font-face {
   font-display: swap;
@@ -442,8 +443,9 @@ button {
   display: none;
   max-height: 400px;
   opacity: 0;
-  overflow: scroll;
+  overflow: hidden;
   position: absolute;
+  top: 30%;
   transform: scale(0.98);
   width: 640px;
   z-index: 10;
@@ -478,30 +480,23 @@ button {
   }
 }
 
-// menu group
+// menu results
 
-.menu-group {
-  color: var(--gray-2);
-  margin-bottom: 16px;
-  width: 100%;
-
-  p.tiny {
-    border-bottom: 1px solid var(--gray-3);
-    padding: 0 0 6px 24px;
-  }
-
-  &:first-of-type {
-    margin-top: 16px;
-  }
-
-  &:last-child {
-    margin-bottom: 0px;
-  }
+.results {
+  position: relative;
+  max-height: 336px;
+  overflow-y: scroll;
 }
 
-// menu entry
+.entry-divider {
+  border-bottom: 1px solid var(--gray-3);
+  color: var(--gray-2);
+  padding: 8px 0 6px 24px;
+  text-transform: capitalize;
+  width: 100%;
+}
 
-.menu-entry {
+.entry {
   align-items: center;
   color: var(--gray-1);
   display: flex;
@@ -526,13 +521,10 @@ button {
       }
     }
   }
-  div.arrow-container {
-    pointer-events: none;
-  }
 
-  &:hover,
   &:focus,
-  &:focus-visible {
+  &:focus-visible,
+  &[aria-selected='true'] {
     background: rgba(0, 0, 0, 0.05);
     // color: var(--blue);
   }
@@ -553,19 +545,23 @@ button {
   background: #f8f8f8;
   transition: all 0.25s ease;
 
-  caret-color: var(--blue);
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  // caret-color: var(--blue);
 
   &::placeholder {
-    transition: inherit;
+    color: var(--gray-2);
   }
 
   &:focus,
   &:focus-visible {
-    color: var(--gray-2);
-    box-shadow: 0px 1px 0px var(--gray-2);
-    &::placeholder {
-      color: var(--gray-2);
-    }
+    color: var(--gray-1);
+    // box-shadow: 0px 2px 0px var(--gray-2);
+    // &::placeholder {
+    //   color: var(--gray-1);
+    // }
   }
 }
 
@@ -599,7 +595,7 @@ button {
   }
 }
 
-// @gray-2ia (prefers-color-scheme: gray-1) {
+// @media (prefers-color-scheme: light) {
 //   :root {
 //     --primary: #dadde8;
 //     --secondary: #171520;

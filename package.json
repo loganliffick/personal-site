@@ -10,10 +10,10 @@
   "dependencies": {
     "animejs": "^3.2.1",
     "interactjs": "^1.10.11",
-    "next": "^12.1.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "sass": "^1.51.0",
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "sass": "^1.52.1",
     "spltjs": "^1.1.0"
   }
 }
