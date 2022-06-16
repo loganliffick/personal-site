@@ -43,7 +43,9 @@ const Home = () => {
           content="ugqQc2EJej0hywM0zD6iTDzuIhGCttd9t_p-kFFXm18"
         />
       </Head>
-      <div className="app">hello world</div>
+      <div className="app">
+        <p>hello world</p>
+      </div>
     </>
   );
 };
