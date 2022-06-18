@@ -1,16 +1,21 @@
 import Head from 'next/head';
+import { posts } from 'components/blog';
 
-const Home = () => {
+export const getServerSideProps = async () => {
+  // Get the posts
+  let { results } = await posts();
+  // Return the result
+  return {
+    props: {
+      posts: results,
+    },
+  };
+};
+
+const Home = (props) => {
   return (
     <>
       <Head>
-        <link
-          rel="preload"
-          href="/fonts/ApfelGrotezk-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin=""
-        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.svg" />
@@ -44,7 +49,16 @@ const Home = () => {
         />
       </Head>
       <div className="app">
-        <p>hello world</p>
+        {/* <p>hello world</p> */}
+        <div>
+          {props.posts?.map((result, index) => {
+            return (
+              <div key={index}>
+                <a>{result.properties.Name.title[0].plain_text}</a>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
