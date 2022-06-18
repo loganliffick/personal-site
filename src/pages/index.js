@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { posts } from 'components/blog';
 
 export const getServerSideProps = async () => {
@@ -49,12 +50,13 @@ const Home = (props) => {
         />
       </Head>
       <div className="app">
-        {/* <p>hello world</p> */}
         <div>
           {props.posts?.map((result, index) => {
             return (
               <div key={index}>
-                <a>{result.properties.Name.title[0].plain_text}</a>
+                <Link href={`/${result.id}`}>
+                  <a>{result.properties.Name.title[0].plain_text}</a>
+                </Link>
               </div>
             );
           })}

@@ -11,4 +11,18 @@ const posts = async () => {
   return myPosts;
 };
 
-export { posts };
+const post = async (id) => {
+  const myPost = await client.pages.retrieve({
+    page_id: id,
+  });
+  return myPost;
+};
+
+const blocks = async (id) => {
+  const myBlocks = await client.blocks.children.list({
+    block_id: id,
+  });
+  return myBlocks;
+};
+
+export { post, posts, blocks };
