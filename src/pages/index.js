@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { posts } from 'components/blog';
+import moment from 'moment';
 
 export const getServerSideProps = async () => {
-  // Get the posts
+  // get posts
   let { results } = await posts();
-  // Return the result
+  // return results
   return {
     props: {
       posts: results,
@@ -52,12 +53,29 @@ const Home = (props) => {
       <div className="app">
         <div>
           {props.posts?.map((result, index) => {
-            return (
+            let publishedTime = result.properties.published.date?.start;
+            let editedTime = result.properties.edited.date?.start;
+
+            const dateFormat = (props) => {
+              let relTime =
+                moment().subtract(7, 'day').dayOfYear() <
+                moment(props).dayOfYear()
+                  ? moment(props).fromNow()
+                  : moment(props).format('LL');
+
+              return relTime;
+            };
+
+            return result.properties.publish.checkbox ? (
               <div key={index}>
                 <Link href={`/${result.id}`}>
                   <a>{result.properties.Name.title[0].plain_text}</a>
                 </Link>
+                <p>{dateFormat(publishedTime)}</p>
+                <p>{editedTime ? 'edited ' + dateFormat(editedTime) : ''}</p>
               </div>
+            ) : (
+              ''
             );
           })}
         </div>
