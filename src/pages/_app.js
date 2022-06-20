@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import '../styles/prism.css';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {

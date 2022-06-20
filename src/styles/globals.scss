@@ -11,7 +11,6 @@
 html,
 body {
   box-sizing: border-box;
-  font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -20,6 +19,7 @@ body {
 
 body {
   background: var(--gray-4);
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .app {

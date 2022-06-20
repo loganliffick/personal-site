@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import 'prismjs';
 import { post, posts, blocks } from 'components/blog';
 
 export const getStaticProps = async (ctx) => {
@@ -20,8 +21,8 @@ export const getStaticProps = async (ctx) => {
 };
 
 export const getStaticPaths = async () => {
-  let { results } = await posts();
   // get all posts
+  let { results } = await posts();
   return {
     paths: results.map((post) => {
       // search through each post
@@ -37,6 +38,7 @@ export const getStaticPaths = async () => {
 };
 
 const renderBlock = (block) => {
+  // console.log(block.paragraph);
   switch (block.type) {
     case 'heading_1':
       return <h1>{block['heading_1'].rich_text[0].plain_text} </h1>;
@@ -59,6 +61,18 @@ const renderBlock = (block) => {
 
     case 'paragraph':
       return <p>{block['paragraph'].rich_text[0]?.text?.content} </p>;
+
+    case 'divider':
+      return <div style={{ margin: '24px 0 24px 0' }} />;
+
+    case 'code':
+      return (
+        <pre className={'language-' + block['code'].language}>
+          <code className={'language-' + block['code'].language}>
+            {block['code'].rich_text[0]?.text?.content}
+          </code>
+        </pre>
+      );
 
     default:
       return <p>Undefined type</p>;
