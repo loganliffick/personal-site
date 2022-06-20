@@ -39,7 +39,7 @@ export const getStaticPaths = async () => {
 };
 
 const renderBlock = (block) => {
-  // console.log(block.paragraph);
+  console.log(block);
   switch (block.type) {
     case 'heading_1':
       return <h1>{block['heading_1'].rich_text[0].plain_text} </h1>;
@@ -61,7 +61,54 @@ const renderBlock = (block) => {
       );
 
     case 'paragraph':
-      return <p>{block['paragraph'].rich_text[0]?.text?.content} </p>;
+      return (
+        <p>
+          {block.paragraph.rich_text.map((element, index) => {
+            let text = element.plain_text;
+            let tag = element.annotations;
+            return (
+              tag.code
+                ? (text = (
+                    <code className="language-javascript" key={index}>
+                      {text}
+                    </code>
+                  ))
+                : text,
+              tag.italic ? (text = <em key={index}>{text}</em>) : text,
+              tag.bold ? (text = <strong key={index}>{text}</strong>) : text,
+              tag.underline ? (text = <u key={index}>{text}</u>) : text,
+              tag.strikethrough
+                ? (text = <strike key={index}>{text}</strike>)
+                : text,
+              element.href ? (
+                <a href={element.href} target="_blank" key={index}>
+                  {text}
+                </a>
+              ) : (
+                text
+              )
+            );
+          })}
+        </p>
+      );
+
+    case 'embed':
+      return (
+        <iframe
+          src={block['embed'].embed?.url.plain_text}
+          style={{
+            width: '100%',
+            height: '504px',
+            border: '0',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            marginBottom: '40px',
+          }}
+          title="keybored"
+          allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+          sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+        />
+      );
 
     case 'divider':
       return <div style={{ margin: '24px 0 24px 0' }} />;
