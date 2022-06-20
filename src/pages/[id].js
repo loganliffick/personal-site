@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import 'prismjs';
+import Prism from 'prismjs';
 import { post, posts, blocks } from 'components/blog';
+import { useEffect } from 'react';
 
 export const getStaticProps = async (ctx) => {
   let { id } = ctx.params;
@@ -67,7 +68,7 @@ const renderBlock = (block) => {
 
     case 'code':
       return (
-        <pre className={'language-' + block['code'].language}>
+        <pre>
           <code className={'language-' + block['code'].language}>
             {block['code'].rich_text[0]?.text?.content}
           </code>
@@ -89,6 +90,9 @@ const Post = ({ post, blocks }) => {
         <a>Home</a>
       </Link>
       {blocks.map((block, index) => {
+        useEffect(() => {
+          Prism.highlightAll();
+        }, []);
         return <div key={index}>{renderBlock(block)}</div>;
       })}
     </div>
