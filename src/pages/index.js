@@ -55,7 +55,6 @@ const Home = (props) => {
           {props.posts?.map((result, index) => {
             let publishedTime = result.properties.published.date?.start;
             let editedTime = result.properties.edited.date?.start;
-
             const dateFormat = (props) => {
               let relTime =
                 moment().subtract(7, 'day').dayOfYear() <
@@ -68,6 +67,7 @@ const Home = (props) => {
 
             return result.properties.publish.checkbox ? (
               <div key={index}>
+                {/* where it links */}
                 <Link href={`/${result.id}`}>
                   <a>{result.properties.Name.title[0].plain_text}</a>
                 </Link>

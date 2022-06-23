@@ -13,6 +13,7 @@ const posts = async () => {
 
 const post = async (id) => {
   const myPost = await client.pages.retrieve({
+    // id that's used
     page_id: id,
   });
   return myPost;
