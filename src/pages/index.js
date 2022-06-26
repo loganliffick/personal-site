@@ -1,35 +1,17 @@
 import Head from 'next/head';
 import Link from 'next/link';
-// import { posts } from 'components/redact-blog';
+import { posts } from 'components/blog';
 import moment from 'moment';
 import slugify from 'slugify';
-import { Client } from '@notionhq/client';
-
-// export const getServerSideProps = async () => {
-//   // get posts
-//   let { results } = await posts();
-//   // return results
-//   return {
-//     props: {
-//       posts: results,
-//     },
-//   };
-// };
 
 export const getStaticProps = async () => {
-  const notion = new Client({
-    auth: process.env.NOTION_SECRET,
-  });
+  const data = await posts();
 
-  const data = await notion.databases.query({
-    database_id: `${process.env.NOTION_DATABASE}`,
-  });
-
-  let posts = [];
+  let publishedPosts = [];
 
   data.results.forEach((result) => {
     if (result.properties.posted.date) {
-      posts.push({
+      publishedPosts.push({
         id: result.id,
         title: result.properties.Name.title[0].plain_text,
         posted: result.properties.posted.date.start,
@@ -40,10 +22,41 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts: posts.sort((a, b) => (a.posted > b.posted ? 1 : -1)).reverse(),
+      posts: publishedPosts
+        .sort((a, b) => (a.posted > b.posted ? 1 : -1))
+        .reverse(),
     },
   };
 };
+
+// export const getStaticProps = async () => {
+//   const notion = new Client({
+//     auth: process.env.NOTION_SECRET,
+//   });
+
+//   const data = await notion.databases.query({
+//     database_id: `${process.env.NOTION_DATABASE}`,
+//   });
+
+//   let posts = [];
+
+//   data.results.forEach((result) => {
+//     if (result.properties.posted.date) {
+//       posts.push({
+//         id: result.id,
+//         title: result.properties.Name.title[0].plain_text,
+//         posted: result.properties.posted.date.start,
+//         edited: result.properties.posted.date.end,
+//       });
+//     }
+//   });
+
+//   return {
+//     props: {
+//       posts: posts.sort((a, b) => (a.posted > b.posted ? 1 : -1)).reverse(),
+//     },
+//   };
+// };
 
 const Home = ({ posts }) => {
   // const Home = (props) => {
@@ -85,7 +98,7 @@ const Home = ({ posts }) => {
       <div className="app">
         {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
         <div>
-          {posts.map((result, index) => {
+          {posts.map((result) => {
             let publishedTime = result.posted;
             let editedTime = result.edited;
             const dateFormat = (props) => {
@@ -99,8 +112,9 @@ const Home = ({ posts }) => {
             };
 
             return (
-              <div key={index}>
-                <Link href={`/${slugify(result.id)}`}>
+              <div key={result.title}>
+                <Link href={`/${result.id}`}>
+                  {/* <Link href={`/${slugify(result.title).toLowerCase()}`}> */}
                   <a>{result.title}</a>
                 </Link>
                 <p>{dateFormat(publishedTime)}</p>
