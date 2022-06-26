@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { posts } from 'components/blog';
 import moment from 'moment';
+import { posts } from 'components/blog';
 import slugify from 'slugify';
 
 export const getStaticProps = async () => {
-  const data = await posts();
+  let { results } = await posts();
 
   let publishedPosts = [];
 
-  data.results.forEach((result) => {
+  results.forEach((result) => {
     if (result.properties.posted.date) {
       publishedPosts.push({
         id: result.id,
@@ -30,7 +30,6 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ posts }) => {
-  // const Home = (props) => {
   return (
     <>
       <Head>
@@ -84,7 +83,6 @@ const Home = ({ posts }) => {
 
             return (
               <div key={result.title}>
-                {/* <Link href={`/${result.id}`}> */}
                 <Link href={`/${slugify(result.title).toLowerCase()}`}>
                   <a>{result.title}</a>
                 </Link>

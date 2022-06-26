@@ -13,7 +13,6 @@ export const getStaticPaths = async () => {
       return {
         params: {
           slug: slugify(post.properties.Name.title[0].plain_text).toLowerCase(),
-          // id: post.id,
         },
       };
     }),
@@ -22,22 +21,25 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const data = await posts();
+  let { results: postResults } = await posts();
 
-  const page = data.results.find((post) => {
+  // finds a post that matches slug
+  const page = postResults.find((post) => {
     const title = post.properties.Name.title[0].plain_text;
     const resultSlug = slugify(title).toLowerCase();
     return resultSlug === slug;
   });
 
-  let page_result = await post(page.id);
-  let { results } = await blocks(page.id);
+  let post_result = await post(page.id);
+
+  let { results: blockResults } = await blocks(page.id);
 
   return {
     props: {
       slug,
-      post: page_result,
-      blocks: results,
+      post: post_result,
+      blocks: blockResults,
+      title: page.properties.Name.title[0].plain_text,
     },
   };
 };
@@ -130,7 +132,7 @@ const renderBlock = (block) => {
   }
 };
 
-const Post = ({ post, blocks }) => {
+const Post = ({ post, blocks, title }) => {
   return (
     <div>
       <Head>
@@ -138,7 +140,7 @@ const Post = ({ post, blocks }) => {
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.svg" />
         <link rel="shortcut icon" href="/favicon.svg" />
-        <title>{post.properties.Name.title[0].plain_text}</title>
+        <title>{title}</title>
         {/* <meta
           name="description"
           content="Logan Liffick is a design engineer building brands, systems, and products."
