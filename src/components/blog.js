@@ -6,21 +6,21 @@ const client = new Client({
 
 const posts = async () => {
   const myPosts = await client.databases.query({
-    database_id: `${process.env.NOTION_DATABASE}`,
+    database_id: process.env.NOTION_DATABASE,
   });
   return myPosts;
 };
 
-const post = async (id) => {
+const post = async (slug) => {
   const myPost = await client.pages.retrieve({
-    page_id: id,
+    page_id: slug,
   });
   return myPost;
 };
 
-const blocks = async (id) => {
+const blocks = async (slug) => {
   const myBlocks = await client.blocks.children.list({
-    block_id: id,
+    block_id: slug,
   });
   return myBlocks;
 };

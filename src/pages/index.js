@@ -29,35 +29,6 @@ export const getStaticProps = async () => {
   };
 };
 
-// export const getStaticProps = async () => {
-//   const notion = new Client({
-//     auth: process.env.NOTION_SECRET,
-//   });
-
-//   const data = await notion.databases.query({
-//     database_id: `${process.env.NOTION_DATABASE}`,
-//   });
-
-//   let posts = [];
-
-//   data.results.forEach((result) => {
-//     if (result.properties.posted.date) {
-//       posts.push({
-//         id: result.id,
-//         title: result.properties.Name.title[0].plain_text,
-//         posted: result.properties.posted.date.start,
-//         edited: result.properties.posted.date.end,
-//       });
-//     }
-//   });
-
-//   return {
-//     props: {
-//       posts: posts.sort((a, b) => (a.posted > b.posted ? 1 : -1)).reverse(),
-//     },
-//   };
-// };
-
 const Home = ({ posts }) => {
   // const Home = (props) => {
   return (
@@ -113,8 +84,8 @@ const Home = ({ posts }) => {
 
             return (
               <div key={result.title}>
-                <Link href={`/${result.id}`}>
-                  {/* <Link href={`/${slugify(result.title).toLowerCase()}`}> */}
+                {/* <Link href={`/${result.id}`}> */}
+                <Link href={`/${slugify(result.title).toLowerCase()}`}>
                   <a>{result.title}</a>
                 </Link>
                 <p>{dateFormat(publishedTime)}</p>
