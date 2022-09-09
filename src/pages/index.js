@@ -3,6 +3,7 @@ import Link from 'next/link';
 import moment from 'moment';
 import { posts } from 'components/blog';
 import slugify from 'slugify';
+import Menu from 'components/menu/menu';
 
 export const getStaticProps = async () => {
   let { results } = await posts();
@@ -33,6 +34,13 @@ const Home = ({ posts }) => {
   return (
     <>
       <Head>
+        <link
+          rel="preload"
+          href="/fonts/ApfelGrotezk-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.svg" />
@@ -67,6 +75,7 @@ const Home = ({ posts }) => {
       </Head>
       <div className="app">
         {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
+        <Menu />
         <div>
           {posts.map((result) => {
             let publishedTime = result.posted;

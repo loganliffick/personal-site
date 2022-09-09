@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import initialDetails from './data';
+import initialDetails from './menu-data';
 
 let selectedEntry = 1;
 const entries = '';

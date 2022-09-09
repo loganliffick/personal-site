@@ -97,8 +97,25 @@ const renderBlock = (block) => {
         </p>
       );
 
+    case 'bookmark':
+      return (
+        <iframe
+          height="300"
+          style={{
+            width: '100%',
+            height: '600px',
+            border: '0',
+          }}
+          scrolling="no"
+          src={block['bookmark'].url}
+          frameBorder="no"
+          loading="lazy"
+          allowtransparency="true"
+          allowFullScreen={true}
+        ></iframe>
+      );
+
     case 'embed':
-      // console.log(block.embed);
       return (
         <iframe
           src={block['embed'].url}
@@ -107,11 +124,11 @@ const renderBlock = (block) => {
             height: '504px',
             border: '0',
           }}
-          title="keybored"
           allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-          sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
           loading="lazy"
           allowtransparency="true"
+          frameBorder="0"
+          allowFullScreen
         ></iframe>
       );
 
@@ -133,6 +150,7 @@ const renderBlock = (block) => {
 };
 
 const Post = ({ post, blocks, title }) => {
+  // console.log(post);
   return (
     <div>
       <Head>
@@ -141,18 +159,19 @@ const Post = ({ post, blocks, title }) => {
         <link rel="icon" href="/favicon.svg" />
         <link rel="shortcut icon" href="/favicon.svg" />
         <title>{title}</title>
-        {/* <meta
+        <meta
           name="description"
-          content="Logan Liffick is a design engineer building brands, systems, and products."
+          content={post.properties.Description.rich_text[0]?.plain_text}
         />
-        <meta property="og:title" content="Logan Liffick" />
+        <meta property="og:title" content={title} />
         <meta
           property="og:description"
-          content="Logan Liffick is a design engineer building brands, systems, and products."
+          content={post.properties.Description.rich_text[0]?.plain_text}
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Logan Liffick" />
         <meta property="og:url" content="https://loganliffick.com" />
+
         <meta
           property="og:image"
           content="https://www.loganliffick.com/og.jpg"
@@ -166,7 +185,7 @@ const Post = ({ post, blocks, title }) => {
         <meta
           name="google-site-verification"
           content="ugqQc2EJej0hywM0zD6iTDzuIhGCttd9t_p-kFFXm18"
-        /> */}
+        />
       </Head>
       <Link href="/">
         <a>Home</a>
