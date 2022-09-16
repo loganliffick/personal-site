@@ -141,7 +141,7 @@ const initialDetails = [
   },
   {
     title: 'LinkedIn',
-    link: 'https://linkedin.com/loganliffick',
+    link: 'https://linkedin.com/in/loganliffick',
     category: social,
     new: false,
     divider: false,
