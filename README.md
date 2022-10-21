@@ -1,3 +1,1 @@
-## From the ashes
-
-🔥 🦅
+## 2023 rewrite 🔮
