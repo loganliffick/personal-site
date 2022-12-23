@@ -3,7 +3,7 @@ import Link from 'next/link';
 import moment from 'moment';
 import { posts } from 'components/blog';
 import slugify from 'slugify';
-import Menu from 'components/menu/menu';
+// import Menu from 'components/menu/menu';
 
 export const getStaticProps = async () => {
   let { results } = await posts();
@@ -34,17 +34,6 @@ const Home = ({ posts }) => {
   return (
     <>
       <Head>
-        <link
-          rel="preload"
-          href="/fonts/ApfelGrotezk-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin=""
-        />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon.svg" />
         <title>Logan Liffick</title>
         <meta
           name="description"
@@ -55,27 +44,10 @@ const Home = ({ posts }) => {
           property="og:description"
           content="Logan Liffick is a design engineer building brands, systems, and products."
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Logan Liffick" />
-        <meta property="og:url" content="https://loganliffick.com" />
-        <meta
-          property="og:image"
-          content="https://www.loganliffick.com/og.jpg"
-        />
-        <meta name="twitter:image:alt" content="© logan liffick" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@logan_liffick" />
-        <meta name="twitter:creator" content="@logan_liffick" />
-        <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
-        <meta
-          name="google-site-verification"
-          content="ugqQc2EJej0hywM0zD6iTDzuIhGCttd9t_p-kFFXm18"
-        />
       </Head>
       <div className="app">
         {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
-        <Menu />
+        {/* <Menu /> */}
         <div>
           {posts.map((result) => {
             let publishedTime = result.posted;
@@ -93,7 +65,7 @@ const Home = ({ posts }) => {
             return (
               <div key={result.title}>
                 <Link href={`/${slugify(result.title).toLowerCase()}`}>
-                  <a>{result.title}</a>
+                  {result.title}
                 </Link>
                 <p>{dateFormat(publishedTime)}</p>
                 <p>{editedTime ? 'edited ' + dateFormat(editedTime) : ''}</p>

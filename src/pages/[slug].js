@@ -106,9 +106,7 @@ const renderBlock = (block) => {
             height: '600px',
             border: '0',
           }}
-          scrolling="no"
           src={block['bookmark'].url}
-          frameBorder="no"
           loading="lazy"
           allowtransparency="true"
           allowFullScreen={true}
@@ -154,10 +152,6 @@ const Post = ({ post, blocks, title }) => {
   return (
     <div>
       <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon.svg" />
         <title>{title}</title>
         <meta
           name="description"
@@ -168,28 +162,8 @@ const Post = ({ post, blocks, title }) => {
           property="og:description"
           content={post.properties.Description.rich_text[0]?.plain_text}
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Logan Liffick" />
-        <meta property="og:url" content="https://loganliffick.com" />
-
-        <meta
-          property="og:image"
-          content="https://www.loganliffick.com/og.jpg"
-        />
-        <meta name="twitter:image:alt" content="© logan liffick" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@logan_liffick" />
-        <meta name="twitter:creator" content="@logan_liffick" />
-        <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
-        <meta
-          name="google-site-verification"
-          content="ugqQc2EJej0hywM0zD6iTDzuIhGCttd9t_p-kFFXm18"
-        />
       </Head>
-      <Link href="/">
-        <a>Home</a>
-      </Link>
+      <Link href="/">Home</Link>
       {blocks.map((block, index) => {
         useEffect(() => {
           Prism.highlightAll();
