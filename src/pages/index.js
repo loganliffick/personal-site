@@ -3,7 +3,6 @@ import Link from 'next/link';
 import moment from 'moment';
 import { posts } from 'components/blog';
 import slugify from 'slugify';
-// import Menu from 'components/menu/menu';
 
 export const getStaticProps = async () => {
   let { results } = await posts();

@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import React, { useEffect } from 'react';
+
 import Prism from 'prismjs';
-import { post, posts, blocks } from 'components/blog';
-import { useEffect } from 'react';
 import slugify from 'slugify';
+
+import { post, posts, blocks } from 'components/blog';
 
 export const getStaticPaths = async () => {
   let { results } = await posts();
@@ -47,23 +49,19 @@ export const getStaticProps = async ({ params: { slug } }) => {
 const renderBlock = (block) => {
   switch (block.type) {
     case 'heading_1':
-      return <h1>{block['heading_1'].rich_text[0].plain_text} </h1>;
+      return <h1>{block['heading_1'].rich_text[0].plain_text}</h1>;
 
     case 'heading_2':
-      return <h2>{block['heading_2'].rich_text[0].plain_text} </h2>;
+      return <h2>{block['heading_2'].rich_text[0].plain_text}</h2>;
 
     case 'heading_3':
-      return <h3>{block['heading_3'].rich_text[0].plain_text} </h3>;
+      return <h3>{block['heading_3'].rich_text[0].plain_text}</h3>;
 
     case 'image':
       return <Image src={block['image'].file.url} width={650} height={400} />;
 
     case 'bulleted_list_item':
-      return (
-        <ul>
-          <li>{block['bulleted_list_item'].rich_text[0].plain_text} </li>
-        </ul>
-      );
+      return <li>{block['bulleted_list_item'].rich_text[0].plain_text}</li>;
 
     case 'paragraph':
       return (
@@ -86,9 +84,9 @@ const renderBlock = (block) => {
                 ? (text = <strike key={index}>{text}</strike>)
                 : text,
               element.href ? (
-                <a href={element.href} target="_blank" key={index}>
+                <Link href={element.href} target="_blank" key={index}>
                   {text}
-                </a>
+                </Link>
               ) : (
                 text
               )
@@ -113,22 +111,22 @@ const renderBlock = (block) => {
         ></iframe>
       );
 
-    case 'embed':
-      return (
-        <iframe
-          src={block['embed'].url}
-          style={{
-            width: '100%',
-            height: '504px',
-            border: '0',
-          }}
-          allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-          loading="lazy"
-          allowtransparency="true"
-          frameBorder="0"
-          allowFullScreen
-        ></iframe>
-      );
+    // case 'embed':
+    //   return (
+    //     <iframe
+    //       src={block['embed'].url}
+    //       style={{
+    //         width: '100%',
+    //         height: '504px',
+    //         border: '0',
+    //       }}
+    //       allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+    //       loading="lazy"
+    //       allowtransparency="true"
+    //       frameBorder="0"
+    //       allowFullScreen
+    //     ></iframe>
+    //   );
 
     case 'divider':
       return <div style={{ margin: '24px 0 24px 0' }} />;
@@ -168,7 +166,10 @@ const Post = ({ post, blocks, title }) => {
         useEffect(() => {
           Prism.highlightAll();
         }, []);
-        return <div key={index}>{renderBlock(block)}</div>;
+
+        return (
+          <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
+        );
       })}
     </div>
   );
