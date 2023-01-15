@@ -1,17 +1,23 @@
 import '../styles/globals.scss';
-
 import Head from 'next/head';
-import LocalFont from '@next/font/local';
 
-const apfel = LocalFont({
+// fonts
+import LocalFont from '@next/font/local';
+import { Newsreader } from '@next/font/google';
+
+const newsreader = Newsreader();
+const authentic = LocalFont({
   src: [
     {
-      path: '../assets/fonts/ApfelGrotezk-Regular.woff2',
+      path: '../assets/fonts/AUTHENTICSans-90.woff2',
       style: 'normal',
       weight: '400',
     },
   ],
 });
+
+// components
+import Navigation from 'components/Navigation';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -39,9 +45,11 @@ const App = ({ Component, pageProps }) => {
       </Head>
       <style jsx global>{`
         :root {
-          --apfel: ${apfel.style.fontFamily};
+          --newsreader: ${newsreader.style.fontFamily};
+          --authentic: ${authentic.style.fontFamily};
         }
       `}</style>
+      <Navigation />
       <Component {...pageProps} />
     </>
   );

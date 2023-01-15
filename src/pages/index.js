@@ -4,6 +4,9 @@ import moment from 'moment';
 import { posts } from 'components/blog';
 import slugify from 'slugify';
 
+// components
+import Hero from 'components/Hero';
+
 export const getStaticProps = async () => {
   let { results } = await posts();
 
@@ -44,9 +47,10 @@ const Home = ({ posts }) => {
           content="Logan Liffick is a design engineer building brands, systems, and products."
         />
       </Head>
-      <div className="app">
-        {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
-        {/* <Menu /> */}
+
+      {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
+      <main>
+        <Hero />
         <div>
           {posts.map((result) => {
             let publishedTime = result.posted;
@@ -72,7 +76,7 @@ const Home = ({ posts }) => {
             );
           })}
         </div>
-      </div>
+      </main>
     </>
   );
 };
