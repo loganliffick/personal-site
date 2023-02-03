@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import moment from 'moment';
-import { posts } from 'components/blog';
+import { posts } from '@/components/blog';
 import slugify from 'slugify';
 
 // components
-import Hero from 'components/Hero';
+import Hero from '@/components/Hero';
 
 export const getStaticProps = async () => {
   let { results } = await posts();

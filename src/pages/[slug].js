@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import Prism from 'prismjs';
 import slugify from 'slugify';
 
-import { post, posts, blocks } from 'components/blog';
+import { post, posts, blocks } from '@/components/blog';
 
 export const getStaticPaths = async () => {
   let { results } = await posts();

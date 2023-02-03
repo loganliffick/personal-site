@@ -1,4 +1,4 @@
-import '../styles/globals.scss';
+import '@/styles/globals.scss';
 import Head from 'next/head';
 
 // fonts
@@ -17,7 +17,7 @@ const authentic = LocalFont({
 });
 
 // components
-import Navigation from 'components/Navigation';
+import Navigation from '@/components/Navigation';
 
 const App = ({ Component, pageProps }) => {
   return (

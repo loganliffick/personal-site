@@ -8,14 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@next/font": "^13.1.2",
+    "@next/font": "^13.1.6",
     "@notionhq/client": "^2.2.3",
     "moment": "^2.29.4",
-    "next": "^13.1.2",
+    "next": "^13.1.6",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.57.1",
+    "sass": "^1.58.0",
     "slugify": "^1.6.5"
   }
 }
