@@ -2,10 +2,10 @@ import '@/styles/globals.scss';
 import Head from 'next/head';
 
 // fonts
-import LocalFont from '@next/font/local';
-import { Newsreader } from '@next/font/google';
+import LocalFont from 'next/font/local';
+import { Newsreader } from 'next/font/google';
 
-const newsreader = Newsreader();
+const newsreader = Newsreader({ subsets: ['latin'] });
 const authentic = LocalFont({
   src: [
     {
