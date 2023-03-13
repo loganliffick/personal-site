@@ -148,7 +148,7 @@ const renderBlock = (block) => {
 const Post = ({ post, blocks, title }) => {
   // console.log(post);
   return (
-    <div>
+    <>
       <Head>
         <title>{title}</title>
         <meta
@@ -162,16 +162,18 @@ const Post = ({ post, blocks, title }) => {
         />
       </Head>
       <Link href="/">Home</Link>
-      {blocks.map((block, index) => {
-        useEffect(() => {
-          Prism.highlightAll();
-        }, []);
+      <main>
+        {blocks.map((block, index) => {
+          useEffect(() => {
+            Prism.highlightAll();
+          }, []);
 
-        return (
-          <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
-        );
-      })}
-    </div>
+          return (
+            <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
+          );
+        })}
+      </main>
+    </>
   );
 };
 

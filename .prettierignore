@@ -1,0 +1,14 @@
+# dependencies
+.cache
+dist
+node_modules
+
+# misc
+.DS_Store
+
+# package
+package.json
+package-lock.json
+
+# production
+build

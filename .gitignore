@@ -28,7 +28,3 @@ npm-debug.log*
 
 # vercel
 .vercel
-
-# prettier
-.prettierignore
-.prettierrc

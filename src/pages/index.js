@@ -1,10 +1,11 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { posts } from '@/lib/blog';
 
 // components
 import Section from '@/components/Section';
 import Journal from '@/components/Journal';
+import Projects from '@/components/Projects';
+import About from '@/components/About';
 
 export const getStaticProps = async () => {
   let { results } = await posts();
@@ -38,12 +39,12 @@ const Home = ({ posts }) => {
         <title>Logan Liffick</title>
         <meta
           name="description"
-          content="Logan Liffick is a design engineer building brands, systems, and products."
+          content="Logan Liffick is a designer and front-end engineer building brands, systems, and products."
         />
         <meta property="og:title" content="Logan Liffick" />
         <meta
           property="og:description"
-          content="Logan Liffick is a design engineer building brands, systems, and products."
+          content="Logan Liffick is a designer and front-end engineer building brands, systems, and products."
         />
       </Head>
       {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
@@ -57,47 +58,11 @@ const Home = ({ posts }) => {
         </Section>
         <Section>
           <h2 className="title_small">Projects</h2>
+          <Projects />
         </Section>
         <Section>
           <h2 className="title_small">About</h2>
-          <p>
-            Hey I’m Logan. Designer, builder, all-around creative. I’m the head
-            of product and design at{' '}
-            <Link
-              href="https://makelog.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Makelog
-            </Link>
-            , previously{' '}
-            <Link
-              href="https://digitalocean.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              DigitalOcean
-            </Link>
-            ,{' '}
-            <Link
-              href="https://zondahome.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Zonda
-            </Link>
-            , and{' '}
-            <Link
-              href="https://purplerockscissors.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              PRPL
-            </Link>
-            .
-            <br />
-            <br />I like to do all sorts of fun things. Thanks for stopping by!
-          </p>
+          <About />
         </Section>
       </main>
     </>
