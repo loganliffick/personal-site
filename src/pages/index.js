@@ -5,7 +5,7 @@ import { posts } from '@/components/blog';
 import slugify from 'slugify';
 
 // components
-// import Hero from '@/components/Hero';
+import Section from '@/components/Section';
 
 export const getStaticProps = async () => {
   let { results } = await posts();
@@ -47,18 +47,12 @@ const Home = ({ posts }) => {
           content="Logan Liffick is a design engineer building brands, systems, and products."
         />
       </Head>
-
       {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
       <main>
-        <section>
-          <h1>Testing Basteleur</h1>
-          <h2>
-            Testing general sans <span>this is italic</span>
-          </h2>
-          <h3>
-            Testing Cascadia Code <span>this is italic</span>
-          </h3>
-        </section>
+        <Section type="headline">
+          <h1 className="title">Logan Liffick</h1>
+          <h2 className="subhead">Designer & Front-end engineer</h2>
+        </Section>
         <section>
           <div>
             {posts.map((result) => {
