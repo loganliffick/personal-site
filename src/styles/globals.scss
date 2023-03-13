@@ -228,6 +228,17 @@ section {
     line-height: 28px;
     margin: 64px auto 0;
     padding: 8px 20px;
+    transform-origin: top center;
+
+    transition: 0.3s ease;
+
+    &[data-attribute='true'] {
+      transform-origin: bottom center;
+    }
+
+    &:active {
+      transform: scaleY(1.5);
+    }
   }
 }
 

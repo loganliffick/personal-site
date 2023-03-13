@@ -88,6 +88,7 @@ const Journal = ({ posts }) => {
         })}
       </div>
       <button
+        data-attribute={toggle}
         onClick={() => {
           setToggle(!toggle);
         }}
