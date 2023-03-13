@@ -5,7 +5,7 @@ import { posts } from '@/components/blog';
 import slugify from 'slugify';
 
 // components
-import Hero from '@/components/Hero';
+// import Hero from '@/components/Hero';
 
 export const getStaticProps = async () => {
   let { results } = await posts();
@@ -50,32 +50,42 @@ const Home = ({ posts }) => {
 
       {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
       <main>
-        <Hero />
-        <div>
-          {posts.map((result) => {
-            let publishedTime = result.posted;
-            let editedTime = result.edited;
-            const dateFormat = (props) => {
-              let relTime =
-                moment().subtract(7, 'day').dayOfYear() <
-                moment(props).dayOfYear()
-                  ? moment(props).fromNow()
-                  : moment(props).format('LL');
+        <section>
+          <h1>Testing Basteleur</h1>
+          <h2>
+            Testing general sans <span>this is italic</span>
+          </h2>
+          <h3>
+            Testing Cascadia Code <span>this is italic</span>
+          </h3>
+        </section>
+        <section>
+          <div>
+            {posts.map((result) => {
+              let publishedTime = result.posted;
+              let editedTime = result.edited;
+              const dateFormat = (props) => {
+                let relTime =
+                  moment().subtract(7, 'day').dayOfYear() <
+                  moment(props).dayOfYear()
+                    ? moment(props).fromNow()
+                    : moment(props).format('LL');
 
-              return relTime;
-            };
+                return relTime;
+              };
 
-            return (
-              <div key={result.title}>
-                <Link href={`/${slugify(result.title).toLowerCase()}`}>
-                  {result.title}
-                </Link>
-                <p>{dateFormat(publishedTime)}</p>
-                <p>{editedTime ? 'edited ' + dateFormat(editedTime) : ''}</p>
-              </div>
-            );
-          })}
-        </div>
+              return (
+                <div key={result.title}>
+                  <Link href={`/${slugify(result.title).toLowerCase()}`}>
+                    {result.title}
+                  </Link>
+                  <p>{dateFormat(publishedTime)}</p>
+                  <p>{editedTime ? 'edited ' + dateFormat(editedTime) : ''}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </main>
     </>
   );

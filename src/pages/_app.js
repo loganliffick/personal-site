@@ -3,21 +3,49 @@ import Head from 'next/head';
 
 // fonts
 import LocalFont from 'next/font/local';
-import { Newsreader } from 'next/font/google';
 
-const newsreader = Newsreader({ subsets: ['latin'] });
-const authentic = LocalFont({
+const basteleur = LocalFont({
   src: [
     {
-      path: '../assets/fonts/AUTHENTICSans-90.woff2',
+      path: '../assets/fonts/Basteleur.woff2',
       style: 'normal',
+      weight: '700',
+    },
+  ],
+});
+
+const general = LocalFont({
+  src: [
+    {
+      path: '../assets/fonts/GeneralSans-Medium.woff2',
+      style: 'normal',
+      weight: '500',
+    },
+    {
+      path: '../assets/fonts/GeneralSans-MediumItalic.woff2',
+      style: 'italic',
+      weight: '500',
+    },
+  ],
+});
+
+const cascadia = LocalFont({
+  src: [
+    {
+      path: '../assets/fonts/CascadiaCode-Regular.woff2',
+      style: 'normal',
+      weight: '400',
+    },
+    {
+      path: '../assets/fonts/CascadiaCode-Italic.woff2',
+      style: 'italic',
       weight: '400',
     },
   ],
 });
 
 // components
-import Navigation from '@/components/Navigation';
+// import Navigation from '@/components/Navigation';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -45,11 +73,12 @@ const App = ({ Component, pageProps }) => {
       </Head>
       <style jsx global>{`
         :root {
-          --newsreader: ${newsreader.style.fontFamily};
-          --authentic: ${authentic.style.fontFamily};
+          --basteleur: ${basteleur.style.fontFamily};
+          --cascadia: ${cascadia.style.fontFamily};
+          --general: ${general.style.fontFamily};
         }
       `}</style>
-      <Navigation />
+      {/* <Navigation /> */}
       <Component {...pageProps} />
     </>
   );

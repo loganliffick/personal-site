@@ -7,7 +7,6 @@
   --text: var(--dark);
 
   --bez: cubic-bezier(0, 0.5, 0, 1);
-  --line-height: calc(100% + 8px);
   --sp1: 64px;
 }
 
@@ -20,7 +19,7 @@ body,
   font-family: var(--newsreader), serif;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -41,107 +40,36 @@ body {
   color: var(--body);
 }
 
+h1 {
+  font-family: var(--basteleur);
+}
+
+h2 {
+  font-family: var(--general);
+  font-weight: 500;
+
+  span {
+    font-style: italic;
+  }
+}
+
+h3 {
+  font-family: var(--cascadia);
+  font-weight: 400;
+
+  span {
+    font-style: italic;
+  }
+}
+
 main {
   padding: 0 var(--sp1);
 }
 
-button {
-  background: transparent;
-  border: 0;
-  color: var(--gray-2);
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 32px;
-  padding: 4px 8px;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-a {
-  color: inherit;
-  text-decoration-thickness: 1px;
-  text-underline-position: from-font;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-h1 {
-  font-family: var(--authentic), sans-serif;
-  font-size: 180px;
-  font-weight: 400;
-  line-height: 100%;
-  text-transform: uppercase;
-}
-
-h2 {
-  font-family: var(--authentic), sans-serif;
-  font-size: 80px;
-  font-weight: 400;
-  line-height: 100%;
-}
-
-p {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-}
-
-nav {
-  display: flex;
-  gap: 32px;
-  justify-content: space-between;
-  left: 0;
-  padding: var(--sp1) var(--sp1) 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-
-  p {
-    min-width: none;
-    width: 100%;
-
-    &:first-child {
-      max-width: 416px;
-    }
-
-    &:last-child {
-      text-align: right;
-    }
-  }
-
-  @media (max-width: 600px) {
-    flex-wrap: wrap;
-    gap: 12px;
-
-    p:first-child {
-      max-width: none;
-    }
-
-    p:last-child {
-      text-align: left;
-    }
-  }
-}
-
-.hero {
-  align-items: flex-end;
-  display: flex;
-  height: calc(100vh);
-  left: 0;
-  padding: 0 0 40px;
-  top: 0;
-  width: 100%;
-
-  h1 {
-    font-size: 12.25vw;
-    white-space: nowrap;
-    width: 100%;
-    letter-spacing: -0.5vw;
-  }
+section {
+  max-width: 864px;
+  margin: 0 auto;
+  padding: 64px 0;
 }
 
 @media (max-width: 600px) {
