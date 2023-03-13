@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import moment from 'moment';
-import { posts } from '@/components/blog';
-import slugify from 'slugify';
+import { posts } from '@/lib/blog';
 
 // components
 import Section from '@/components/Section';
+import Journal from '@/components/Journal';
 
 export const getStaticProps = async () => {
   let { results } = await posts();
@@ -53,33 +52,53 @@ const Home = ({ posts }) => {
           <h1 className="title">Logan Liffick</h1>
           <h2 className="subhead">Designer & Front-end engineer</h2>
         </Section>
-        <section>
-          <div>
-            {posts.map((result) => {
-              let publishedTime = result.posted;
-              let editedTime = result.edited;
-              const dateFormat = (props) => {
-                let relTime =
-                  moment().subtract(7, 'day').dayOfYear() <
-                  moment(props).dayOfYear()
-                    ? moment(props).fromNow()
-                    : moment(props).format('LL');
-
-                return relTime;
-              };
-
-              return (
-                <div key={result.title}>
-                  <Link href={`/${slugify(result.title).toLowerCase()}`}>
-                    {result.title}
-                  </Link>
-                  <p>{dateFormat(publishedTime)}</p>
-                  <p>{editedTime ? 'edited ' + dateFormat(editedTime) : ''}</p>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        <Section>
+          <Journal posts={posts} />
+        </Section>
+        <Section>
+          <h2 className="title_small">Projects</h2>
+        </Section>
+        <Section>
+          <h2 className="title_small">About</h2>
+          <p>
+            Hey I’m Logan. Designer, builder, all-around creative. I’m the head
+            of product and design at{' '}
+            <Link
+              href="https://makelog.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Makelog
+            </Link>
+            , previously{' '}
+            <Link
+              href="https://digitalocean.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DigitalOcean
+            </Link>
+            ,{' '}
+            <Link
+              href="https://zondahome.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Zonda
+            </Link>
+            , and{' '}
+            <Link
+              href="https://purplerockscissors.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              PRPL
+            </Link>
+            .
+            <br />
+            <br />I like to do all sorts of fun things. Thanks for stopping by!
+          </p>
+        </Section>
       </main>
     </>
   );

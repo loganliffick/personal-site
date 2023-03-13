@@ -75,14 +75,17 @@ p {
 }
 
 section {
-  max-width: 640px;
-  margin: 0 auto;
   padding: 64px var(--sp1);
+
+  > div {
+    margin: 0 auto;
+    max-width: 640px;
+  }
 
   &.headline {
     text-align: center;
 
-    div {
+    > div {
       margin: 152px auto 0;
       max-width: 416px;
 

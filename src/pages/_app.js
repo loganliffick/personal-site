@@ -46,6 +46,7 @@ const cascadia = LocalFont({
 
 // components
 // import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -80,6 +81,7 @@ const App = ({ Component, pageProps }) => {
       `}</style>
       {/* <Navigation /> */}
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 };
