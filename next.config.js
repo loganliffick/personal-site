@@ -4,9 +4,6 @@ const nextConfig = {
     defaultLocale: 'en',
   },
   reactStrictMode: true,
-  compiler: {
-    styledComponents: true,
-  },
   images: {
     domains: ['images.unsplash.com', 's3.us-west-2.amazonaws.com'],
   },
