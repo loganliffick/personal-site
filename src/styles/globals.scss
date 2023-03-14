@@ -11,6 +11,7 @@
 
   --bez: cubic-bezier(0, 0.5, 0, 1);
   --ease-out-bounce: cubic-bezier(0.5, 0, 0, 1.5);
+  --ease-out: cubic-bezier(0.5, 0, 0, 1);
   --sp1: 64px;
 }
 
@@ -265,34 +266,104 @@ section {
     padding: 24px;
     text-decoration: none;
 
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(
+      RGBA(235, 235, 235, 0.7),
+      RGBA(235, 235, 235, 1)
+    );
+
     transition: 0.2s ease;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+      transition: 0.3s transform var(--ease-out), 0.2s opacity ease;
+    }
 
     h3 {
       color: var(--black);
       margin-bottom: 4px;
     }
 
+    p {
+      color: var(--dark);
+    }
+
     @media (hover: hover) {
       &:hover {
         border: 1px solid var(--dark);
+
+        &:before {
+          opacity: 0.5;
+          transform: scale(1.1);
+        }
+
+        &.e {
+          span:after {
+            opacity: 1;
+          }
+        }
       }
     }
   }
 
   .a {
     grid-area: a;
+    &:before {
+      background-image: url(../assets/images/makelog.webp);
+    }
   }
   .b {
     grid-area: b;
+    &:before {
+      background-image: url(../assets/images/hacktoberfest.webp);
+    }
   }
   .c {
     grid-area: c;
+    &:before {
+      background-image: url(../assets/images/keybored.webp);
+    }
   }
   .d {
     grid-area: d;
+    &:before {
+      background-image: url(../assets/images/splt.webp);
+    }
   }
   .e {
     grid-area: e;
+
+    // line-through
+    span {
+      position: relative;
+
+      &:after {
+        background: var(--black);
+        content: '';
+        height: 1.5px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+
+        transition: 0.2s ease;
+      }
+    }
+
+    &:before {
+      background-image: url(../assets/images/digitalocean.webp);
+    }
   }
 
   @media (max-width: 464px) {
@@ -348,7 +419,7 @@ footer {
       width: 224px;
 
       transform-origin: bottom left;
-      transition: 0.4s var(--ease-out-bounce);
+      transition: 0.3s var(--ease-out-bounce);
 
       opacity: 0;
       transform: scale(0.8) translateY(20px);
@@ -366,7 +437,7 @@ footer {
         padding: 16px;
         text-decoration: none;
 
-        transition: background 0.2s ease;
+        transition: background 0.1s ease;
 
         @media (hover: hover) {
           &:hover {

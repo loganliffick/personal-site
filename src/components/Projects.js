@@ -46,7 +46,7 @@ const Projects = () => (
     >
       <h3 className="title_mono">DigitalOcean</h3>
       <p>
-        The <s>community-first</s> cloud
+        The <span>community-first</span> cloud
       </p>
     </Link>
   </div>
