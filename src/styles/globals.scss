@@ -10,6 +10,7 @@
   --text: var(--black);
 
   --bez: cubic-bezier(0, 0.5, 0, 1);
+  --ease-out-bounce: cubic-bezier(0.5, 0, 0, 1.5);
   --sp1: 64px;
 }
 
@@ -318,12 +319,13 @@ section {
 footer {
   padding: 200px var(--sp1) 64px;
 
-  div {
+  > div {
     color: var(--dark);
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     max-width: 640px;
+    position: relative;
     width: 100%;
 
     button {
@@ -331,6 +333,47 @@ footer {
       color: inherit;
       font-size: 16px;
       line-height: 24px;
+    }
+
+    .modal {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 24px;
+      bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      left: 0;
+      padding: 8px;
+      position: absolute;
+      width: 224px;
+
+      transform-origin: bottom left;
+      transition: 0.4s var(--ease-out-bounce);
+
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+      visibility: hidden;
+
+      &[data-attribute='true'] {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
+        visibility: visible;
+      }
+
+      a {
+        color: var(--black);
+        border-radius: 16px;
+        padding: 16px;
+        text-decoration: none;
+
+        transition: background 0.2s ease;
+
+        @media (hover: hover) {
+          &:hover {
+            background: var(--lite);
+          }
+        }
+      }
     }
   }
 }
