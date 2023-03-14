@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const About = () => (
   <>
-    <p>
+    <p className="about large">
       Hey I’m Logan. Designer, builder, all-around creative. I’m the head of
       product and design at{' '}
       <Link

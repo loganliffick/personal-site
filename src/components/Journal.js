@@ -29,7 +29,7 @@ const Journal = ({ posts }) => {
             let relTime =
               moment().startOf('year') < moment(date)
                 ? moment(date).format('MMMM D')
-                : moment(date).format('MMMM D YYYY');
+                : moment(date).format('MMMM D, YYYY');
 
             return relTime;
           };
