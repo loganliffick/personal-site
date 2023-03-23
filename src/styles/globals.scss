@@ -139,6 +139,7 @@ section {
 
       &:after {
         opacity: 0;
+        pointer-events: none;
       }
     }
 
@@ -150,7 +151,7 @@ section {
       );
       bottom: 0;
       content: '';
-      height: 112px;
+      height: 120px;
       left: 0;
       position: absolute;
       width: 100%;
