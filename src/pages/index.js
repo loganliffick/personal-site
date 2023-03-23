@@ -1,11 +1,13 @@
 import Head from 'next/head';
+
+// lib
 import { posts } from '@/lib/blog';
 
 // components
-import Section from '@/components/Section';
+import About from '@/components/About';
 import Journal from '@/components/Journal';
 import Projects from '@/components/Projects';
-import About from '@/components/About';
+import Section from '@/components/Section';
 
 export const getStaticProps = async () => {
   let { results } = await posts();

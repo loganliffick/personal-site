@@ -11,7 +11,7 @@ const Journal = ({ posts }) => {
     const journal = journalRef.current;
 
     if (toggle) {
-      journal.style.maxHeight = posts.length * 92 + 172 + 'px';
+      journal.style.maxHeight = posts.length * 88 + 172 + 'px';
     } else {
       journal.style.maxHeight = '480px';
     }
