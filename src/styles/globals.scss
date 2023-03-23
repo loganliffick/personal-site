@@ -63,11 +63,6 @@ body {
     font-size: 20px;
     font-weight: 400;
     line-height: 28px;
-
-    @media (max-width: 464px) {
-      font-size: 18px;
-      line-height: 26px;
-    }
   }
 }
 
@@ -145,7 +140,6 @@ section {
 
     &:after {
       background: linear-gradient(
-        180deg,
         rgba(240, 240, 240, 0.8) 0%,
         var(--lite) 100%
       );
@@ -472,6 +466,16 @@ footer {
   .title {
     font-size: 64px;
     line-height: 80px;
+
+    &_mono {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+
+  .subhead {
+    font-size: 20px;
+    line-height: 28px;
   }
 }
 
