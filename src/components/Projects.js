@@ -39,7 +39,7 @@ const Projects = () => (
       <p>Keyboard UI for react</p>
     </Link>
     <Link
-      href="https://spltjs.com"
+      href="https://digitalocean.com"
       target="_blank"
       rel="noopener noreferrer"
       className="e"
