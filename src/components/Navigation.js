@@ -1,8 +1,14 @@
 import Link from 'next/link';
-import moment from 'moment';
+import Section from './Section';
 
-const Navigation = (props) => {
-  return <nav></nav>;
+const Navigation = ({ children }) => {
+  return (
+    <Section type="headline">
+      <h1 className="title">
+        <Link href="/">Logan Liffick</Link> {children}
+      </h1>
+    </Section>
+  );
 };
 
 export default Navigation;

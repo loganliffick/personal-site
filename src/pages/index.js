@@ -1,13 +1,9 @@
 import Head from 'next/head';
-
-// lib
-import { posts } from '@/lib/blog';
-
-// components
-import About from '@/components/About';
 import Journal from '@/components/Journal';
-import Projects from '@/components/Projects';
+import Link from 'next/link';
+import { posts } from '@/lib/blog';
 import Section from '@/components/Section';
+import Navigation from '@/components/Navigation';
 
 export const getStaticProps = async () => {
   let { results } = await posts();
@@ -51,20 +47,22 @@ const Home = ({ posts }) => {
       </Head>
       {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
       <main>
-        <Section type="headline">
-          <h1 className="title">Logan Liffick</h1>
-          <h2 className="subhead">Designer & Front-end engineer</h2>
-        </Section>
+        <Navigation>
+          <span>
+            is a designer, engineer, & creator. He is the head of product &
+            design at{' '}
+            <Link
+              href="https://makelog.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Makelog
+            </Link>
+            .
+          </span>
+        </Navigation>
         <Section>
           <Journal posts={posts} />
-        </Section>
-        <Section>
-          <h2 className="title_small">Projects</h2>
-          <Projects />
-        </Section>
-        <Section>
-          <h2 className="title_small">About</h2>
-          <About />
         </Section>
       </main>
     </>

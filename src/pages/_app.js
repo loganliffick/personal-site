@@ -4,25 +4,14 @@ import Head from 'next/head';
 // fonts
 import LocalFont from 'next/font/local';
 
-const basteleur = LocalFont({
+const satoshi = LocalFont({
   src: [
     {
-      path: '../assets/fonts/Basteleur.woff2',
+      path: '../assets/fonts/Satoshi-Variable.woff2',
       style: 'normal',
-      weight: '700',
-    },
-  ],
-});
-
-const general = LocalFont({
-  src: [
-    {
-      path: '../assets/fonts/GeneralSans-Medium.woff2',
-      style: 'normal',
-      weight: '500',
     },
     {
-      path: '../assets/fonts/GeneralSans-MediumItalic.woff2',
+      path: '../assets/fonts/Satoshi-VariableItalic.woff2',
       style: 'italic',
       weight: '500',
     },
@@ -74,9 +63,8 @@ const App = ({ Component, pageProps }) => {
       </Head>
       <style jsx global>{`
         :root {
-          --basteleur: ${basteleur.style.fontFamily};
           --cascadia: ${cascadia.style.fontFamily};
-          --general: ${general.style.fontFamily};
+          --satoshi: ${satoshi.style.fontFamily};
         }
       `}</style>
       {/* <Navigation /> */}

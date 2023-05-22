@@ -20,7 +20,7 @@ const Journal = ({ posts }) => {
   return (
     <div className="journal_wrapper">
       <div className="journal" data-attribute={toggle} ref={journalRef}>
-        <h2 className="title_small">Journal</h2>
+        <h2 className="title">Journal</h2>
 
         {posts?.map((result) => {
           let publishedTime = result.posted;
