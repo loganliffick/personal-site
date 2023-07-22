@@ -1,8 +1,7 @@
-import '@/styles/globals.scss';
+import '@/styles/globals.css';
 import Head from 'next/head';
-
-// fonts
 import LocalFont from 'next/font/local';
+import Footer from '@/components/Footer';
 
 const satoshi = LocalFont({
   src: [
@@ -16,6 +15,7 @@ const satoshi = LocalFont({
       weight: '500',
     },
   ],
+  variable: '--font-satoshi',
 });
 
 const cascadia = LocalFont({
@@ -31,11 +31,8 @@ const cascadia = LocalFont({
       weight: '400',
     },
   ],
+  variable: '--font-cascadia',
 });
-
-// components
-// import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -61,14 +58,18 @@ const App = ({ Component, pageProps }) => {
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />
       </Head>
-      <style jsx global>{`
+      {/* <style jsx global>{`
         :root {
           --cascadia: ${cascadia.style.fontFamily};
           --satoshi: ${satoshi.style.fontFamily};
         }
-      `}</style>
+      `}</style> */}
       {/* <Navigation /> */}
-      <Component {...pageProps} />
+      <main
+        className={`${satoshi.variable} font-sans ${cascadia.variable} font-mono`}
+      >
+        <Component {...pageProps} />
+      </main>
       <Footer />
     </>
   );

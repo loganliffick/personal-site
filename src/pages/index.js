@@ -45,22 +45,9 @@ const Home = ({ posts }) => {
           content="Logan Liffick is a designer and front-end engineer building brands, systems, and products."
         />
       </Head>
-      {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(posts.length, null, 2)}</pre> */}
       <main>
-        <Navigation>
-          <span>
-            is a designer, engineer, & creator. He is the head of product &
-            design at{' '}
-            <Link
-              href="https://makelog.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Makelog
-            </Link>
-            .
-          </span>
-        </Navigation>
+        <h1 className="font-bold">Logan Liffick</h1>
         <Section>
           <Journal posts={posts} />
         </Section>

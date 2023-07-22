@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 
-import Prism from 'prismjs';
 import slugify from 'slugify';
 
 import { post, posts, blocks } from '@/lib/blog';
@@ -58,7 +57,14 @@ const renderBlock = (block) => {
       return <h3>{block['heading_3'].rich_text[0].plain_text}</h3>;
 
     case 'image':
-      return <Image src={block['image'].file.url} width={650} height={400} />;
+      return (
+        <Image
+          src={block['image'].file.url}
+          width={650}
+          height={400}
+          loading="lazy"
+        />
+      );
 
     case 'bulleted_list_item':
       return <li>{block['bulleted_list_item'].rich_text[0].plain_text}</li>;
@@ -70,13 +76,7 @@ const renderBlock = (block) => {
             let text = element.plain_text;
             let tag = element.annotations;
             return (
-              tag.code
-                ? (text = (
-                    <code className="language-javascript" key={index}>
-                      {text}
-                    </code>
-                  ))
-                : text,
+              tag.code ? (text = <code key={index}>{text}</code>) : text,
               tag.italic ? (text = <em key={index}>{text}</em>) : text,
               tag.bold ? (text = <strong key={index}>{text}</strong>) : text,
               tag.underline ? (text = <u key={index}>{text}</u>) : text,
@@ -162,12 +162,8 @@ const Post = ({ post, blocks, title }) => {
         />
       </Head>
       <Link href="/">Home</Link>
-      <main>
+      <main className="prose prose-md prose-code:font-mono">
         {blocks.map((block, index) => {
-          useEffect(() => {
-            Prism.highlightAll();
-          }, []);
-
           return (
             <React.Fragment key={index}>{renderBlock(block)}</React.Fragment>
           );

@@ -1,1 +1,1 @@
-## 2023 rewrite 🔮
+## 2023 rewrite
