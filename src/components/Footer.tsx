@@ -1,5 +1,6 @@
 import Link, { LinkProps } from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import Button from 'components/Button';
 import { cn } from 'utils/tw';
 import moment from 'moment';
 
@@ -43,17 +44,14 @@ const Footer = () => {
     <footer className="flex w-full items-center justify-center pb-8 pl-3 pr-6 text-zinc-500 sm:pl-7 sm:pr-10">
       <div className="flex w-full max-w-5xl items-center justify-between">
         <div className="relative" ref={menuRef}>
-          <button
-            className={cn(
-              'rounded-xl px-3 py-2 font-medium sm:transition-transform sm:hover:bg-zinc-100 sm:active:scale-95',
-              { 'bg-zinc-100 text-zinc-700': open },
-            )}
+          <Button
             onClick={() => {
               setOpen(!open);
             }}
-          >
-            Contact
-          </button>
+            state={open}
+            text="Contact"
+            type="secondary"
+          />
           <ul
             className={cn(
               'invisible absolute bottom-12 left-0 block w-32 min-w-max rounded-2xl bg-zinc-100 p-1 opacity-0',

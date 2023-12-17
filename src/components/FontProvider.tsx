@@ -11,7 +11,6 @@ const satoshi = LocalFont({
       style: 'italic',
     },
   ],
-  display: 'swap',
   variable: '--satoshi',
 });
 
@@ -28,7 +27,6 @@ const cascadia = LocalFont({
       weight: '400',
     },
   ],
-  display: 'swap',
   variable: '--cascadia',
 });
 
