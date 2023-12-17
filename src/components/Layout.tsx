@@ -1,13 +1,14 @@
 import Footer from 'components/Footer';
 import MetaTags from 'components/MetaTags';
 import Nav from 'components/Nav';
+import FontProvider from 'lib/FontProvider';
 
 const Layout = (props: {
   children?: React.ReactNode;
   metaTagsProps?: React.ComponentProps<typeof MetaTags>;
 }) => {
   return (
-    <>
+    <FontProvider>
       <MetaTags {...(props.metaTagsProps ?? {})} />
       <>
         <Nav />
@@ -16,7 +17,7 @@ const Layout = (props: {
         </main>
         <Footer />
       </>
-    </>
+    </FontProvider>
   );
 };
 
