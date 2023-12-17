@@ -1,9 +1,19 @@
-const Section = (props: { children?: React.ReactNode }) => {
-  return (
-    <section className="my-32 flex w-full items-center justify-center px-6 text-zinc-800 sm:px-10">
-      <div className="w-full max-w-5xl">{props.children}</div>
-    </section>
-  );
-};
+import { cn } from 'utils/tw';
+
+const Section = (props: {
+  children?: React.ReactNode;
+  visualize?: boolean;
+  width?: '3xl';
+}) => (
+  <section
+    className={cn(
+      'my-32 flex w-full max-w-5xl flex-col items-center text-zinc-800',
+      { 'max-w-3xl': props.width === '3xl' },
+      { 'bg-orange-200': props.visualize },
+    )}
+  >
+    {props.children}
+  </section>
+);
 
 export default Section;

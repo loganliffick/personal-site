@@ -10,6 +10,7 @@
   "dependencies": {
     "@notionhq/client": "^2.2.8",
     "clsx": "^2.0.0",
+    "firebase": "^10.7.1",
     "moment": "^2.29.4",
     "next": "^13.4.12",
     "react": "^18.2.0",

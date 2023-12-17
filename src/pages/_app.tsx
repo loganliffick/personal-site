@@ -1,8 +1,6 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
 import LocalFont from 'next/font/local';
-import Footer from 'components/Footer';
-import Nav from 'components/Nav';
 
 const satoshi = LocalFont({
   src: [
@@ -41,9 +39,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <div
       className={`${satoshi.variable} font-sans ${cascadia.variable} font-mono`}
     >
-      <Nav />
       <Component {...pageProps} />
-      <Footer />
     </div>
   );
 };
