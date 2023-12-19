@@ -1,9 +1,9 @@
+import Button from 'components/Button';
 import Layout from 'components/Layout';
 import Section from 'components/Section';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from 'lib/firebase';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { GoogleLogo } from 'phosphor-react';
-import Button from 'components/Button';
 
 const Page = () => {
   const googleProvider = new GoogleAuthProvider();
