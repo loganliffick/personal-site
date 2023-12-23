@@ -6,8 +6,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Nav = () => {
   const [user, loading] = useAuthState(auth);
-  console.log('is user ' + user);
-  console.log('is loading ' + loading);
 
   return (
     <header className="mt-8 flex w-full items-center justify-center px-6 text-zinc-800 sm:px-10">
