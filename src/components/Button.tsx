@@ -1,15 +1,15 @@
-import { cn } from 'utils/tw';
+import { cn } from 'utils/tw'
 
 const Button = (props: {
-  aria?: string;
-  children?: React.ReactNode;
-  onClick: () => void;
-  state?: boolean;
-  text: string;
-  type?: 'primary' | 'secondary';
+  aria?: string
+  children?: React.ReactNode
+  onClick: () => void
+  state?: boolean
+  text: string
+  type?: 'primary' | 'secondary'
 }) => {
   const className = cn(
-    'rounded-xl px-3 py-2 font-medium sm:transition-transform sm:active:scale-95',
+    'rounded-2xl px-4 py-3 font-medium sm:transition-transform sm:active:scale-95 w-full',
     {
       'bg-transparent sm:hover:bg-zinc-100 text-zinc-500':
         props.type === 'secondary',
@@ -21,7 +21,7 @@ const Button = (props: {
 
       'flex items-center justify-center gap-1.5 pl-2.5 pr-3': props.children,
     },
-  );
+  )
 
   return (
     <button
@@ -32,7 +32,7 @@ const Button = (props: {
       {props.children}
       {props.text}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

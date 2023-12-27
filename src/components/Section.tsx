@@ -1,9 +1,9 @@
-import { cn } from 'utils/tw';
+import { cn } from 'utils/tw'
 
 const Section = (props: {
-  children?: React.ReactNode;
-  visualize?: boolean;
-  width?: '3xl';
+  children?: React.ReactNode
+  visualize?: boolean
+  width?: '3xl'
 }) => (
   <section
     className={cn(
@@ -14,6 +14,6 @@ const Section = (props: {
   >
     {props.children}
   </section>
-);
+)
 
-export default Section;
+export default Section

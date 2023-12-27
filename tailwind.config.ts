@@ -1,6 +1,6 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from 'tailwindcss'
 
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -9,8 +9,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         ...defaultTheme.fontFamily,
-        sans: ['var(--satoshi)', ...defaultTheme.fontFamily.sans],
-        mono: ['var(--cascadia)', ...defaultTheme.fontFamily.mono],
+        sans: ['var(--figtree)', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -20,5 +19,5 @@ const config: Config = {
     },
   },
   plugins: [require('@tailwindcss/typography')],
-};
-export default config;
+}
+export default config

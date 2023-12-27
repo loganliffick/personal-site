@@ -1,4 +1,4 @@
-import { cn } from 'utils/tw';
+import { cn } from 'utils/tw'
 
 const JsonView = (props: { children: any; noScroll?: boolean }) => {
   return (
@@ -10,7 +10,7 @@ const JsonView = (props: { children: any; noScroll?: boolean }) => {
     >
       {JSON.stringify(props.children, null, 2)}
     </pre>
-  );
-};
+  )
+}
 
-export default JsonView;
+export default JsonView

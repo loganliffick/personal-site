@@ -1,5 +1,5 @@
-import Layout from 'components/Layout';
-import Section from 'components/Section';
+import Layout from 'components/Layout'
+import Section from 'components/Section'
 
 const Page = () => (
   <Layout>
@@ -11,6 +11,6 @@ const Page = () => (
       <h1 className="h-[600px]">Hello world</h1>
     </Section>
   </Layout>
-);
+)
 
-export default Page;
+export default Page

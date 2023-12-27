@@ -1,8 +1,8 @@
-import Head from 'next/head';
+import Head from 'next/head'
 
 interface MetaTagsProps {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
 const MetaTags = ({
@@ -52,6 +52,6 @@ const MetaTags = ({
     <meta name="robots" content="index,follow" />
     <meta name="googlebot" content="index,follow" />
   </Head>
-);
+)
 
-export default MetaTags;
+export default MetaTags
