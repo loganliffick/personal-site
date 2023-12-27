@@ -15,8 +15,8 @@ dependencies:
     specifier: ^10.7.1
     version: 10.7.1
   moment:
-    specifier: ^2.29.4
-    version: 2.29.4
+    specifier: ^2.30.1
+    version: 2.30.1
   next:
     specifier: ^14.0.4
     version: 14.0.4(react-dom@18.2.0)(react@18.2.0)
@@ -1265,8 +1265,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /moment@2.29.4:
-    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+  /moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
     dev: false
 
   /mz@2.7.0:
