@@ -16,6 +16,9 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      transitionTimingFunction: {
+        bounce: 'cubic-bezier(0.2, -0.25, 0, 1.6)',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

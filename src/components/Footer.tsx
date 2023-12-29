@@ -43,9 +43,9 @@ const Footer = () => {
           />
           <ul
             className={cn(
-              'invisible absolute bottom-14 left-0 block w-36 min-w-max rounded-2xl bg-zinc-100 p-1 opacity-0',
+              'ease-bounce invisible absolute bottom-14 left-0 block w-36 min-w-max origin-bottom-left scale-75 rounded-2xl bg-zinc-100 p-1 opacity-0 duration-200',
               {
-                'visible opacity-100': open,
+                'visible scale-100 opacity-100': open,
               },
             )}
             onClick={() => setOpen(!open)}
