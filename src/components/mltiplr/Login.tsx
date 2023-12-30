@@ -7,12 +7,25 @@ import {
 } from 'firebase/auth'
 import { auth } from 'lib/firebase'
 import { GoogleLogo, TwitterLogo } from 'phosphor-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const Login = (props: { onClick: () => void; user: any }) => {
+const Login = (props: {
+  onClick: () => void
+  userData: { user: any; loading: boolean }
+}) => {
   const googleProvider = new GoogleAuthProvider()
   const twitterProvider = new TwitterAuthProvider()
-  const [loggingIn, setLoggingIn] = useState(false)
+  const [attemptLogin, setAttemptLogin] = useState(false)
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      props.userData.user && setAttemptLogin(false)
+    }, 1000)
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [props.userData])
 
   const googleLogin = async () => {
     try {
@@ -38,16 +51,20 @@ const Login = (props: { onClick: () => void; user: any }) => {
     <>
       <h2 className="mb-1 text-2xl font-bold">Welcome to matchmaking</h2>
       <h3 className="mb-6">Log in and join the fun!</h3>
-      {loggingIn ? (
+      {attemptLogin ? (
         <div className="flex h-12 items-center gap-2">
-          <p className="font-medium">Logging in with another window</p>
-          <Loader />
+          {props.userData.user ? null : (
+            <>
+              <p className="font-medium">Logging in with another window</p>
+              <Loader />
+            </>
+          )}
         </div>
       ) : (
         <nav className="flex w-full gap-3">
           <Button
             onClick={() => {
-              setLoggingIn(true)
+              setAttemptLogin(true)
               googleLogin()
             }}
             text="Log in with Google"
@@ -57,7 +74,7 @@ const Login = (props: { onClick: () => void; user: any }) => {
           </Button>
           <Button
             onClick={() => {
-              setLoggingIn(true)
+              setAttemptLogin(true)
               twitterLogin()
             }}
             text="Log in with Twitter"

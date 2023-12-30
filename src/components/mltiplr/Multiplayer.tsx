@@ -18,7 +18,10 @@ const Multiplayer = () => {
   return (
     <>
       <Modal open={modalOpen} setOpen={setModalOpen}>
-        <Login onClick={() => setModalOpen(false)} user={user} />
+        <Login
+          onClick={() => setModalOpen(false)}
+          userData={{ user, loading }}
+        />
       </Modal>
 
       <MultiplayerBar
@@ -34,7 +37,7 @@ const Multiplayer = () => {
           },
           text: 'Log out',
         }}
-        user={user}
+        userData={{ user, loading }}
       />
     </>
   )

@@ -1,5 +1,6 @@
 import { X } from 'phosphor-react'
 import { useEffect, useRef } from 'react'
+import { cn } from 'utils/tw'
 
 const Modal = (props: {
   children?: React.ReactNode
@@ -33,10 +34,20 @@ const Modal = (props: {
   return (
     props.open && (
       <section
-        className="fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-violet-500/10 backdrop-blur-sm"
+        className={cn(
+          'fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-violet-500/10 backdrop-blur-sm duration-200',
+          { 'animate-fadeSm': props.open },
+        )}
         ref={menuRef}
       >
-        <article className="relative mx-6 w-full max-w-md rounded-3xl bg-white p-6 text-zinc-800 shadow-md shadow-violet-500/10">
+        <article
+          className={cn(
+            'relative mx-6 w-full max-w-md rounded-3xl bg-white p-6 text-zinc-800 shadow-md shadow-violet-500/10',
+            {
+              'animate-revealSm': props.open,
+            },
+          )}
+        >
           <button
             aria-label="Close modal"
             className="absolute right-2 top-2 flex size-11 items-center justify-center rounded-2xl sm:transition-transform sm:hover:bg-zinc-100 sm:active:scale-95"

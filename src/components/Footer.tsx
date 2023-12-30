@@ -43,7 +43,7 @@ const Footer = () => {
           />
           <ul
             className={cn(
-              'ease-bounce invisible absolute bottom-14 left-0 block w-36 min-w-max origin-bottom-left scale-75 rounded-2xl bg-zinc-100 p-1 opacity-0 duration-200',
+              'invisible absolute bottom-14 left-0 block w-36 min-w-max origin-bottom-left scale-75 rounded-2xl bg-zinc-100 p-1 opacity-0 duration-150 ease-bounce',
               {
                 'visible scale-100 opacity-100': open,
               },

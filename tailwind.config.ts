@@ -19,6 +19,36 @@ const config: Config = {
       transitionTimingFunction: {
         bounce: 'cubic-bezier(0.2, -0.25, 0, 1.6)',
       },
+      keyframes: {
+        fade: {
+          from: {
+            opacity: '0%',
+          },
+          to: {
+            opacity: '100%',
+          },
+        },
+
+        reveal: {
+          from: {
+            opacity: '0%',
+            transform: 'translateY(80px)',
+          },
+          to: {
+            opacity: '100%',
+            transform: 'translateY(0px)',
+          },
+        },
+      },
+      animation: {
+        fadeXs: 'fade 0.2s forwards',
+        fadeSm: 'fade 0.4s forwards',
+        fade: 'fade 0.8s forwards',
+        fadeMd: 'fade 2s forwards',
+
+        revealSm: 'reveal 0.5s cubic-bezier(0,1,0,1.1) forwards',
+        reveal: 'reveal 0.8s cubic-bezier(0,0.6,0,1.5) forwards',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

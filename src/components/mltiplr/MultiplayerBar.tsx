@@ -1,6 +1,6 @@
 import useClickOutside from 'hooks/useClickOutside'
 import Image from 'next/image'
-import { Command, Eye, EyeClosed, HandWaving } from 'phosphor-react'
+import { CaretDown, Command, Eye, EyeClosed, HandWaving } from 'phosphor-react'
 import { useState } from 'react'
 import { cn } from 'utils/tw'
 
@@ -49,7 +49,7 @@ const UserMenu = (props: {
 }) => (
   <div
     className={cn(
-      'ease-bounce invisible absolute bottom-14 right-0 block w-44 min-w-max origin-bottom-right scale-75 rounded-2xl bg-violet-100 p-1 text-violet-800 opacity-0 duration-200',
+      'invisible absolute bottom-14 right-0 block w-44 min-w-max origin-bottom-right scale-75 rounded-2xl bg-violet-100 p-1 text-violet-800 opacity-0 duration-150 ease-bounce',
       {
         'visible scale-100 opacity-100': props.userMenuOpen,
       },
@@ -81,10 +81,10 @@ const MultiplayerButton = (props: {
 const MultiplayerBar = (props: {
   loginButtonProps: React.ComponentProps<typeof MultiplayerButton>
   logoutButtonProps: React.ComponentProps<typeof MultiplayerButton>
-  user: any
+  userData: { user: any; loading: boolean }
 }) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
-  const [hideMenu, setHideMenu] = useState(false)
+  const [stashBar, setStashBar] = useState(false)
 
   const userMenuRef = useClickOutside(() => {
     setUserMenuOpen(false)
@@ -92,73 +92,77 @@ const MultiplayerBar = (props: {
 
   return (
     <div className="fixed bottom-8 left-1/2 z-10 flex w-full -translate-x-1/2 bg-transparent px-6 sm:max-w-xs sm:px-0">
-      <nav
+      <div
         className={cn(
-          'mx-auto flex w-full max-w-xs items-center justify-between rounded-full bg-violet-500 px-1 py-1 pl-5 shadow-lg shadow-violet-500/40 transition',
-          { '-translate-y-16 opacity-50': hideMenu },
+          'animate-reveal mx-auto flex w-full max-w-xs items-center justify-between rounded-full bg-violet-500 px-1 py-1 pl-5 shadow-lg shadow-violet-500/40',
+          { 'opacity-50': stashBar },
         )}
       >
-        <div className="flex items-center gap-1">
-          <p className="font-mono text-sm font-semibold text-white">
-            Players: 0
-          </p>
-        </div>
-
-        {props.user ? (
-          <div className="relative size-11" ref={userMenuRef}>
-            <button
-              className={cn(
-                'overflow-hidden rounded-full border-2 border-white/30 border-opacity-50 hover:opacity-90 active:scale-95 sm:transition-transform',
-                { 'sm:hover:opacity-100': userMenuOpen },
+        <p className="font-mono text-sm font-semibold text-white">Players: 0</p>
+        <nav>
+          {props.userData.loading || props.userData.user ? (
+            <div
+              className="animate-fade relative size-11 rounded-full bg-violet-300"
+              ref={userMenuRef}
+            >
+              {props.userData.user && (
+                <>
+                  <button
+                    className="overflow-hidden rounded-full border-4 border-transparent border-opacity-50 active:scale-90 sm:transition-transform"
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  >
+                    <Image
+                      alt={props.userData.user.displayName || ''}
+                      height={44}
+                      src={props.userData.user.photoURL || ''}
+                      width={44}
+                      referrerPolicy="no-referrer"
+                      className="animate-fadeXs pointer-events-none"
+                    />
+                  </button>
+                  <UserMenu
+                    userMenuOpen={userMenuOpen}
+                    user={props.userData.user}
+                  >
+                    <MenuItem
+                      icon="command"
+                      onClick={() => {
+                        console.log('Shortcuts go here')
+                      }}
+                      text="Shortcuts"
+                    />
+                    <MenuItem
+                      icon="eye"
+                      onClick={() => {
+                        console.log('Shortcuts go here')
+                      }}
+                      text="Hide Mltiplr"
+                    />
+                    <MenuItem
+                      icon="handWaving"
+                      onClick={() => {
+                        props.logoutButtonProps.onClick()
+                        setUserMenuOpen(false)
+                      }}
+                      text="Log out"
+                    />
+                  </UserMenu>
+                </>
               )}
-              onClick={() => setUserMenuOpen(!userMenuOpen)}
-            >
-              <Image
-                alt={props.user.displayName || ''}
-                height={44}
-                src={props.user.photoURL || ''}
-                width={44}
-                referrerPolicy="no-referrer"
-                className="pointer-events-none"
-              />
-            </button>
-            <UserMenu userMenuOpen={userMenuOpen} user={props.user}>
-              <MenuItem
-                icon="command"
-                onClick={() => {
-                  console.log('Shortcuts go here')
-                }}
-                text="Shortcuts"
-              />
-              <MenuItem
-                icon="eye"
-                onClick={() => {
-                  console.log('Shortcuts go here')
-                }}
-                text="Hide Mltiplr"
-              />
-              <MenuItem
-                icon="handWaving"
-                onClick={() => {
-                  props.logoutButtonProps.onClick()
-                  setUserMenuOpen(false)
-                }}
-                text="Log out"
-              />
-            </UserMenu>
-          </div>
-        ) : (
-          <div className="flex gap-1">
-            <button
-              className="group flex size-11 items-center justify-center rounded-full bg-transparent text-white transition-transform sm:hover:bg-white/0 sm:active:scale-95"
-              onClick={() => setHideMenu(!hideMenu)}
-            >
-              close
-            </button>
-            <MultiplayerButton {...props.loginButtonProps} />
-          </div>
-        )}
-      </nav>
+            </div>
+          ) : (
+            <div className="animate-fade flex gap-1">
+              <button
+                className="group flex size-11 items-center justify-center rounded-full bg-transparent text-white transition-transform sm:hover:bg-white/0 sm:active:scale-95"
+                onClick={() => setStashBar(!stashBar)}
+              >
+                <CaretDown weight="bold" />
+              </button>
+              <MultiplayerButton {...props.loginButtonProps} />
+            </div>
+          )}
+        </nav>
+      </div>
     </div>
   )
 }
