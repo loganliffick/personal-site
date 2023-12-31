@@ -46,7 +46,7 @@ const config: Config = {
         fade: 'fade 0.8s forwards',
         fadeMd: 'fade 2s forwards',
 
-        revealSm: 'reveal 0.5s cubic-bezier(0,1,0,1.1) forwards',
+        revealSm: 'reveal 0.3s cubic-bezier(0,1,0,1.1) forwards',
         reveal: 'reveal 0.8s cubic-bezier(0,0.6,0,1.5) forwards',
       },
     },

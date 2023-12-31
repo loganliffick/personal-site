@@ -32,10 +32,7 @@ const MenuItem = (props: {
             size={20}
             className="absolute left-0 top-0 opacity-0 transition-opacity group-hover:opacity-100"
           />
-          <Eye
-            size={20}
-            className="transition-opacity group-hover:opacity-0 "
-          />
+          <Eye size={20} className="transition-opacity group-hover:opacity-0" />
         </div>
       ) : null}
     </button>
@@ -91,18 +88,18 @@ const MultiplayerBar = (props: {
   })
 
   return (
-    <div className="fixed bottom-8 left-1/2 z-10 flex w-full -translate-x-1/2 bg-transparent px-6 sm:max-w-xs sm:px-0">
-      <div
-        className={cn(
-          'animate-reveal mx-auto flex w-full max-w-xs items-center justify-between rounded-full bg-violet-500 px-1 py-1 pl-5 shadow-lg shadow-violet-500/40',
-          { 'opacity-50': stashBar },
-        )}
-      >
+    <div
+      className={cn(
+        'fixed bottom-8 left-1/2 z-10 flex w-full -translate-x-1/2 bg-transparent px-6 transition-transform duration-300 ease-bounce sm:max-w-xs sm:px-0',
+        { 'translate-y-16': stashBar },
+      )}
+    >
+      <div className="mx-auto flex w-full max-w-xs animate-reveal items-center justify-between rounded-full bg-violet-500 px-1 py-1 pl-5 shadow-lg shadow-violet-500/40">
         <p className="font-mono text-sm font-semibold text-white">Players: 0</p>
         <nav>
           {props.userData.loading || props.userData.user ? (
             <div
-              className="animate-fade relative size-11 rounded-full bg-violet-300"
+              className="relative size-11 animate-fade rounded-full bg-violet-300"
               ref={userMenuRef}
             >
               {props.userData.user && (
@@ -117,7 +114,7 @@ const MultiplayerBar = (props: {
                       src={props.userData.user.photoURL || ''}
                       width={44}
                       referrerPolicy="no-referrer"
-                      className="animate-fadeXs pointer-events-none"
+                      className="pointer-events-none animate-fadeXs"
                     />
                   </button>
                   <UserMenu
@@ -151,7 +148,7 @@ const MultiplayerBar = (props: {
               )}
             </div>
           ) : (
-            <div className="animate-fade flex gap-1">
+            <div className="flex animate-fade gap-1">
               <button
                 className="group flex size-11 items-center justify-center rounded-full bg-transparent text-white transition-transform sm:hover:bg-white/0 sm:active:scale-95"
                 onClick={() => setStashBar(!stashBar)}

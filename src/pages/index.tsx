@@ -1,11 +1,11 @@
 import Layout from 'components/Layout'
+import Project from 'components/Project'
 import Section from 'components/Section'
 
 const Page = () => (
   <Layout>
     <Section>
-      <h1 className="text-3xl font-medium">Hello world</h1>
-      <div className="h-20 w-full bg-blue-300" />
+      <Project />
     </Section>
     <Section width="3xl">
       <h1 className="h-[600px]">Hello world</h1>

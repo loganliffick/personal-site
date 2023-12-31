@@ -19,7 +19,7 @@ const Button = (props: {
         props.type === 'primary',
       'bg-zinc-200 text-zinc-900': props.type === 'primary' && props.state,
 
-      'flex items-center justify-center gap-1.5 pl-2.5 pr-3': props.children,
+      'flex items-center justify-center gap-2.5 pl-2.5 pr-3': props.children,
     },
   )
 
