@@ -6,6 +6,9 @@ const Page = () => (
   <Layout>
     <Section>
       <Project />
+      <Project />
+      <Project />
+      <Project />
     </Section>
     <Section width="3xl">
       <h1 className="h-[600px]">Hello world</h1>
