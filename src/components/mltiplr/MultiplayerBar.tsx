@@ -133,7 +133,7 @@ const MultiplayerBar = (props: {
                       onClick={() => {
                         console.log('Shortcuts go here')
                       }}
-                      text="Hide Mltiplr"
+                      text="Hide"
                     />
                     <MenuItem
                       icon="handWaving"
