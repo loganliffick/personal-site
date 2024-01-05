@@ -32,7 +32,7 @@ const config: Config = {
         reveal: {
           from: {
             opacity: '0%',
-            transform: 'translateY(80px)',
+            transform: 'translateY(60px)',
           },
           to: {
             opacity: '100%',
@@ -46,10 +46,10 @@ const config: Config = {
         fade: 'fade 0.8s forwards',
         fadeMd: 'fade 2s forwards',
 
-        revealSm: 'reveal 0.3s cubic-bezier(0,1,0,1.1) forwards',
-        reveal: 'reveal 0.8s cubic-bezier(0,0.6,0,1.5) forwards',
-        revealMd: 'reveal 1.2s cubic-bezier(0,0.8,0,1.8) forwards',
-        revealLg: 'reveal 1.2s cubic-bezier(0,1,0,2.2) forwards',
+        revealSm: 'reveal 0.3s cubic-bezier(0.5,1,0.1,1.1) forwards',
+        reveal: 'reveal 1.2s cubic-bezier(0.5,-0.2,0.1,1.3) forwards',
+        revealMd: 'reveal 1.4s cubic-bezier(0.5,-0.2,0.1,1.5) forwards',
+        revealLg: 'reveal 1.6s cubic-bezier(0.5,-0.2,0.1,1.8) forwards',
       },
     },
   },

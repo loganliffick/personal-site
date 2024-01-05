@@ -25,7 +25,7 @@ const Project = (props: { children?: React.ReactNode }) => {
       <header className="mx-auto max-w-lg bg-blue-500/0 px-6 text-zinc-800 md:w-1/2">
         <h2
           className={cn('primer mb-8 text-2xl font-medium leading-snug', {
-            'animate-revealMd': inView,
+            'animate-revealLg': inView,
           })}
         >
           I served as Makelog's Director of Product & Design for the better half
@@ -34,7 +34,7 @@ const Project = (props: { children?: React.ReactNode }) => {
         </h2>
         <div
           className={cn('primer', {
-            'animate-revealLg': inView,
+            'animate-revealMd': inView,
           })}
         >
           <Link
