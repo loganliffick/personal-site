@@ -15,9 +15,18 @@
   background: RGBA(0, 0, 0, 0.2);
 }
 
-.primer {
-  transform: translateY(60px);
+.fade {
   opacity: 0;
+
+  @media (prefers-reduced-motion) {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
 
   @media (prefers-reduced-motion) {
     transform: translateY(0px);

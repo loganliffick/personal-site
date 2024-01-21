@@ -7,7 +7,7 @@ const Section = (props: {
 }) => (
   <section
     className={cn(
-      'my-32 flex w-full max-w-5xl flex-col items-center text-zinc-800',
+      'my-32 flex w-full max-w-lg flex-col items-center text-zinc-800',
       { 'max-w-3xl': props.width === '3xl' },
       { 'bg-orange-200': props.visualize },
     )}

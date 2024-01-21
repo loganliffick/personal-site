@@ -10,6 +10,7 @@ const config: Config = {
       fontFamily: {
         ...defaultTheme.fontFamily,
         sans: ['var(--figtree)', ...defaultTheme.fontFamily.sans],
+        // serif: ['var(--newsreader)', ...defaultTheme.fontFamily.serif],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -32,11 +33,33 @@ const config: Config = {
         reveal: {
           from: {
             opacity: '0%',
-            transform: 'translateY(60px)',
+            transform: 'translateY(40px)',
           },
           to: {
             opacity: '100%',
             transform: 'translateY(0px)',
+          },
+        },
+
+        spin: {
+          from: {
+            opacity: '0%',
+            transform: 'translateY(40px) rotate(6deg)',
+          },
+          to: {
+            opacity: '100%',
+            transform: 'translateY(0px) rotate(0deg)',
+          },
+        },
+
+        spinAlt: {
+          from: {
+            opacity: '0%',
+            transform: 'translateY(40px) rotate(-6deg)',
+          },
+          to: {
+            opacity: '100%',
+            transform: 'translateY(0px) rotate(0deg)',
           },
         },
       },
@@ -47,9 +70,12 @@ const config: Config = {
         fadeMd: 'fade 2s forwards',
 
         revealSm: 'reveal 0.3s cubic-bezier(0.5,1,0.1,1.1) forwards',
-        reveal: 'reveal 1.2s cubic-bezier(0.5,-0.2,0.1,1.3) forwards',
-        revealMd: 'reveal 1.4s cubic-bezier(0.5,-0.2,0.1,1.5) forwards',
-        revealLg: 'reveal 1.6s cubic-bezier(0.5,-0.2,0.1,1.8) forwards',
+        reveal: 'reveal 1.2s cubic-bezier(0.5,-0.2,0.1,1.2) forwards',
+        revealMd: 'reveal 1.4s cubic-bezier(0.5,-0.2,0.1,1.3) forwards',
+        revealLg: 'reveal 1.6s cubic-bezier(0.5,-0.2,0.1,1.5) forwards',
+
+        spin: 'spin 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
+        spinAlt: 'spinAlt 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
       },
     },
   },

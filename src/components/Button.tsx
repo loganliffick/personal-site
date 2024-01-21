@@ -1,29 +1,44 @@
+import Link, { LinkProps } from 'next/link'
 import { cn } from 'utils/tw'
 
 const Button = (props: {
+  as?: 'a' | 'button'
   aria?: string
   children?: React.ReactNode
-  onClick: () => void
+  external?: boolean
+  href?: LinkProps['href']
+  onClick?: () => void
   state?: boolean
   text: string
   type?: 'primary' | 'secondary'
 }) => {
   const className = cn(
-    'rounded-2xl px-4 py-3 font-medium sm:transition-transform sm:active:scale-95 w-full',
+    'w-full rounded-2xl px-4 py-2.5 font-medium sm:transition-transform active:scale-95 block w-max',
     {
-      'bg-transparent sm:hover:bg-zinc-100 text-zinc-500':
-        props.type === 'secondary',
-      'bg-zinc-100 text-zinc-700': props.type === 'secondary' && props.state,
-
-      'bg-zinc-100 sm:hover:bg-zinc-200 text-zinc-700':
+      'bg-zinc-200 text-zinc-700 sm:hover:bg-zinc-300':
         props.type === 'primary',
-      'bg-zinc-200 text-zinc-900': props.type === 'primary' && props.state,
+      'bg-white': props.type === 'primary' && props.state,
 
-      'flex items-center justify-center gap-2.5 pl-2.5 pr-3': props.children,
+      'bg-transparent text-zinc-500 sm:hover:bg-white':
+        props.type === 'secondary',
+      'bg-white text-zinc-700': props.type === 'secondary' && props.state,
+
+      'flex items-center justify-center gap-2.5 pl-3 pr-4': props.children,
     },
   )
 
-  return (
+  return props.as === 'a' ? (
+    <Link
+      aria-label={props.aria ?? props.text}
+      className={className}
+      href={props.href || ''}
+      rel={props.external ? 'noopener noreferrer' : undefined}
+      target={props.external ? '_blank' : undefined}
+    >
+      {props.children}
+      {props.text}
+    </Link>
+  ) : (
     <button
       aria-label={props.aria ?? props.text}
       className={className}
