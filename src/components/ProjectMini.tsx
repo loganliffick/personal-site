@@ -38,7 +38,7 @@ const ProjectMini = (props: {
           href={props.linkProps.href}
           aria-label={props.linkProps.aria ?? props.linkProps.text}
           className={cn(
-            'block rounded-2xl px-4 py-2.5 transition-transform active:scale-95 sm:hover:bg-opacity-75',
+            'block shrink-0 rounded-2xl px-4 py-2.5 transition-transform active:scale-95 sm:hover:bg-opacity-75',
             {
               'bg-zinc-100 text-zinc-600 sm:hover:bg-white': props.colors === 1,
               'bg-indigo-600 text-red-200': props.colors === 2,
