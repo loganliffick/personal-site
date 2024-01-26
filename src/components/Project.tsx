@@ -2,6 +2,24 @@ import Button from 'components/Button'
 import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
 
+const Card = (props: {
+  children?: React.ReactNode
+  direction?: 'std' | 'alt'
+  inView: boolean
+}) => (
+  <div
+    className={cn(
+      'reveal mx-auto h-80 w-full rounded-[40px] bg-indigo-500 shadow-lg shadow-zinc-500/20 sm:h-80 sm:w-56',
+      {
+        'animate-spinAlt': props.inView && props.direction === 'alt',
+        'animate-spin': props.inView,
+      },
+    )}
+  >
+    {props.children}
+  </div>
+)
+
 const Project = (props: {
   children?: React.ReactNode
   direction?: 'std' | 'alt'
@@ -21,17 +39,9 @@ const Project = (props: {
       )}
       ref={ref}
     >
-      <div
-        className={cn(
-          'reveal mx-auto h-80 w-full rounded-[40px] bg-indigo-500 shadow-lg shadow-zinc-500/20 sm:h-80 sm:w-56',
-          {
-            'animate-spinAlt': inView && props.direction === 'alt',
-            'animate-spin': inView,
-          },
-        )}
-      >
+      <Card inView={inView} direction={props.direction}>
         {props.children}
-      </div>
+      </Card>
       <header className="mx-auto flex w-full max-w-xs flex-col justify-center gap-6 bg-blue-500/0 px-4 text-zinc-800 sm:w-56 sm:px-0">
         <h2
           className={cn('reveal font-serif text-zinc-700', {
