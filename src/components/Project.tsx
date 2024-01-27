@@ -11,8 +11,8 @@ const Card = (props: {
     className={cn(
       'reveal mx-auto h-80 w-full rounded-[40px] bg-indigo-500 shadow-lg shadow-zinc-500/20 sm:h-80 sm:w-56',
       {
-        'animate-spinAlt': props.inView && props.direction === 'alt',
-        'animate-spin': props.inView,
+        'animate-rotateAlt': props.inView && props.direction === 'alt',
+        'animate-rotate': props.inView,
       },
     )}
   >

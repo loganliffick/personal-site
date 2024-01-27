@@ -30,6 +30,17 @@ const config: Config = {
           },
         },
 
+        scaleFade: {
+          from: {
+            opacity: '0%',
+            transform: 'scale(0.75)',
+          },
+          to: {
+            opacity: '100%',
+            transform: 'scale(1)',
+          },
+        },
+
         reveal: {
           from: {
             opacity: '0%',
@@ -41,7 +52,7 @@ const config: Config = {
           },
         },
 
-        spin: {
+        rotate: {
           from: {
             opacity: '0%',
             transform: 'translateY(40px) rotate(6deg)',
@@ -52,7 +63,7 @@ const config: Config = {
           },
         },
 
-        spinAlt: {
+        rotateAlt: {
           from: {
             opacity: '0%',
             transform: 'translateY(40px) rotate(-6deg)',
@@ -69,13 +80,15 @@ const config: Config = {
         fade: 'fade 0.8s forwards',
         fadeMd: 'fade 2s forwards',
 
+        scaleFade: 'scaleFade 0.4s cubic-bezier(0.7,0,0.5,2) forwards',
+
         revealSm: 'reveal 0.8s cubic-bezier(0.5,-0.2,0.1,1.2) forwards',
         reveal: 'reveal 1.2s cubic-bezier(0.5,-0.2,0.1,1.3) forwards',
         revealMd: 'reveal 1.4s cubic-bezier(0.5,-0.2,0.1,1.4) forwards',
         revealLg: 'reveal 1.6s cubic-bezier(0.5,-0.2,0.1,1.5) forwards',
 
-        spin: 'spin 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
-        spinAlt: 'spinAlt 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
+        rotate: 'rotate 1s cubic-bezier(0.5,-0.5,0.1,1.8) forwards',
+        rotateAlt: 'rotateAlt 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
       },
     },
   },

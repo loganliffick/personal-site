@@ -1,11 +1,14 @@
-const Tooltip = (props: { children?: React.ReactNode }) => {
+import { cn } from 'utils/tw'
+
+const Tooltip = (props: { text: string; state?: boolean }) => {
   return (
-    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-      <div className="group relative size-10 rounded-2xl bg-blue-200">
-        <div className="pointer-events-none absolute left-full top-1/2 z-50 -translate-y-1/2 rounded-lg bg-blue-50 px-2 py-1 opacity-0 transition group-hover:translate-x-2 group-hover:opacity-100">
-          Tooltip
-        </div>
-      </div>
+    <div
+      className={cn(
+        'pointer-events-none absolute -top-8 left-1/2 z-50 w-max origin-bottom -translate-x-1/2 translate-y-2 rounded-lg bg-zinc-900 px-2.5 py-1 text-sm font-semibold text-zinc-200 opacity-0 shadow-lg transition sm:group-hover/tooltip:-translate-y-0 sm:group-hover/tooltip:opacity-100',
+        { hidden: props.state },
+      )}
+    >
+      {props.text}
     </div>
   )
 }

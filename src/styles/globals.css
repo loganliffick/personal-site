@@ -34,3 +34,14 @@
     animation: none;
   }
 }
+
+.scaleFade {
+  opacity: 0;
+  transform: scale(0.75);
+
+  @media (prefers-reduced-motion) {
+    transform: scale(1);
+    opacity: 1;
+    animation: none;
+  }
+}
