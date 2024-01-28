@@ -27,31 +27,47 @@ const januaryData = [
 
 const Page = () => {
   const tiles = Array.from({ length: monthDays })
-  const [subDisplay, setSubDisplay] = useState(false)
-  const subDisplayRef = useClickOutside(() => {
-    setSubDisplay(false)
+  const [takeover, setTakeover] = useState(false)
+  const takeoverRef = useClickOutside(() => {
+    setTakeover(false)
   })
 
   return (
     <Layout>
       <section
-        className="reveal mt-20 flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-hidden rounded-3xl bg-zinc-800 p-7 shadow-xl"
-        ref={subDisplayRef}
+        className="reveal mt-20 flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-x-clip overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl"
+        ref={takeoverRef}
       >
-        {subDisplay && (
-          <button
-            className="absolute left-6 top-6 z-50 w-max animate-revealSm font-bold tracking-wide text-white"
-            onClick={() => {
-              setSubDisplay(false)
-            }}
-          >
-            back
-          </button>
+        {takeover && (
+          <div className="absolute left-0 top-0 z-50 flex w-full flex-col">
+            <div className="sticky -top-7 z-10 p-2">
+              <button
+                className="z-50 w-max animate-revealSm rounded-full bg-white/80 px-3 py-1.5 font-bold tracking-wide text-zinc-700"
+                onClick={() => {
+                  setTakeover(false)
+                }}
+              >
+                back
+              </button>
+            </div>
+            <div className="reveal relative w-full animate-revealLg p-7 text-white">
+              <p>
+                "On the other hand, we denounce with righteous indignation and
+                dislike men who are so beguiled and demoralized by the charms of
+                pleasure of the moment, so blinded by desire, that they cannot
+                foresee the pain and trouble that are bound to ensue; and equal
+                blame belongs to those who fail in their duty through weakness
+                of will, which is the same as saying through shrinking from toil
+                and pain. These cases are perfectly simple and easy to
+                distinguish."
+              </p>
+            </div>
+          </div>
         )}
         <h2 className="reveal animate-revealSm text-sm font-bold tracking-wider text-zinc-300">
           January
         </h2>
-        <div className="grid h-full w-full grid-cols-7 gap-2">
+        <div className="grid w-full grid-cols-7 gap-2">
           {tiles.map((_, index) => {
             const dayData = januaryData.find((data) => data.day === index + 1)
             const [active, setActive] = useState(false)
@@ -59,28 +75,31 @@ const Page = () => {
             return (
               <div
                 key={index}
-                className="animate-scaleFade scaleFade"
+                className="animate-scaleFade scaleFade relative"
                 style={{
                   animationDelay: `${index / 50 + 0.04}s`,
                 }}
               >
                 {dayData ? (
-                  <div className="group/tooltip">
-                    <Tooltip text={dayData.type} state={subDisplay} />
+                  <div
+                    className={cn('group/tooltip delay-100', {
+                      'invisible opacity-0 delay-0': takeover && !active,
+                    })}
+                  >
+                    <Tooltip text={dayData.type} state={takeover} />
                     <button
                       onClick={(e) => {
-                        setSubDisplay(true)
+                        setTakeover(true)
                         setActive(true)
                       }}
                       className={cn(
-                        'block h-8 w-full rounded-lg transition-all duration-75 hover:scale-90 focus:ease-out active:scale-75 min-[400px]:h-10',
+                        'block h-8 w-full rounded-lg transition-all duration-150 hover:scale-90 active:scale-75 min-[400px]:h-10',
                         {
                           'bg-emerald-400': dayData.type === 'Project',
                           'bg-indigo-500': dayData.type === 'Blog',
                           'bg-fuchsia-300': dayData.type === 'Small Project',
-                          'scale-[20] cursor-default duration-500 hover:scale-[20] active:scale-[20]':
-                            subDisplay && active,
-                          'invisible opacity-0': subDisplay && !active,
+                          'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
+                            takeover && active,
                         },
                       )}
                     />
@@ -88,9 +107,9 @@ const Page = () => {
                 ) : (
                   <div
                     className={cn(
-                      'h-8 w-full rounded-lg bg-zinc-700/50 transition-all duration-75 min-[400px]:h-10',
+                      'h-8 w-full rounded-lg bg-zinc-700/50 transition-all delay-100 duration-300 min-[400px]:h-10',
                       {
-                        'invisible opacity-0': subDisplay,
+                        'invisible opacity-0 delay-0 duration-0': takeover,
                       },
                     )}
                   />
