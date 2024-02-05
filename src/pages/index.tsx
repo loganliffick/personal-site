@@ -64,26 +64,13 @@ const Page = () => {
     placeholder,
   )
 
-  // the issue is that the instant you click the close button, modal = false
-
-  let thing = false
-  if (modal) {
-    console.log('yep')
-    thing = true
-  } else {
-    console.log('nope')
-    thing = false
-  }
-
   const clickOutsideRef = useClickOutside(() => {
-    if (thing === true) {
+    if (modal) {
     } else {
       setTakeover(false)
       setClip(false)
     }
   })
-
-  // end modal stuff
 
   const handleClip = () => {
     setTimeout(() => {
@@ -163,7 +150,6 @@ const Page = () => {
                           onClick={() => {
                             setModal(true)
                             setModalImage(dayData?.image || placeholder)
-                            console.log(modal)
                           }}
                         />
                         <TextBlock data={dayData} />

@@ -51,8 +51,9 @@ const Modal = (props: {
           <button
             className="absolute right-4 top-4 z-10 -rotate-12 scale-75 rounded-full bg-white/50 p-2 text-white opacity-0 transition-all duration-300 ease-bounce hover:!scale-90 active:!-rotate-12 active:!scale-75 group-hover:rotate-0 group-hover:scale-100 group-hover:opacity-100"
             onClick={() => {
-              props.setOpen(false)
-              console.log(props.open)
+              setTimeout(() => {
+                props.setOpen(false)
+              }, 1)
             }}
           >
             <X size={22} weight="bold" />
