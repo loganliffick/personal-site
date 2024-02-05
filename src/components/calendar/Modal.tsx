@@ -35,27 +35,27 @@ const Modal = (props: {
     props.open && (
       <section
         className={cn(
-          'fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-violet-500/10 backdrop-blur-sm duration-200',
+          'fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-zinc-500/10 backdrop-blur-sm',
           { 'animate-fadeSm': props.open },
         )}
         ref={menuRef}
       >
         <article
           className={cn(
-            'relative mx-6 w-full max-w-md rounded-3xl bg-white p-6 text-zinc-800 shadow-md shadow-violet-500/10',
+            'group relative mx-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white text-zinc-800 shadow-xl shadow-zinc-500/10 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-3xl after:border-[6px] after:border-white/50',
             {
-              'animate-revealSm': props.open,
+              'animate-scaleXFade': props.open,
             },
           )}
         >
           <button
-            aria-label="Close modal"
-            className="absolute right-2 top-2 flex size-11 items-center justify-center rounded-2xl sm:transition-transform sm:hover:bg-zinc-100 sm:active:scale-95"
+            className="absolute right-4 top-4 z-10 -rotate-12 scale-75 rounded-full bg-white/50 p-2 text-white opacity-0 transition-all duration-300 ease-bounce hover:!scale-90 active:!-rotate-12 active:!scale-75 group-hover:rotate-0 group-hover:scale-100 group-hover:opacity-100"
             onClick={() => {
               props.setOpen(false)
+              console.log(props.open)
             }}
           >
-            <X weight="bold" />
+            <X size={22} weight="bold" />
           </button>
           {props.children}
         </article>

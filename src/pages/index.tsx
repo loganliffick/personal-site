@@ -1,15 +1,16 @@
 import Layout from 'components/Layout'
 import Tag from 'components/Tag'
 import Tooltip from 'components/Tooltip'
+import Button from 'components/calendar/Button'
 import Gallery from 'components/calendar/Gallery'
 import Modal from 'components/calendar/Modal'
+import TextBlock from 'components/calendar/TextBlock'
 import useClickOutside from 'hooks/useClickOutside'
 import moment from 'moment'
 import Image, { StaticImageData } from 'next/image'
-import Link from 'next/link'
 import placeholder from 'public/images/placeholder.jpg'
 import testImage from 'public/images/test-img.jpg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cn } from 'utils/tw'
 
 const monthDays = moment('2024-01', 'YYYY-MM').daysInMonth()
@@ -25,6 +26,7 @@ const januaryData = [
     type: 'Blog',
     title: 'Welcome to NY 💁‍♀️',
     text: 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish',
+    image: placeholder,
   },
   {
     day: 10,
@@ -36,6 +38,7 @@ const januaryData = [
     },
     title: '🕸️ New site launched 🚀',
     text: 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized.',
+    image: testImage,
   },
   {
     day: 20,
@@ -47,6 +50,7 @@ const januaryData = [
     },
     title: '✨ New page ✨',
     text: 'I had the opportunity to do something sick asf, I made a new homepage bb.',
+    image: testImage,
   },
 ]
 
@@ -60,10 +64,26 @@ const Page = () => {
     placeholder,
   )
 
-  const takeoverRef = useClickOutside(() => {
-    setTakeover(false)
-    setClip(false)
+  // the issue is that the instant you click the close button, modal = false
+
+  let thing = false
+  if (modal) {
+    console.log('yep')
+    thing = true
+  } else {
+    console.log('nope')
+    thing = false
+  }
+
+  const clickOutsideRef = useClickOutside(() => {
+    if (thing === true) {
+    } else {
+      setTakeover(false)
+      setClip(false)
+    }
   })
+
+  // end modal stuff
 
   const handleClip = () => {
     setTimeout(() => {
@@ -83,11 +103,12 @@ const Page = () => {
       <Tag year="2024" />
       <>
         <Modal open={modal} setOpen={setModal}>
-          <Image src={modalImage} alt="" />
+          <Image src={modalImage} alt="image" />
         </Modal>
         <section
-          className="reveal my-10  flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-x-clip overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl"
-          ref={takeoverRef}
+          className="reveal my-10  flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl"
+          ref={clickOutsideRef}
+          // make this the classname color whenever takeover is active
         >
           <h2 className="reveal animate-revealSm text-sm font-bold tracking-wider text-zinc-300">
             January
@@ -96,6 +117,12 @@ const Page = () => {
             {tiles.map((_, index) => {
               const dayData = januaryData.find((data) => data.day === index + 1)
               const [active, setActive] = useState(false)
+
+              useEffect(() => {
+                if (takeover === false) {
+                  setActive(false)
+                }
+              }, [takeover])
 
               return (
                 <div
@@ -118,7 +145,7 @@ const Page = () => {
                         },
                       )}
                     >
-                      <div className="sticky -top-7 z-10 animate-revealSm pl-1.5 pt-1.5">
+                      <div className="sticky -top-7 z-10 animate-revealSm pl-2 pt-2">
                         <button
                           className="z-50 block w-max rounded-full bg-white px-3 py-1.5 font-bold tracking-wide text-zinc-600 shadow-md transition-transform hover:scale-90 active:scale-75"
                           onClick={() => {
@@ -130,51 +157,18 @@ const Page = () => {
                           back
                         </button>
                       </div>
-                      <div className="relative flex w-full animate-rotateAlt flex-col">
+                      <ul className="relative my-2 flex w-full flex-col gap-2 odd:*:animate-rotateAlt even:*:animate-rotate">
                         <Gallery
-                          image={testImage}
+                          image={dayData?.image || placeholder}
                           onClick={() => {
                             setModal(true)
-                            setModalImage(testImage)
+                            setModalImage(dayData?.image || placeholder)
+                            console.log(modal)
                           }}
                         />
-                        <article className="m-1.5 mb-0 flex animate-rotate flex-col rounded-[18px] bg-white p-6 pb-6 font-medium">
-                          <h2 className="mb-2 text-xl font-extrabold text-zinc-800">
-                            {dayData?.title}
-                          </h2>
-                          <p className="text-zinc-600">{dayData?.text}</p>
-                          {/* <Link
-                            className="z-50 mt-6 block w-max rounded-full bg-zinc-700 px-4 py-2 text-base font-bold tracking-wide text-zinc-100 transition-transform sm:hover:bg-zinc-800 sm:active:scale-90"
-                            href={dayData?.link.href || ''}
-                            aria-label={dayData?.link.text}
-                            rel={
-                              dayData?.link.external
-                                ? 'no-opener no-referrer'
-                                : ''
-                            }
-                            target={dayData?.link.external ? '_blank' : '_self'}
-                          >
-                            {dayData?.link.text}
-                          </Link> */}
-                        </article>
-
-                        {/* last item will need mb-1.5 rest mb-0 or the opposite, mt-0 except first mt-1.5 */}
-                        <div className="m-1.5">
-                          <Link
-                            className="flex w-full rounded-[18px] bg-white/30 px-4 py-6 text-base font-bold tracking-wide text-zinc-100 transition-transform sm:hover:bg-white/50 sm:active:scale-90"
-                            href={dayData?.link.href || ''}
-                            aria-label={dayData?.link.text}
-                            rel={
-                              dayData?.link.external
-                                ? 'no-opener no-referrer'
-                                : ''
-                            }
-                            target={dayData?.link.external ? '_blank' : '_self'}
-                          >
-                            {dayData?.link.text}
-                          </Link>
-                        </div>
-                      </div>
+                        <TextBlock data={dayData} />
+                        <Button data={dayData} />
+                      </ul>
                     </div>
                   )}
                   {dayData ? (
@@ -190,6 +184,7 @@ const Page = () => {
                           setTakeover(true)
                           handleClip()
                           setActive(true)
+                          // console.log(dayData.type)
                         }}
                         className={cn(
                           'block h-8 w-full rounded-lg transition-all duration-150 hover:scale-90 active:scale-75 min-[400px]:h-10',

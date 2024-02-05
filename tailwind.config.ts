@@ -10,16 +10,16 @@ const config: Config = {
       fontFamily: {
         ...defaultTheme.fontFamily,
         sans: ['var(--figtree)', ...defaultTheme.fontFamily.sans],
-        // serif: ['var(--newsreader)', ...defaultTheme.fontFamily.serif],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+
+      borderRadius: {
+        '2.5xl': '18px',
       },
+
       transitionTimingFunction: {
         bounce: 'cubic-bezier(0.2, -0.25, 0, 1.6)',
       },
+
       keyframes: {
         fade: {
           from: {
@@ -73,7 +73,19 @@ const config: Config = {
             transform: 'translateY(0px) rotate(0deg)',
           },
         },
+
+        scaleXFade: {
+          from: {
+            opacity: '0%',
+            transform: 'scale(0.7) translateY(100px)',
+          },
+          to: {
+            opacity: '100%',
+            transform: 'scale(1) translateY(0px) rotate(0deg)',
+          },
+        },
       },
+
       animation: {
         fadeXs: 'fade 0.2s forwards',
         fadeSm: 'fade 0.4s forwards',
@@ -81,6 +93,7 @@ const config: Config = {
         fadeMd: 'fade 2s forwards',
 
         scaleFade: 'scaleFade 0.4s cubic-bezier(0.7,0,0.5,2) forwards',
+        scaleXFade: 'scaleXFade 0.6s cubic-bezier(0,1,0,1.1) forwards',
 
         revealSm: 'reveal 0.8s cubic-bezier(0.5,-0.2,0.1,1.2) forwards',
         reveal: 'reveal 1.2s cubic-bezier(0.5,-0.2,0.1,1.3) forwards',
