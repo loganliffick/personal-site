@@ -71,6 +71,7 @@ const Page = () => {
     } else {
       setTakeover(false)
       setClip(false)
+      setCalBgColor('none')
     }
   })
 
