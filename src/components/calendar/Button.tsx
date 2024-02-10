@@ -6,12 +6,12 @@ const Button = (props: { data: any }) => {
     <li className="mx-2">
       <Link
         className="group flex w-full items-center justify-between rounded-2xl bg-white py-1 pl-6 pr-1 text-base font-bold text-zinc-800 transition-[letter-spacing,color,transform] duration-200 ease-bounce active:scale-x-95 active:tracking-normal sm:text-zinc-600 sm:hover:bg-white sm:hover:tracking-wider sm:hover:text-zinc-800"
-        href={props.data.link.href || ''}
-        aria-label={props.data.link.text}
-        rel={props.data.link.external ? 'no-opener no-referrer' : ''}
-        target={props.data.link.external ? '_blank' : '_self'}
+        href={props.data.href || ''}
+        aria-label={props.data.text}
+        rel={props.data.external ? 'no-opener no-referrer' : ''}
+        target={props.data.external ? '_blank' : '_self'}
       >
-        {props.data.link.text}
+        {props.data.text}
         <div className="relative flex size-10 items-center justify-center overflow-hidden text-inherit">
           <ArrowRight
             weight="bold"

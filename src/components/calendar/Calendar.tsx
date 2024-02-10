@@ -1,26 +1,36 @@
-import Modal from 'components/Modal'
 import Tooltip from 'components/Tooltip'
+import Button from 'components/calendar/Button'
+import Gallery from 'components/calendar/Gallery'
+import Modal from 'components/calendar/Modal'
+import TextBlock from 'components/calendar/TextBlock'
 import useClickOutside from 'hooks/useClickOutside'
 import moment from 'moment'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowsOutSimple } from 'phosphor-react'
-import testImage from 'public/images/test-img.jpg'
-import { useState } from 'react'
+import Image, { StaticImageData } from 'next/image'
+import placeholder from 'public/images/placeholder.jpg'
+import { Fragment, useEffect, useState } from 'react'
 import { cn } from 'utils/tw'
 
 const Calendar = (props: { data: any }) => {
+  const [calBgColor, setCalBgColor] = useState('none')
   const [takeover, setTakeover] = useState(false)
   const [clip, setClip] = useState(false)
   const [loadIn, setLoadIn] = useState(true)
   const [modal, setModal] = useState(false)
 
-  const monthDays = moment('2024-01', 'YYYY-MM').daysInMonth()
+  const [modalImage, setModalImage] = useState<string | StaticImageData>(
+    placeholder,
+  )
+
+  const monthDays = moment().month(props.data[0].month).daysInMonth()
   const tiles = Array.from({ length: monthDays })
 
-  const takeoverRef = useClickOutside(() => {
-    setTakeover(false)
-    setClip(false)
+  const clickOutsideRef = useClickOutside(() => {
+    if (modal) {
+    } else {
+      setTakeover(false)
+      setClip(false)
+      setCalBgColor('none')
+    }
   })
 
   const handleClip = () => {
@@ -39,27 +49,41 @@ const Calendar = (props: { data: any }) => {
   return (
     <>
       <Modal open={modal} setOpen={setModal}>
-        hi mom
+        <Image src={modalImage} alt="image" />
       </Modal>
       <section
-        className="reveal my-10  flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-x-clip overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl"
-        ref={takeoverRef}
+        className={cn(
+          'reveal my-10 flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl',
+          {
+            'bg-sky-500': calBgColor === 'Project',
+            'bg-indigo-600': calBgColor === 'Blog',
+            'bg-violet-400': calBgColor === 'Small Project',
+          },
+        )}
+        ref={clickOutsideRef}
       >
         <h2 className="reveal animate-revealSm text-sm font-bold tracking-wider text-zinc-300">
-          January
+          {moment().month(props.data[0].month).format('MMMM')}
         </h2>
         <div className="grid w-full grid-cols-7 gap-2">
           {tiles.map((_, index) => {
-            const dayData = props.data.find(
+            const dayData = props.data[0].days.find(
               (data: any) => data.day === index + 1,
             )
+
             const [active, setActive] = useState(false)
+
+            useEffect(() => {
+              if (takeover === false) {
+                setActive(false)
+              }
+            }, [takeover])
 
             return (
               <div
                 key={index}
-                className={cn('', {
-                  'scaleFade isolate animate-scaleFade': loadIn,
+                className={cn({
+                  'scaleFade animate-scaleFade': loadIn,
                 })}
                 style={{
                   animationDelay: `${index / 50 + 0.04}s`,
@@ -76,56 +100,45 @@ const Calendar = (props: { data: any }) => {
                       },
                     )}
                   >
-                    <div className="sticky -top-7 z-10 animate-revealSm pl-1.5 pt-1.5">
+                    <div className="sticky -top-7 z-10 animate-revealSm pl-2 pt-2">
                       <button
-                        className="z-50 block w-max rounded-full bg-white px-3 py-1.5 font-bold tracking-wide text-zinc-600 shadow-md transition-transform hover:scale-90 active:scale-75"
+                        className="z-50 block w-max rounded-full bg-white px-3 py-1.5 font-bold tracking-wide text-zinc-600 shadow-md transition-transform active:scale-90 sm:hover:scale-90 sm:active:scale-75"
                         onClick={() => {
                           setTakeover(false)
                           setActive(false)
                           setClip(false)
+                          setCalBgColor('none')
                         }}
                       >
                         back
                       </button>
                     </div>
-                    <div className="relative flex w-full animate-rotateAlt flex-col">
-                      <button
-                        className="group relative m-1.5 mb-0 aspect-video animate-fade overflow-hidden rounded-[18px] bg-white after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-[18px] after:border-[6px] after:border-white/50 after:transition-[border] hover:after:border-[10px] active:after:border-[16px]"
-                        onClick={() => {
-                          setModal(true)
-                        }}
-                      >
-                        <div className="absolute bottom-0 right-0 z-10 origin-bottom-right scale-75 rounded-full bg-white/50 p-2 text-white opacity-0 transition-all duration-300 ease-bounce group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-100 group-hover:opacity-100 group-active:-translate-x-8 group-active:-translate-y-6 group-active:rotate-12 group-active:scale-90">
-                          <ArrowsOutSimple size={24} weight="bold" />
-                        </div>
-                        <Image
-                          src={testImage}
-                          alt="img"
-                          className="object-cover"
-                          fill={true}
-                          sizes="100%"
-                        />
-                      </button>
-                      <article className="m-1.5 flex animate-rotate flex-col rounded-[18px] bg-white p-6 pb-7 font-medium">
-                        <h2 className="mb-2 text-xl font-extrabold text-zinc-800">
-                          {dayData?.title}
-                        </h2>
-                        <p className="text-zinc-600">{dayData?.text}</p>
-                        <Link
-                          className="z-50 mt-6 block w-max rounded-full bg-zinc-700 px-4 py-2 text-base font-bold tracking-wide text-zinc-100 transition-transform sm:hover:bg-zinc-800 sm:active:scale-90"
-                          href={dayData?.link.href || ''}
-                          aria-label={dayData?.link.text}
-                          rel={
-                            dayData?.link.external
-                              ? 'no-opener no-referrer'
-                              : ''
-                          }
-                          target={dayData?.link.external ? '_blank' : '_self'}
-                        >
-                          {dayData?.link.text}
-                        </Link>
-                      </article>
-                    </div>
+                    <ul className="relative my-2 flex w-full flex-col gap-2 odd:*:animate-rotateAlt even:*:animate-rotate">
+                      {/* Map day content */}
+                      {dayData?.content.map(
+                        (contentItem: any, contentIndex: number) => (
+                          <Fragment key={contentIndex}>
+                            {contentItem.text && (
+                              <TextBlock data={contentItem.text} />
+                            )}
+                            {contentItem.image && (
+                              <Gallery
+                                image={contentItem.image || placeholder}
+                                onClick={() => {
+                                  setModal(true)
+                                  setModalImage(
+                                    contentItem.image || placeholder,
+                                  )
+                                }}
+                              />
+                            )}
+                            {contentItem.link && (
+                              <Button data={contentItem.link} />
+                            )}
+                          </Fragment>
+                        ),
+                      )}
+                    </ul>
                   </div>
                 )}
                 {dayData ? (
@@ -137,10 +150,13 @@ const Calendar = (props: { data: any }) => {
                   >
                     <Tooltip text={dayData.type} state={takeover} />
                     <button
-                      onClick={(e) => {
+                      onClick={() => {
                         setTakeover(true)
                         handleClip()
                         setActive(true)
+                        setTimeout(() => {
+                          setCalBgColor(dayData?.type)
+                        }, 400)
                       }}
                       className={cn(
                         'block h-8 w-full rounded-lg transition-all duration-150 hover:scale-90 active:scale-75 min-[400px]:h-10',
