@@ -52,6 +52,17 @@ const config: Config = {
           },
         },
 
+        modalReveal: {
+          from: {
+            opacity: '0%',
+            transform: 'scale(0.7) translateY(100px)',
+          },
+          to: {
+            opacity: '100%',
+            transform: 'scale(1) translateY(0px) rotate(0deg)',
+          },
+        },
+
         rotate: {
           from: {
             opacity: '0%',
@@ -74,14 +85,15 @@ const config: Config = {
           },
         },
 
-        scaleXFade: {
-          from: {
-            opacity: '0%',
-            transform: 'scale(0.7) translateY(100px)',
-          },
+        bouncy: {
           to: {
-            opacity: '100%',
-            transform: 'scale(1) translateY(0px) rotate(0deg)',
+            transform: 'translateY(-8px)',
+          },
+        },
+
+        bouncyLite: {
+          to: {
+            transform: 'translateY(-4px)',
           },
         },
       },
@@ -93,12 +105,12 @@ const config: Config = {
         fadeMd: 'fade 2s forwards',
 
         scaleFade: 'scaleFade 0.4s cubic-bezier(0.7,0,0.5,2) forwards',
-        scaleXFade: 'scaleXFade 0.6s cubic-bezier(0,1,0,1.1) forwards',
 
         revealSm: 'reveal 0.8s cubic-bezier(0.5,-0.2,0.1,1.2) forwards',
         reveal: 'reveal 1.2s cubic-bezier(0.5,-0.2,0.1,1.3) forwards',
         revealMd: 'reveal 1.4s cubic-bezier(0.5,-0.2,0.1,1.4) forwards',
         revealLg: 'reveal 1.6s cubic-bezier(0.5,-0.2,0.1,1.5) forwards',
+        modalReveal: 'modalReveal 0.6s cubic-bezier(0,1,0,1.1) forwards',
 
         rotate: 'rotate 1s cubic-bezier(0.5,-0.5,0.1,1.8) forwards',
         rotateAlt: 'rotateAlt 1s cubic-bezier(0.5,1,0.1,1.8) forwards',

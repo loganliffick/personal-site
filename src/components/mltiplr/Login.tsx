@@ -1,5 +1,5 @@
 import Button from 'components/Button'
-import Loader from 'components/Loader'
+import { Spinner } from 'components/Loaders'
 import {
   GoogleAuthProvider,
   TwitterAuthProvider,
@@ -56,7 +56,7 @@ const Login = (props: {
           {props.userData.user ? null : (
             <>
               <p className="font-medium">Logging in with another window</p>
-              <Loader />
+              <Spinner />
             </>
           )}
         </div>

@@ -60,6 +60,8 @@ const Page = () => {
   const [clip, setClip] = useState(false)
   const [loadIn, setLoadIn] = useState(true)
   const [modal, setModal] = useState(false)
+  const [calBgColor, setCalBgColor] = useState('none')
+
   const [modalImage, setModalImage] = useState<string | StaticImageData>(
     placeholder,
   )
@@ -93,9 +95,15 @@ const Page = () => {
           <Image src={modalImage} alt="image" />
         </Modal>
         <section
-          className="reveal my-10  flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl"
+          className={cn(
+            'reveal my-10 flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl',
+            {
+              'bg-sky-500': calBgColor === 'Project',
+              'bg-indigo-600': calBgColor === 'Blog',
+              'bg-violet-400': calBgColor === 'Small Project',
+            },
+          )}
           ref={clickOutsideRef}
-          // make this the classname color whenever takeover is active
         >
           <h2 className="reveal animate-revealSm text-sm font-bold tracking-wider text-zinc-300">
             January
@@ -115,7 +123,7 @@ const Page = () => {
                 <div
                   key={index}
                   className={cn({
-                    'scaleFade isolate animate-scaleFade': loadIn,
+                    'scaleFade animate-scaleFade': loadIn,
                   })}
                   style={{
                     animationDelay: `${index / 50 + 0.04}s`,
@@ -134,11 +142,12 @@ const Page = () => {
                     >
                       <div className="sticky -top-7 z-10 animate-revealSm pl-2 pt-2">
                         <button
-                          className="z-50 block w-max rounded-full bg-white px-3 py-1.5 font-bold tracking-wide text-zinc-600 shadow-md transition-transform hover:scale-90 active:scale-75"
+                          className="z-50 block w-max rounded-full bg-white px-3 py-1.5 font-bold tracking-wide text-zinc-600 shadow-md transition-transform active:scale-90 sm:hover:scale-90 sm:active:scale-75"
                           onClick={() => {
                             setTakeover(false)
                             setActive(false)
                             setClip(false)
+                            setCalBgColor('none')
                           }}
                         >
                           back
@@ -166,11 +175,13 @@ const Page = () => {
                     >
                       <Tooltip text={dayData.type} state={takeover} />
                       <button
-                        onClick={(e) => {
+                        onClick={() => {
                           setTakeover(true)
                           handleClip()
                           setActive(true)
-                          // console.log(dayData.type)
+                          setTimeout(() => {
+                            setCalBgColor(dayData?.type)
+                          }, 400)
                         }}
                         className={cn(
                           'block h-8 w-full rounded-lg transition-all duration-150 hover:scale-90 active:scale-75 min-[400px]:h-10',
