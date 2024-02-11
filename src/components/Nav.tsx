@@ -2,6 +2,7 @@ import Button from 'components/Button'
 import useClickOutside from 'hooks/useClickOutside'
 import Link, { LinkProps } from 'next/link'
 import { useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
 
 const MenuItem = (props: {
@@ -28,8 +29,19 @@ const Nav = () => {
     setOpen(false)
   })
 
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  })
+
   return (
-    <header className="mt-6 flex w-full items-center justify-center px-6 text-zinc-800 sm:mt-16 sm:px-10">
+    <header
+      className={cn(
+        'fade relative z-10 mt-6 flex w-full items-center justify-center px-6 text-zinc-800 sm:mt-16 sm:px-10',
+        { 'animate-fadeSm': inView },
+      )}
+      ref={ref}
+    >
       <nav className="flex w-full max-w-lg items-center justify-between">
         <Link className="pl-4 text-xl sm:pl-0" href="/">
           Logan Liffick
