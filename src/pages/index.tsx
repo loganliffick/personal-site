@@ -1,9 +1,9 @@
 import Layout from 'components/Layout'
 import Tag from 'components/Tag'
 import Calendar from 'components/calendar/Calendar'
-import { decemberData } from 'lib/2023/dec'
-import { februaryData } from 'lib/2024/feb'
-import { januaryData } from 'lib/2024/jan'
+import { decemberData } from 'lib/activity/2023/dec'
+import { februaryData } from 'lib/activity/2024/feb'
+import { januaryData } from 'lib/activity/2024/jan'
 
 const Page = () => (
   <Layout>

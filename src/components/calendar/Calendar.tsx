@@ -4,13 +4,15 @@ import Gallery from 'components/calendar/Gallery'
 import Modal from 'components/calendar/Modal'
 import TextBlock from 'components/calendar/TextBlock'
 import useClickOutside from 'hooks/useClickOutside'
+import { MonthDataType } from 'lib/activity/activityTypes'
 import moment from 'moment'
 import Image, { StaticImageData } from 'next/image'
 import placeholder from 'public/images/placeholder.jpg'
 import { Fragment, useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
 
-const Calendar = (props: { data: any }) => {
+const Calendar = (props: { data: MonthDataType[] }) => {
   const [calBgColor, setCalBgColor] = useState('none')
   const [takeover, setTakeover] = useState(false)
   const [clip, setClip] = useState(false)
@@ -33,6 +35,11 @@ const Calendar = (props: { data: any }) => {
     }
   })
 
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  })
+
   const handleClip = () => {
     setTimeout(() => {
       setClip(true)
@@ -46,18 +53,27 @@ const Calendar = (props: { data: any }) => {
 
   handleLoadIn()
 
+  const bgColors = (arg: string | undefined) =>
+    cn({
+      'bg-sky-500': arg === 'Project',
+      'bg-indigo-600': arg === 'Blog',
+      'bg-violet-400': arg === 'Small Project',
+      'bg-fuchsia-400': arg === 'Feature',
+      'bg-zinc-800': arg === undefined,
+    })
+
   return (
-    <>
+    <section ref={ref} className="w-full">
       <Modal open={modal} setOpen={setModal}>
         <Image src={modalImage} alt="image" />
       </Modal>
       <section
         className={cn(
-          'reveal my-10 flex w-full max-w-sm animate-rotate flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl',
+          'reveal mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl',
+          bgColors(calBgColor),
           {
-            'bg-sky-500': calBgColor === 'Project',
-            'bg-indigo-600': calBgColor === 'Blog',
-            'bg-violet-400': calBgColor === 'Small Project',
+            'animate-rotate': props.data[0].month % 2 !== 0 && inView,
+            'animate-rotateAlt': props.data[0].month % 2 === 0 && inView,
           },
         )}
         ref={clickOutsideRef}
@@ -68,7 +84,7 @@ const Calendar = (props: { data: any }) => {
         <div className="grid w-full grid-cols-7 gap-2">
           {tiles.map((_, index) => {
             const dayData = props.data[0].days.find(
-              (data: any) => data.day === index + 1,
+              (data) => data.day === index + 1,
             )
 
             const [active, setActive] = useState(false)
@@ -93,11 +109,7 @@ const Calendar = (props: { data: any }) => {
                   <div
                     className={cn(
                       'absolute left-0 top-0 z-50 flex h-max min-h-full w-full animate-fadeSm flex-col',
-                      {
-                        'bg-sky-500': dayData?.type === 'Project',
-                        'bg-indigo-600': dayData?.type === 'Blog',
-                        'bg-violet-400': dayData?.type === 'Small Project',
-                      },
+                      bgColors(dayData?.type),
                     )}
                   >
                     <div className="sticky -top-7 z-10 animate-revealSm pl-2 pt-2">
@@ -116,12 +128,12 @@ const Calendar = (props: { data: any }) => {
                     <ul className="relative my-2 flex w-full flex-col gap-2 odd:*:animate-rotateAlt even:*:animate-rotate">
                       {/* Map day content */}
                       {dayData?.content.map(
-                        (contentItem: any, contentIndex: number) => (
+                        (contentItem, contentIndex: number) => (
                           <Fragment key={contentIndex}>
-                            {contentItem.text && (
+                            {contentItem.type === 'TextBlock' && (
                               <TextBlock data={contentItem.text} />
                             )}
-                            {contentItem.image && (
+                            {contentItem.type === 'Image' && (
                               <Gallery
                                 image={contentItem.image || placeholder}
                                 onClick={() => {
@@ -132,7 +144,7 @@ const Calendar = (props: { data: any }) => {
                                 }}
                               />
                             )}
-                            {contentItem.link && (
+                            {contentItem.type === 'LinkButton' && (
                               <Button data={contentItem.link} />
                             )}
                           </Fragment>
@@ -145,7 +157,7 @@ const Calendar = (props: { data: any }) => {
                   <div
                     className={cn('group/tooltip relative delay-100', {
                       'invisible opacity-0 delay-0': takeover && !active,
-                      'overflow-clip overscroll-y-none': clip,
+                      'overflow-clip': clip,
                     })}
                   >
                     <Tooltip text={dayData.type} state={takeover} />
@@ -155,15 +167,13 @@ const Calendar = (props: { data: any }) => {
                         handleClip()
                         setActive(true)
                         setTimeout(() => {
-                          setCalBgColor(dayData?.type)
+                          setCalBgColor(dayData.type)
                         }, 400)
                       }}
                       className={cn(
                         'block h-8 w-full rounded-lg transition-all duration-150 hover:scale-90 active:scale-75 min-[400px]:h-10',
+                        bgColors(dayData.type),
                         {
-                          'bg-sky-500': dayData.type === 'Project',
-                          'bg-indigo-600': dayData.type === 'Blog',
-                          'bg-violet-400': dayData.type === 'Small Project',
                           'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
                             active && takeover,
                         },
@@ -185,7 +195,7 @@ const Calendar = (props: { data: any }) => {
           })}
         </div>
       </section>
-    </>
+    </section>
   )
 }
 

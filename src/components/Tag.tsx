@@ -10,7 +10,7 @@ const Tag = (props: { year: string }) => {
   return (
     <div
       className={cn(
-        'reveal sticky top-5 z-50 mx-auto rounded-full bg-white px-3 py-1 text-xs font-bold text-zinc-500 first-of-type:mt-10',
+        'reveal sticky top-5 z-10 mx-auto rounded-full bg-white px-3 py-1 text-xs font-bold text-zinc-500 first-of-type:mt-10',
         { 'animate-revealSm': inView },
       )}
       ref={ref}
