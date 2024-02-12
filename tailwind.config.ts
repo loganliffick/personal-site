@@ -102,7 +102,9 @@ const config: Config = {
         fadeXs: 'fade 0.2s forwards',
         fadeSm: 'fade 0.4s forwards',
         fade: 'fade 0.8s forwards',
-        fadeMd: 'fade 2s forwards',
+        fadeMd: 'fade 1.2s forwards',
+        fadeLg: 'fade 1.6s forwards',
+        fadeXl: 'fade 2s forwards',
 
         scaleFade: 'scaleFade 0.4s cubic-bezier(0.7,0,0.5,2) forwards',
 

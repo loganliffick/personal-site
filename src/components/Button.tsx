@@ -10,7 +10,7 @@ const Button = (props: {
   onClick?: () => void
   state?: boolean
   text: string
-  type?: 'primary' | 'secondary'
+  type: 'primary' | 'secondary'
 }) => {
   const className = cn(
     'w-full rounded-2xl px-4 py-2.5 font-medium sm:transition-transform active:scale-95 block w-max',

@@ -35,6 +35,9 @@ dependencies:
   react-intersection-observer:
     specifier: ^9.8.0
     version: 9.8.0(react-dom@18.2.0)(react@18.2.0)
+  react-spltjs:
+    specifier: ^1.0.0
+    version: 1.0.0
   slugify:
     specifier: ^1.6.6
     version: 1.6.6
@@ -1587,6 +1590,13 @@ packages:
     peerDependenciesMeta:
       react-dom:
         optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-spltjs@1.0.0:
+    resolution: {integrity: sha512-rAYmMufVgI36m25rxq7a1X54AYTFxRRZ/aYwmC85dd119O/46uVnC0qfX3OXpELU1B/EuoOOINK7+dbd9vQ4Ug==}
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
