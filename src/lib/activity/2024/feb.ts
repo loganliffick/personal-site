@@ -45,6 +45,36 @@ export const februaryData: MonthDataType[] = [
       },
 
       {
+        day: 15,
+        type: 'Feature',
+        content: [
+          {
+            type: 'TextBlock',
+            text: {
+              title: '🕸️ Hey look a feature 🚀',
+              body: 'Woohoo it works!!!!!!!!!!!1',
+            },
+          },
+          { type: 'Image', image: testImage },
+          {
+            type: 'TextBlock',
+            text: {
+              title: '🕸️ New site launched 🚀',
+              body: 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized.',
+            },
+          },
+          {
+            type: 'LinkButton',
+            link: {
+              external: true,
+              href: 'https://react.spltjs.com',
+              text: 'Get splittin bb',
+            },
+          },
+        ],
+      },
+
+      {
         day: 20,
         type: 'Small Project',
         content: [
