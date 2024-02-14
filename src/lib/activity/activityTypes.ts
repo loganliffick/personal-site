@@ -8,7 +8,7 @@ type ImageContent = {
 type TextBlockContent = {
   type: 'TextBlock'
   text: {
-    title: string
+    title?: string
     body: string
   }
 }
@@ -16,7 +16,7 @@ type TextBlockContent = {
 type LinkButtonContent = {
   type: 'LinkButton'
   link: {
-    external: boolean
+    external?: boolean
     href: string
     text: string
   }
@@ -26,7 +26,7 @@ type ContentItem = ImageContent | TextBlockContent | LinkButtonContent
 
 type Day = {
   day: number
-  type: 'Blog' | 'Project' | 'Small Project' | 'Feature'
+  type: 'Blog' | 'Work' | 'Side Project' | 'Feature' | 'Life' | 'Misc'
   content: ContentItem[]
 }
 

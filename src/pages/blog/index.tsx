@@ -12,7 +12,7 @@ const Item = (props: { date: string; title: string; offset?: string }) => (
   >
     <Link
       aria-description={props.title}
-      className="group flex w-full justify-between border-b border-zinc-300 py-4 align-baseline text-zinc-700 transition duration-100 active:scale-x-95 sm:hover:border-zinc-400"
+      className="group flex w-full justify-between border-b border-zinc-300 py-4 align-baseline text-zinc-700 transition duration-100 sm:hover:border-zinc-400 sm:active:scale-x-95"
       href={'/blog/' + slugify(props.title, { lower: true })}
     >
       <h2 className="font-medium duration-300 ease-bounce">{props.title}</h2>
@@ -20,7 +20,7 @@ const Item = (props: { date: string; title: string; offset?: string }) => (
         <p className="text-sm opacity-70">
           {moment(props.date).format('MMMM D, YYYY')}
         </p>
-        <HandPointing className="translate-x-4 rotate-45 opacity-0 transition duration-300 ease-bounce sm:group-hover:translate-x-0 sm:group-hover:opacity-100" />
+        <HandPointing className="translate-x-4 rotate-45 opacity-0 transition duration-300 ease-bounce sm:group-hover:translate-x-0 sm:group-hover:opacity-70" />
       </div>
     </Link>
   </article>
@@ -31,7 +31,7 @@ const Page = () => (
     <Section>
       <Item title="The collector's bounty" date="2024-02-04" />
       <Item title="Maybe atlas shrugged" date="2024-01-04" offset="0.2" />
-      <Item title="Ephemeral transistor" date="2023-12-14" offset="0.4" />
+      <Item title="Fortress of Solitude" date="2024-01-12" offset="0.4" />
     </Section>
   </Layout>
 )

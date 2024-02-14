@@ -11,13 +11,13 @@ const Footer = () => {
   }, [])
 
   const { ref, inView } = useInView({
-    threshold: 1,
-    triggerOnce: true,
+    threshold: 0.5,
+    triggerOnce: false,
   })
 
   return (
     <footer
-      className="flex w-full items-center justify-center px-6 pb-8 pt-40 text-zinc-500 sm:px-10"
+      className="flex w-full items-center justify-center px-6 pb-12 pt-40 text-zinc-500 sm:px-10"
       ref={ref}
     >
       <div

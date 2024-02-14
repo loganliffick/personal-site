@@ -5,7 +5,7 @@ const Button = (props: { data: any }) => {
   return (
     <li className="mx-2">
       <Link
-        className="group flex w-full items-center justify-between rounded-2xl bg-white py-1 pl-6 pr-1 text-base font-bold text-zinc-800 transition-[letter-spacing,color,transform] duration-200 ease-bounce active:scale-x-95 active:tracking-normal sm:text-zinc-600 sm:hover:bg-white sm:hover:tracking-wider sm:hover:text-zinc-800"
+        className="group flex w-full items-center justify-between rounded-2xl bg-white py-1 pl-6 pr-1 text-base font-bold tracking-wide text-zinc-800 transition-[letter-spacing,transform] duration-200 ease-bounce sm:hover:bg-white sm:hover:tracking-widest sm:active:scale-x-95"
         href={props.data.href || ''}
         aria-label={props.data.text}
         rel={props.data.external ? 'no-opener no-referrer' : ''}

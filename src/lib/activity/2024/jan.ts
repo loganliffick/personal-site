@@ -1,74 +1,30 @@
 import { MonthDataType } from 'lib/activity/activityTypes'
-import placeholder from 'public/images/placeholder.jpg'
-import testImage from 'public/images/test-img.jpg'
+import makelog from 'public/images/jan-2023/makelog.jpg'
+import spltjs from 'public/images/jan-2023/spltjs.jpg'
+import workspace from 'public/images/jan-2023/workspace.jpg'
 
 export const januaryData: MonthDataType[] = [
   {
     month: 0,
     days: [
       {
-        day: 5,
+        day: 12,
         type: 'Blog',
         content: [
-          { type: 'Image', image: placeholder },
+          { type: 'Image', image: workspace },
           {
             type: 'TextBlock',
             text: {
-              title: 'Welcome to NY 💁‍♀️',
-              body: 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish',
+              title: 'Fortress of solitude 🪴',
+              body: 'My workspace is my temple. It took a fantastic journey to get it where it is, and I’ve loved each iteration.',
             },
           },
           {
             type: 'LinkButton',
             link: {
               external: false,
-              href: '/blog/hello-world',
-              text: 'Read the rest...',
-            },
-          },
-        ],
-      },
-
-      {
-        day: 10,
-        type: 'Project',
-        content: [
-          { type: 'Image', image: testImage },
-          {
-            type: 'TextBlock',
-            text: {
-              title: '🕸️ New site launched 🚀',
-              body: 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized.',
-            },
-          },
-        ],
-      },
-
-      {
-        day: 12,
-        type: 'Feature',
-        content: [
-          {
-            type: 'TextBlock',
-            text: {
-              title: '👀 Ayoooo, we got featured',
-              body: 'This shit is slick right? Absolutely killed it. Here we are. We out here.',
-            },
-          },
-          { type: 'Image', image: placeholder },
-          {
-            type: 'TextBlock',
-            text: {
-              title: 'Who knew right?',
-              body: `Isn't that so freaking cool? Incredible right? I feel like it's incredible.`,
-            },
-          },
-          {
-            type: 'LinkButton',
-            link: {
-              external: true,
-              href: 'https://twitter.com/logan_liffick',
-              text: 'Check out the tweet',
+              href: '/blog/fortress-of-solitude',
+              text: 'Read more',
             },
           },
         ],
@@ -76,22 +32,45 @@ export const januaryData: MonthDataType[] = [
 
       {
         day: 20,
-        type: 'Small Project',
+        type: 'Feature',
         content: [
-          { type: 'Image', image: testImage },
+          { type: 'Image', image: makelog },
           {
             type: 'TextBlock',
             text: {
-              title: '✨ New page ✨',
-              body: 'I had the opportunity to do something sick asf, I made a new homepage bb.',
+              title: '✨ Makelog featured ✨',
+              body: 'The Makelog brand was featured in Fonts In Use! Super cool seeing a brand I built being highlighted for its use of typography!',
             },
           },
           {
             type: 'LinkButton',
             link: {
               external: true,
-              href: 'https://react.spltjs.com',
-              text: 'Get splittin bb',
+              href: 'https://fontsinuse.com/uses/56971/makelog-brand-refresh',
+              text: 'Check it out',
+            },
+          },
+        ],
+      },
+
+      {
+        day: 23,
+        type: 'Side Project',
+        content: [
+          { type: 'Image', image: spltjs },
+          {
+            type: 'TextBlock',
+            text: {
+              title: 'SpltJS for React 🔪',
+              body: 'A few years back I built a tiny text-splitter called SpltJS. Now rebuilt from the ground up for React with type-safety.',
+            },
+          },
+          {
+            type: 'LinkButton',
+            link: {
+              external: true,
+              href: 'https://react.spltjs.com/',
+              text: 'Go get your splt on',
             },
           },
         ],

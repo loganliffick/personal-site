@@ -55,9 +55,11 @@ const Calendar = (props: { data: MonthDataType[] }) => {
 
   const bgColors = (arg: string | undefined) =>
     cn({
-      'bg-sky-500': arg === 'Project',
-      'bg-indigo-600': arg === 'Blog',
-      'bg-violet-400': arg === 'Small Project',
+      'bg-emerald-400': arg === 'Misc',
+      'bg-teal-400': arg === 'Life',
+      'bg-sky-500': arg === 'Work',
+      'bg-sky-400': arg === 'Blog',
+      'bg-violet-400': arg === 'Side Project',
       'bg-fuchsia-400': arg === 'Feature',
       'bg-zinc-800': arg === undefined,
     })

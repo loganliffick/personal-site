@@ -6,17 +6,20 @@ import testImage from 'public/images/test-img.jpg'
 
 const Page = () => (
   <Layout
-    metaTagsProps={{ title: 'Ephemeral Transistor', description: 'An article' }}
+    metaTagsProps={{
+      title: 'Fortress of Solitude',
+      description: `Logan Liffick's workspace.`,
+    }}
   >
-    <Section>
+    <Section className="mb-0 mt-20">
       <article className="prose prose-zinc w-full max-w-prose prose-headings:font-semibold prose-img:rounded-3xl">
         <header>
           <BackButton />
-          <h1 className="animate-fadeMd">Ephemeral Transistor</h1>
-          <p className="animate-fadeMd">February 2, 2024</p>
+          <h1 className="animate-fadeMd">Fortress of Solitude</h1>
+          <p className="animate-fadeMd">January 12, 2024</p>
         </header>
         <section className="animate-fadeLg">
-          <h2>Feb whatever</h2>
+          <h2>Oasis</h2>
           <p>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa

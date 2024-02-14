@@ -31,7 +31,7 @@ const Nav = () => {
   return (
     <header className="relative z-10 mt-6 flex w-full items-center justify-center px-6 text-zinc-800 sm:mt-16 sm:px-10">
       <nav className="flex w-full max-w-lg items-center justify-between">
-        <Link className="pl-4 text-xl sm:pl-0" href="/">
+        <Link className="text-xl" href="/">
           Logan Liffick
         </Link>
         <nav className="flex">
