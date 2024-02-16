@@ -21,7 +21,12 @@ const Page = () => (
           <p className="animate-fadeMd">January 12, 2024</p>
         </header>
         <section className="animate-fadeLg">
-          <Image src={workspace1} alt="Image" priority={true} />
+          <Image
+            src={workspace1}
+            alt="Image"
+            priority={true}
+            placeholder="blur"
+          />
           <h2>A third space</h2>
           <p>
             Since the world went remote, I've been obsessed with making my
@@ -84,7 +89,7 @@ const Page = () => (
             />
             .
           </p>
-          <Image src={workspace2} alt="Image" priority={true} />
+          <Image src={workspace2} alt="Image" placeholder="blur" />
           <p>
             Further that with some mood lighting from the Philips Hue collection
             and Voilà, the 2024 setup featuring a floating Studio Display.

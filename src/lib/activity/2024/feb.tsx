@@ -88,7 +88,7 @@ export const februaryData: MonthDataType[] = [
             type: 'LinkButton',
             link: {
               external: true,
-              href: 'https://react.spltjs.com',
+              href: 'https://twitter.com/logan_liffick/status/1758546296258920698',
               text: 'Idk, go like the Tweet',
             },
           },
