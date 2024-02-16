@@ -3,7 +3,7 @@ import Section from 'components/Section'
 import TextLink from 'components/TextLink'
 import BackButton from 'components/blog/BackButton'
 import Image from 'next/image'
-import testImage from 'public/images/blog/my-workspace/workspace-2.jpg'
+import idea from 'public/images/blog/thanks-for-stopping-by/idea.jpg'
 
 const Page = () => (
   <Layout
@@ -27,7 +27,7 @@ const Page = () => (
             for something else teeming in trend.
           </p>
           <p>This year was different.</p>
-          <Image src={testImage} alt="Image" />
+          <Image src={idea} alt="Image" placeholder="blur" />
           <p>
             As January rolled through, I saw my friend{' '}
             <TextLink
