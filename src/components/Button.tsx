@@ -13,7 +13,7 @@ const Button = (props: {
   type: 'primary' | 'secondary'
 }) => {
   const className = cn(
-    'w-full rounded-2xl px-4 py-2.5 font-medium sm:transition-transform active:scale-95 block w-max',
+    'w-max rounded-2xl px-4 py-2.5 font-medium sm:transition-transform active:scale-95 block',
     {
       'bg-zinc-200 text-zinc-700 sm:hover:bg-zinc-300':
         props.type === 'primary',

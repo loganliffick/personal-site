@@ -12,7 +12,7 @@ const Item = (props: { date: string; title: string; offset?: string }) => (
   >
     <Link
       aria-description={props.title}
-      className="group flex w-full justify-between border-b border-zinc-300 py-4 align-baseline text-zinc-700 transition duration-100 sm:hover:border-zinc-400 sm:active:scale-x-95"
+      className="group flex w-full justify-between border-b border-zinc-300 py-4 align-baseline text-zinc-700 transition duration-100 sm:hover:border-zinc-400"
       href={'/blog/' + slugify(props.title, { lower: true })}
     >
       <h2 className="font-medium duration-300 ease-bounce">{props.title}</h2>

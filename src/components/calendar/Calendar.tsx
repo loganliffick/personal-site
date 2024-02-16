@@ -23,6 +23,11 @@ const Calendar = (props: { data: MonthDataType[] }) => {
     placeholder,
   )
 
+  const currentYear = moment().year(props.data[0].year)
+  const currentMonth = moment(currentYear).month(props.data[0].month)
+  const monthStartDay = moment(currentMonth).startOf('month').isoWeekday()
+  const blankTiles = Array.from({ length: monthStartDay - 1 })
+
   const monthDays = moment().month(props.data[0].month).daysInMonth()
   const tiles = Array.from({ length: monthDays })
 
@@ -57,8 +62,8 @@ const Calendar = (props: { data: MonthDataType[] }) => {
     cn({
       'bg-emerald-400': arg === 'Misc',
       'bg-teal-400': arg === 'Life',
-      'bg-sky-500': arg === 'Work',
-      'bg-sky-400': arg === 'Blog',
+      'bg-sky-400': arg === 'Work',
+      'bg-blue-400': arg === 'Blog',
       'bg-violet-400': arg === 'Side Project',
       'bg-fuchsia-400': arg === 'Feature',
       'bg-zinc-800': arg === undefined,
@@ -84,6 +89,19 @@ const Calendar = (props: { data: MonthDataType[] }) => {
           {moment().month(props.data[0].month).format('MMMM')}
         </h2>
         <div className="grid w-full grid-cols-7 gap-2">
+          {/* map days of previous month */}
+          {blankTiles.map((_, index) => (
+            <div
+              className={cn(
+                'h-8 w-full rounded-lg bg-zinc-700/15 transition-all duration-300 min-[400px]:h-10',
+                {
+                  'invisible opacity-0 delay-0 duration-0': takeover,
+                },
+              )}
+              key={index}
+            />
+          ))}
+
           {tiles.map((_, index) => {
             const dayData = props.data[0].days.find(
               (data) => data.day === index + 1,

@@ -9,7 +9,7 @@ type TextBlockContent = {
   type: 'TextBlock'
   text: {
     title?: string
-    body: string
+    body: React.ReactNode
   }
 }
 
@@ -32,5 +32,6 @@ type Day = {
 
 export type MonthDataType = {
   month: number
+  year: number
   days: Day[]
 }

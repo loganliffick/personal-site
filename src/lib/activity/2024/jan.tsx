@@ -1,11 +1,12 @@
 import { MonthDataType } from 'lib/activity/activityTypes'
-import makelog from 'public/images/jan-2023/makelog.jpg'
-import spltjs from 'public/images/jan-2023/spltjs.jpg'
-import workspace from 'public/images/jan-2023/workspace.jpg'
+import makelog from 'public/images/jan-2024/makelog.jpg'
+import spltjs from 'public/images/jan-2024/spltjs.jpg'
+import workspace from 'public/images/jan-2024/workspace.jpg'
 
 export const januaryData: MonthDataType[] = [
   {
     month: 0,
+    year: 2024,
     days: [
       {
         day: 12,
