@@ -4,7 +4,7 @@ const TextBlock = (props: { data: any }) => {
       <h2 className="mb-2 text-xl font-extrabold text-zinc-800">
         {props.data.title}
       </h2>
-      <p className="text-zinc-600">{props.data.body}</p>
+      <p className="text-pretty text-zinc-600">{props.data.body}</p>
     </li>
   )
 }

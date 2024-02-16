@@ -89,7 +89,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
           {moment().month(props.data[0].month).format('MMMM')}
         </h2>
         <div className="grid w-full grid-cols-7 gap-2">
-          {/* map days of previous month */}
+          {/* Map days of previous month */}
           {blankTiles.map((_, index) => (
             <div
               className={cn(
@@ -102,6 +102,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
             />
           ))}
 
+          {/* Map days of current month */}
           {tiles.map((_, index) => {
             const dayData = props.data[0].days.find(
               (data) => data.day === index + 1,

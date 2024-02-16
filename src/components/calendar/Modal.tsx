@@ -42,7 +42,7 @@ const Modal = (props: {
       >
         <article
           className={cn(
-            'group relative mx-2 w-full max-w-2xl overflow-hidden rounded-3xl bg-white text-zinc-800 shadow-xl shadow-zinc-500/10 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-3xl after:border-[6px] after:border-white/50',
+            'group relative mx-2 my-2 max-h-screen w-full max-w-2xl overflow-hidden rounded-3xl bg-white text-zinc-800 shadow-xl shadow-zinc-500/10 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-3xl after:border-[6px] after:border-white/50',
             {
               'animate-modalReveal': props.open,
             },

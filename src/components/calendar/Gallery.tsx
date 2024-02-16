@@ -15,7 +15,12 @@ const Gallery = (props: {
         <div className="absolute bottom-4 right-4 z-10 scale-100 rounded-full bg-white/50 p-2 text-white transition-all duration-300 ease-bounce group-active:rotate-12 group-active:scale-90 sm:bottom-0 sm:right-0 sm:origin-bottom-right sm:scale-75 sm:opacity-0 sm:group-hover:-translate-x-4 sm:group-hover:-translate-y-4 sm:group-hover:scale-100 sm:group-hover:opacity-100 sm:group-active:-translate-x-8 sm:group-active:-translate-y-6 sm:group-active:scale-90">
           <ArrowsOutSimple size={24} weight="bold" />
         </div>
-        <Image src={props.image} alt="Image" className="rounded-2xl" />
+        <Image
+          src={props.image}
+          alt="Image"
+          className="rounded-2xl"
+          placeholder="blur"
+        />
       </button>
     </li>
   )

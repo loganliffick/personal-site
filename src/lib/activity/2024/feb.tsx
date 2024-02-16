@@ -13,30 +13,30 @@ export const februaryData: MonthDataType[] = [
         day: 5,
         type: 'Misc',
         content: [
-          { type: 'Image', image: solarpunk },
           {
             type: 'TextBlock',
             text: {
               title: 'Solarpunk x Seinfeld',
               body: [
-                `I've been playing around with a fun little tool called `,
+                `I've been playing around with the slick new product the folks at `,
                 <TextLink
                   text="Visual Electric"
                   href="https://visualelectric.com"
                   external
                   key={1}
                 />,
-                ` lately. Tested out a few auto renders, thought they were nifty.`,
+                ` have been shipping. Highly recommend.`,
               ],
             },
           },
+          { type: 'Image', image: solarpunk },
           { type: 'Image', image: seinfeld },
           {
             type: 'LinkButton',
             link: {
               external: true,
               href: 'https://twitter.com/logan_liffick/status/1754565928111501507/photo/1',
-              text: 'Off to Twitter',
+              text: 'Non-ai-generated tweet',
             },
           },
         ],
@@ -50,8 +50,8 @@ export const februaryData: MonthDataType[] = [
           {
             type: 'TextBlock',
             text: {
-              title: 'Outerbase Theme toggle ⚪️ ⚫️',
-              body: `Add this to the 'list of things we had been needing to launch for a long time' fweh, available for all!`,
+              title: 'Outerbase theme toggle ⚪️ ⚫️',
+              body: `Who doesn't love a good dark mode? Better yet: who doesn't love a good dark mode that's easily within reach from a menu? Available now, get it while it's hot!`,
             },
           },
           {
@@ -72,8 +72,8 @@ export const februaryData: MonthDataType[] = [
           {
             type: 'TextBlock',
             text: {
-              title: '✨ New personal site ✨',
-              body: `Ohhhhhh, you're here right now! This is a really meta post.`,
+              title: 'New personal site 🎉',
+              body: `If you're reading this... thank you! Happy to have you here in my little corner of the internet and I hope you're enjoying yourself. I have plenty more coming and hope you'll stick around ❤️`,
             },
           },
           {
@@ -81,7 +81,7 @@ export const februaryData: MonthDataType[] = [
             link: {
               external: false,
               href: '/blog/thanks-for-stopping-by',
-              text: 'Read the blog',
+              text: 'Read more about the site',
             },
           },
           {
@@ -89,7 +89,7 @@ export const februaryData: MonthDataType[] = [
             link: {
               external: true,
               href: 'https://react.spltjs.com',
-              text: 'Go like the Tweet',
+              text: 'Idk, go like the Tweet',
             },
           },
           {

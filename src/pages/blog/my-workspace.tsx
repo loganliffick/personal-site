@@ -2,12 +2,12 @@ import Layout from 'components/Layout'
 import Section from 'components/Section'
 import BackButton from 'components/blog/BackButton'
 import Image from 'next/image'
-import testImage from 'public/images/test-img.jpg'
+import testImage from 'public/images/blog/my-workspace/workspace-2.jpg'
 
 const Page = () => (
   <Layout
     metaTagsProps={{
-      title: 'Fortress of Solitude',
+      title: 'My workspace',
       description: `Logan Liffick's workspace.`,
     }}
   >
@@ -15,7 +15,7 @@ const Page = () => (
       <article className="prose prose-zinc w-full max-w-prose prose-headings:font-semibold prose-img:rounded-3xl">
         <header>
           <BackButton />
-          <h1 className="animate-fadeMd">Fortress of Solitude</h1>
+          <h1 className="animate-fade">My workspace</h1>
           <p className="animate-fadeMd">January 12, 2024</p>
         </header>
         <section className="animate-fadeLg">
@@ -36,7 +36,7 @@ const Page = () => (
             consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
             pariatur?
           </p>
-          <Image src={testImage} alt="Image" />
+          <Image src={testImage} alt="Image" priority={true} />
           <p>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
