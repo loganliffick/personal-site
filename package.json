@@ -18,15 +18,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
-    "react-intersection-observer": "^9.8.0",
+    "react-intersection-observer": "^9.8.1",
     "react-spltjs": "^1.0.0",
     "slugify": "^1.6.6",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "^20.11.19",
-    "@types/react": "^18.2.55",
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.2.59",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
