@@ -1,5 +1,6 @@
 import { Circle, CircleNotch } from 'phosphor-react'
 
+// fix
 export const Spinner = () => (
   <div className="relative size-5 text-xl">
     <Circle className="absolute left-0 top-0 text-zinc-300" weight="bold" />
