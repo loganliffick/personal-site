@@ -1,5 +1,6 @@
 import TextLink from 'components/TextLink'
 import { MonthDataType } from 'lib/activity/activityTypes'
+import zetups from 'public/images/blog/my-workspace/workspace-2.jpg'
 import obThemeSwitch from 'public/images/feb-2024/ob-theme-switcher.jpg'
 import seinfeld from 'public/images/feb-2024/seinfeld.jpg'
 import solarpunk from 'public/images/feb-2024/solarpunk.jpg'
@@ -98,6 +99,28 @@ export const februaryData: MonthDataType[] = [
               external: false,
               href: '/404',
               text: 'Heck, check out the 404 page',
+            },
+          },
+        ],
+      },
+      {
+        day: 29,
+        type: 'Feature',
+        content: [
+          { type: 'Image', image: zetups },
+          {
+            type: 'TextBlock',
+            text: {
+              title: 'Featured on Zetups',
+              body: `The floating Studio Display is back!`,
+            },
+          },
+          {
+            type: 'LinkButton',
+            link: {
+              external: true,
+              href: 'https://twitter.com/zetups_com/status/1763209560486289507',
+              text: 'View the tweet',
             },
           },
         ],

@@ -56,7 +56,7 @@ const Page = () => (
     <Section>
       <div className="group/tooltip relative w-full">
         <Tooltip text="Coming soon" position="right" />
-        <Item title="The invisible brand" date="2024-03-01" comingSoon />
+        <Item title="The invisible brand" date="2024-03-15" comingSoon />
       </div>
 
       <Item title="Thanks for stopping by" date="2024-02-16" offset="0.2" />
