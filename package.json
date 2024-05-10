@@ -8,28 +8,28 @@
     "start": "next start"
   },
   "dependencies": {
-    "@next/third-parties": "^14.1.1",
-    "clsx": "^2.1.0",
+    "@next/third-parties": "^14.2.3",
+    "clsx": "^2.1.1",
     "moment": "^2.30.1",
-    "next": "^14.1.1",
+    "next": "^14.2.3",
     "phosphor-react": "^1.4.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-intersection-observer": "^9.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-intersection-observer": "^9.10.2",
     "react-spltjs": "^1.0.0",
     "slugify": "^1.6.6",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "autoprefixer": "^10.4.18",
-    "postcss": "^8.4.35",
+    "@tailwindcss/typography": "^0.5.13",
+    "@types/node": "^20.12.11",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.11",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
   }
 }

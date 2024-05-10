@@ -4,10 +4,12 @@ import Calendar from 'components/calendar/Calendar'
 import { decemberData } from 'lib/activity/2023/dec'
 import { februaryData } from 'lib/activity/2024/feb'
 import { januaryData } from 'lib/activity/2024/jan'
+import { mayData } from 'lib/activity/2024/may'
 
 const Page = () => (
   <Layout>
     <Tag year="2024" />
+    <Calendar data={mayData} />
     <Calendar data={februaryData} />
     <Calendar data={januaryData} />
     <Tag year="2023" />

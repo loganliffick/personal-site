@@ -3,7 +3,7 @@ import Section from 'components/Section'
 import Tooltip from 'components/Tooltip'
 import moment from 'moment'
 import Link from 'next/link'
-import { HandPointing } from 'phosphor-react'
+import { BookOpen } from 'phosphor-react'
 import slugify from 'slugify'
 import { cn } from 'utils/tw'
 
@@ -37,9 +37,9 @@ const Item = (props: {
         <p className="text-sm opacity-70">
           {moment(props.date).format('MMMM D, YYYY')}
         </p>
-        <HandPointing
+        <BookOpen
           className={cn(
-            'translate-x-4 rotate-45 opacity-0 transition duration-300 ease-bounce sm:group-hover:translate-x-0 sm:group-hover:opacity-70',
+            'translate-x-4 opacity-0 transition duration-300 ease-bounce sm:group-hover:translate-x-0 sm:group-hover:opacity-70',
             {
               'sm:group-hover:translate-x-4 sm:group-hover:opacity-0':
                 props.comingSoon,
