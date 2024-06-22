@@ -76,7 +76,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
       </Modal>
       <section
         className={cn(
-          'reveal mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl xScrollbars',
+          'reveal xScrollbars mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl',
           bgColors(calBgColor),
           {
             'animate-rotate': props.data[0].month % 2 !== 0 && inView,
@@ -85,7 +85,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
         )}
         ref={clickOutsideRef}
       >
-        <h2 className="reveal animate-revealSm text-sm font-bold tracking-wider text-zinc-300">
+        <h2 className="reveal -mt-2 animate-revealSm text-sm font-bold tracking-wider text-zinc-300">
           {moment().month(props.data[0].month).format('MMMM')}
         </h2>
         <div className="grid w-full grid-cols-7 gap-2">

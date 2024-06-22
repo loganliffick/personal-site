@@ -7,17 +7,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-::selection {
-  background: RGBA(0, 0, 0, 0.2);
-}
-
 .xScrollbars {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 .xScrollbars::-webkit-scrollbar {
-    display: none; /* Chrome and Safari */
+  display: none; /* Chrome and Safari */
 }
 
 .fade {

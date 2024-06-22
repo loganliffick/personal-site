@@ -6,14 +6,19 @@ import { februaryData } from 'lib/activity/2024/feb'
 import { januaryData } from 'lib/activity/2024/jan'
 import { mayData } from 'lib/activity/2024/may'
 
+const data24 = [mayData, februaryData, januaryData]
+const data23 = [decemberData]
+
 const Page = () => (
   <Layout>
     <Tag year="2024" />
-    <Calendar data={mayData} />
-    <Calendar data={februaryData} />
-    <Calendar data={januaryData} />
+    {data24.map((month, index) => (
+      <Calendar data={month} key={index} />
+    ))}
     <Tag year="2023" />
-    <Calendar data={decemberData} />
+    {data23.map((month, index) => (
+      <Calendar data={month} key={index} />
+    ))}
   </Layout>
 )
 

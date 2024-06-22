@@ -29,7 +29,7 @@ const Nav = () => {
   })
 
   return (
-    <header className="relative z-10 mt-6 flex w-full items-center justify-center px-6 text-zinc-800 sm:mt-16 sm:px-10">
+    <header className="relative z-10 mt-6 flex w-full items-center justify-center px-6 text-zinc-500 sm:mt-16 sm:px-10">
       <nav className="flex w-full max-w-lg items-center justify-between">
         <Link className="text-xl" href="/">
           Logan Liffick
@@ -47,7 +47,7 @@ const Nav = () => {
             />
             <ul
               className={cn(
-                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-90 rounded-2xl bg-white p-1 opacity-0 duration-150 ease-bounce',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top scale-90 rounded-2xl bg-white p-1 opacity-0 duration-150 ease-bounce',
                 {
                   'visible scale-100 opacity-100': open,
                 },
