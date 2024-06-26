@@ -5,6 +5,7 @@ const Button = (props: {
   as?: 'a' | 'button'
   aria?: string
   children?: React.ReactNode
+  className?: string
   external?: boolean
   href?: LinkProps['href']
   onClick?: () => void
@@ -15,15 +16,16 @@ const Button = (props: {
   const className = cn(
     'w-max rounded-2xl px-4 py-2.5 font-medium sm:transition-transform active:scale-95 block',
     {
-      'bg-white text-zinc-700 sm:hover:bg-white/75': props.type === 'primary',
+      'bg-white text-zinc-700': props.type === 'primary',
       'bg-white': props.type === 'primary' && props.state,
 
       'bg-transparent text-zinc-600 sm:hover:bg-white':
         props.type === 'secondary',
       'bg-white text-zinc-800': props.type === 'secondary' && props.state,
 
-      'flex items-center justify-center gap-2.5 pl-3 pr-4': props.children,
+      'flex items-center justify-center gap-2.5': props.children,
     },
+    props.className,
   )
 
   return props.as === 'a' ? (
@@ -34,8 +36,8 @@ const Button = (props: {
       rel={props.external ? 'noopener noreferrer' : undefined}
       target={props.external ? '_blank' : undefined}
     >
-      {props.children}
       {props.text}
+      {props.children}
     </Link>
   ) : (
     <button
@@ -43,8 +45,8 @@ const Button = (props: {
       className={className}
       onClick={props.onClick}
     >
-      {props.children}
       {props.text}
+      {props.children}
     </button>
   )
 }

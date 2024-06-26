@@ -1,10 +1,13 @@
+import Button from 'components/Button'
 import Layout from 'components/Layout'
 import Section from 'components/Section'
 // import Tooltip from 'components/Tooltip'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ArrowRight } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import slugify from 'slugify'
+import { cn } from 'utils/tw'
 
 const fauxData = [
   {
@@ -33,14 +36,20 @@ const fauxData = [
   },
 ]
 
+const createSlug = (title: string): string => {
+  const slug = '/blog/' + slugify(title, { lower: true })
+  return slug
+}
+
 const Item = (props: {
-  comingSoon?: boolean
   date: string
   offset?: string
   title: string
   description?: string
   image: string
   setActivePost: React.MouseEventHandler<HTMLAnchorElement>
+  id: number
+  activePost: number
 }) => {
   const [rotation, setRotation] = useState(0)
 
@@ -52,19 +61,31 @@ const Item = (props: {
     <Link
       className="scaleFade -mr-10 animate-scaleFadeBlog"
       style={{ animationDelay: props.offset + 's' }}
-      href={
-        props.comingSoon ? '' : '/blog/' + slugify(props.title, { lower: true })
-      }
+      href={createSlug(props.title)}
       onMouseEnter={props.setActivePost}
     >
       <article
-        className="relative h-40 w-48 origin-center overflow-hidden rounded-3xl shadow-xl transition-all duration-300 ease-bounce will-change-transform after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-3xl after:border-[5px] after:border-white/50 after:transition-[border] hover:mr-10 hover:!rotate-0 hover:!scale-110 hover:shadow-2xl hover:after:border-8 active:!scale-100 active:after:border-[12px]"
+        className={cn(
+          'group relative h-40 w-48 origin-center overflow-hidden rounded-3xl shadow-xl transition-all duration-300 ease-bounce will-change-transform after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-3xl after:border-[5px] after:border-white/50 after:transition-[border] hover:mr-10 hover:!rotate-0 hover:!scale-110 hover:shadow-2xl hover:after:border-8 active:!scale-100 active:after:border-[12px]',
+          {
+            '': props.activePost === props.id,
+          },
+        )}
         style={{ transform: `rotate(${rotation}deg)` }}
       >
-        {/* <h2 className="font-medium duration-300 ease-bounce">{props.title}</h2>
-        <p className="text-sm opacity-70">
-          {moment(props.date).format('MMMM D, YYYY')}
-        </p> */}
+        <div
+          className={cn(
+            'absolute left-0 top-0 z-10 size-12 bg-orange-500/0 opacity-0 transition-opacity duration-100 ease-in group-hover:opacity-0 group-hover:delay-0 group-hover:duration-100',
+            {
+              'opacity-100 delay-500 duration-300':
+                props.activePost === props.id,
+            },
+          )}
+        >
+          <div className="absolute left-0 top-0 size-12 bg-black/25 blur-xl" />
+          <div className="absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white after:absolute after:h-full after:w-full after:animate-ping after:rounded-full after:bg-white" />
+        </div>
+
         <Image
           src={props.image}
           className="object-cover"
@@ -88,6 +109,8 @@ const Page = () => {
         <div className="mx-auto flex w-full max-w-min bg-blue-200/0">
           {fauxData.map((item, index) => (
             <Item
+              id={index}
+              activePost={activePost}
               title={item.title}
               description={item.description}
               date={item.date}
@@ -102,7 +125,7 @@ const Page = () => {
           <div className="w-2/3">
             <header className="mb-8">
               <p className="mb-2 font-bold">Title</p>
-              <p className="text-sm text-zinc-600">
+              <p className="text-sm text-zinc-600 opacity-100 transition-opacity">
                 {fauxData[activePost].title}
               </p>
             </header>
@@ -113,11 +136,29 @@ const Page = () => {
               </p>
             </div>
           </div>
-          <div className="min-h-40 w-full">
+          <div className="w-full">
             <p className="mb-2 font-bold">Description</p>
-            <p className="text-sm text-zinc-600">
+            <p className="min-h-32 text-sm text-zinc-600">
               {fauxData[activePost].description}
             </p>
+            <Button
+              as="a"
+              className="group mt-0 text-sm"
+              text={'Read more'}
+              type={'primary'}
+              href={createSlug(fauxData[activePost].title)}
+            >
+              <div className="relative flex size-3.5 items-center justify-center overflow-hidden text-inherit">
+                <ArrowRight
+                  weight="bold"
+                  className="absolute -translate-x-4 transition-transform duration-300 ease-bounce sm:group-hover:translate-x-0"
+                />
+                <ArrowRight
+                  weight="bold"
+                  className="transition-transform duration-300 ease-bounce sm:group-hover:translate-x-4"
+                />
+              </div>
+            </Button>
           </div>
         </div>
       </Section>
