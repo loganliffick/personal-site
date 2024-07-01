@@ -10,13 +10,13 @@ const Layout = (props: {
   return (
     <FontProvider>
       <MetaTags {...(props.metaTagsProps ?? {})} />
-      <>
+      <div className="h-[100%]">
         <Nav />
-        <main className="flex w-full flex-col items-center justify-center px-6 sm:px-10">
+        <main className="flex h-full w-full flex-col items-center justify-center px-6 sm:px-10">
           {props.children}
         </main>
         <Footer />
-      </>
+      </div>
     </FontProvider>
   )
 }

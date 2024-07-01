@@ -29,7 +29,7 @@ const Nav = () => {
   })
 
   return (
-    <header className="relative z-10 mt-6 flex w-full items-center justify-center px-6 text-zinc-500 sm:mt-16 sm:px-10">
+    <header className="relative z-10 mt-6 flex w-full items-center justify-center px-6 text-zinc-700 sm:mt-16">
       <nav className="flex w-full max-w-lg items-center justify-between">
         <Link className="text-xl" href="/">
           Logan Liffick

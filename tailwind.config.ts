@@ -59,7 +59,7 @@ const config: Config = {
           },
           to: {
             opacity: '100%',
-            transform: 'scale(1) translateY(0px) rotate(0deg)',
+            transform: 'scale(1) translateY(0px)',
           },
         },
 
@@ -106,6 +106,7 @@ const config: Config = {
         fadeLg: 'fade 1.6s forwards',
         fadeXl: 'fade 2s forwards',
 
+        scaleFadeBlog: 'scaleFade 0.8s cubic-bezier(0.2,0,0,1.2) forwards',
         scaleFade: 'scaleFade 0.4s cubic-bezier(0.7,0,0.5,2) forwards',
 
         revealSm: 'reveal 0.8s cubic-bezier(0.5,-0.2,0.1,1.2) forwards',
