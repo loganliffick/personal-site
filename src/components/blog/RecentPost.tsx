@@ -70,7 +70,7 @@ const RecentPost = (props: {
         />
       </article>
       <header className="flex items-baseline justify-between px-6 pt-4 sm:hidden">
-        <p className="text-lg font-semibold">{props.title}</p>
+        <p className="text-lg font-medium">{props.title}</p>
         <p className="text-sm">{props.date}</p>
       </header>
     </Link>

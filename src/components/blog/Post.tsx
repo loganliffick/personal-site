@@ -9,7 +9,7 @@ const Post = (props: {
   return (
     <Link
       href={props.href}
-      className="mb-6 flex w-full items-baseline justify-between border-b"
+      className="mb-6 flex w-full items-baseline justify-between border-b border-zinc-200 py-2 transition-colors duration-200 ease-out hover:border-zinc-400"
     >
       <p className="font-medium">{props.title}</p>
       <p className="text-sm text-zinc-600">{props.date}</p>

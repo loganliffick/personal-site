@@ -42,7 +42,13 @@ const fauxData = [
     title: `Something older`,
     description: `I know a lot about a little, that's my guy I guess. That's my fiddle. For rizzle, the rizzler be up in the fizzler listening to quizzler getting better at school on chrizzler.`,
     image: '/images/jan-2024/workspace.jpg',
-    date: 'Dec 29th, 2023',
+    date: 'Dec 10th, 2023',
+  },
+  {
+    title: `Something oldest`,
+    description: `I know a lot about a little, that's my guy I guess. That's my fiddle. For rizzle, the rizzler be up in the fizzler listening to quizzler getting better at school on chrizzler.`,
+    image: '/images/jan-2024/workspace.jpg',
+    date: 'Aug 21st, 2023',
   },
 ]
 
