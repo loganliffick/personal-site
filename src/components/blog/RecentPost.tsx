@@ -66,6 +66,7 @@ const RecentPost = (props: {
           className="object-cover"
           fill
           priority
+          sizes="100"
           alt="image"
         />
       </article>
