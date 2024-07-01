@@ -15,32 +15,44 @@ const RecentPost = (props: {
   href: string
 }) => {
   const [rotation, setRotation] = useState(0)
+  const [isMobile, setIsMobile] = useState(true)
 
+  const handleResize = () => {
+    if (window.innerWidth < 640) {
+      setRotation(0)
+      setIsMobile(true)
+    } else {
+      if (isMobile === false) {
+      } else {
+        setRotation(Math.floor(Math.random() * 41) - 20)
+        setIsMobile(false)
+      }
+    }
+  }
   useEffect(() => {
-    setRotation(Math.floor(Math.random() * 41) - 20)
-  }, [])
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isMobile])
 
   return (
     <Link
-      className="scaleFade -mr-10 animate-scaleFadeBlog"
+      className="reveal sm:scaleFade animate-revealSm transition-all duration-300 ease-bounce sm:-mr-10 sm:animate-scaleFadeBlog sm:hover:mr-0"
       style={{ animationDelay: props.offset + 's' }}
       href={props.href}
       onMouseEnter={props.setActivePost}
     >
       <article
-        className={cn(
-          'group relative h-40 w-48 origin-center overflow-hidden rounded-3xl bg-zinc-500 shadow-xl transition-all duration-300 ease-bounce will-change-transform after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-3xl after:border-[5px] after:border-white/50 after:transition-[border] hover:mr-10 hover:!rotate-0 hover:!scale-110 hover:shadow-2xl hover:after:border-8 active:!scale-100 active:after:border-[12px]',
-          {
-            '': props.activePost === props.id,
-          },
-        )}
+        className="group relative aspect-video w-full origin-center overflow-hidden rounded-3xl bg-zinc-500 shadow-xl transition-all duration-300 ease-bounce will-change-transform after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-3xl after:border-[5px] after:border-white/50 after:transition-[border] sm:aspect-[4/3] sm:h-40 sm:hover:!rotate-0 sm:hover:scale-110 sm:hover:shadow-2xl sm:hover:after:border-8 sm:active:scale-100 sm:active:after:border-[12px]"
         style={{ transform: `rotate(${rotation}deg)` }}
       >
+        {/* active dot */}
         <div
           className={cn(
-            'absolute left-0 top-0 z-10 size-12 bg-orange-500/0 opacity-0 transition-opacity duration-100 ease-in group-hover:opacity-0 group-hover:delay-0 group-hover:duration-100',
+            'absolute left-0 top-0 z-10 size-12 opacity-0 transition-opacity duration-100 ease-in group-hover:opacity-0 group-hover:delay-0 group-hover:duration-100',
             {
-              'opacity-100 delay-500 duration-300':
+              'delay-500 duration-300 sm:opacity-100':
                 props.activePost === props.id,
             },
           )}
@@ -54,10 +66,13 @@ const RecentPost = (props: {
           className="object-cover"
           fill
           priority
-          sizes="100"
           alt="image"
         />
       </article>
+      <header className="flex items-baseline justify-between px-6 pt-4 sm:hidden">
+        <p className="text-lg font-semibold">{props.title}</p>
+        <p className="text-sm">{props.date}</p>
+      </header>
     </Link>
   )
 }

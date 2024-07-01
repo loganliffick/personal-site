@@ -59,7 +59,7 @@ const config: Config = {
           },
           to: {
             opacity: '100%',
-            transform: 'scale(1) translateY(0px) rotate(0deg)',
+            transform: 'scale(1) translateY(0px)',
           },
         },
 
