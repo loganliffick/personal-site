@@ -9,26 +9,26 @@ import slugify from 'slugify'
 
 const fauxData = [
   {
-    title: `The breaks`,
-    description: `I know a lot about a little, that's my guy I guess. That's my fiddle. For rizzle, the rizzler be up in the fizzler listening to quizzler getting better at school on chrizzler.`,
+    title: `The Sticks`,
+    description: `Must go faster. You really think you can fly that thing? Must go faster... go, go, go, go, go! We gotta burn the rain forest, dump toxic waste, pollute the air, and rip up the OZONE!`,
     image: '/images/jan-2024/workspace.jpg',
     date: 'April 1st, 2024',
   },
   {
-    title: `The bones`,
-    description: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae`,
+    title: `The Stones`,
+    description: `Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. You're a very talented young man, with your own clever thoughts and ideas.`,
     image: '/images/feb-2024/solarpunk.jpg',
     date: 'March 15th, 2024',
   },
   {
-    title: `The stones`,
-    description: `Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae`,
+    title: `The Bones`,
+    description: `My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard!`,
     image: '/images/blog/my-workspace/workspace-1.jpg',
     date: 'March 2nd, 2024',
   },
   {
-    title: `On the concept of hell's inferno`,
-    description: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae`,
+    title: `Of sticks, stones, and all that break bones`,
+    description: `Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Must go faster. Yes, Yes, without the oops!`,
     image: '/images/feb-2024/seinfeld.jpg',
     date: 'January 5th, 2024',
   },
