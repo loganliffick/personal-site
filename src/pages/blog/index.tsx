@@ -3,76 +3,61 @@ import Layout from 'components/Layout'
 import Section from 'components/Section'
 import Post from 'components/blog/Post'
 import RecentPost from 'components/blog/RecentPost'
+import { posts } from 'lib/blog'
 import { ArrowRight } from 'phosphor-react'
 import { useState } from 'react'
 import slugify from 'slugify'
 
-const fauxData = [
-  {
-    title: `The Sticks`,
-    description: `Must go faster. You really think you can fly that thing? Must go faster... go, go, go, go, go! We gotta burn the rain forest, dump toxic waste, pollute the air, and rip up the OZONE!`,
-    image: '/images/jan-2024/workspace.jpg',
-    date: 'April 1st, 2024',
-  },
-  {
-    title: `The Stones`,
-    description: `Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. You're a very talented young man, with your own clever thoughts and ideas.`,
-    image: '/images/feb-2024/solarpunk.jpg',
-    date: 'March 15th, 2024',
-  },
-  {
-    title: `The Bones`,
-    description: `My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard!`,
-    image: '/images/blog/my-workspace/workspace-1.jpg',
-    date: 'March 2nd, 2024',
-  },
-  {
-    title: `Of sticks, stones, and all that break bones`,
-    description: `Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Must go faster. Yes, Yes, without the oops!`,
-    image: '/images/feb-2024/seinfeld.jpg',
-    date: 'January 5th, 2024',
-  },
-  {
-    title: `Something old`,
-    description: `I know a lot about a little, that's my guy I guess. That's my fiddle. For rizzle, the rizzler be up in the fizzler listening to quizzler getting better at school on chrizzler.`,
-    image: '/images/jan-2024/workspace.jpg',
-    date: 'Dec 29th, 2023',
-  },
-  {
-    title: `Something older`,
-    description: `I know a lot about a little, that's my guy I guess. That's my fiddle. For rizzle, the rizzler be up in the fizzler listening to quizzler getting better at school on chrizzler.`,
-    image: '/images/jan-2024/workspace.jpg',
-    date: 'Dec 10th, 2023',
-  },
-  {
-    title: `Something oldest`,
-    description: `I know a lot about a little, that's my guy I guess. That's my fiddle. For rizzle, the rizzler be up in the fizzler listening to quizzler getting better at school on chrizzler.`,
-    image: '/images/jan-2024/workspace.jpg',
-    date: 'Aug 21st, 2023',
-  },
-]
+export const getStaticProps = async () => {
+  let { results } = await posts()
+  let publishedPosts = [] as any[]
 
-const createSlug = (title: string): string => {
-  const slug = '/blog/' + slugify(title, { lower: true })
+  results.forEach((result) => {
+    publishedPosts.push({
+      id: result.id,
+      title: result.properties.Title.title[0].plain_text,
+      date: result.properties.Date.date.start,
+      cover: result.cover.external?.url ?? '/',
+      description: result.properties.Description.rich_text[0].text.content,
+    })
+  })
+
+  return {
+    props: {
+      posts: publishedPosts
+        .sort((a, b) => (a.date > b.date ? 1 : -1))
+        .reverse(),
+    },
+  }
+}
+
+const createSlug = (text: string): string => {
+  const slug = '/blog/' + slugify(text, { lower: true })
   return slug
 }
 
-const Page = () => {
+const createDate = (text: string): string => {
+  const slug = '/blog/' + slugify(text, { lower: true })
+  return slug
+}
+
+const Page = ({ posts }: any) => {
   const [activePost, setActivePost] = useState(0)
 
   return (
     <Layout>
       <Section className="max-w-full">
+        {/* <JsonView>{posts}</JsonView> */}
         <h2 className="mb-16 text-xl font-medium">Recent Posts</h2>
         <div className="mx-auto flex w-full flex-col gap-10 sm:max-w-min sm:flex-row sm:gap-0">
-          {fauxData.slice(0, 4).map((post, index) => (
+          {posts.slice(0, 4).map((post: any, index: number) => (
             <RecentPost
               activePost={activePost}
               date={post.date}
               description={post.description}
               href={createSlug(post.title)}
               id={index}
-              image={post.image}
+              image={post.cover}
               key={index}
               offset={`${index * 0.1}`}
               setActivePost={() => setActivePost(index)}
@@ -85,27 +70,25 @@ const Page = () => {
             <header>
               <p className="mb-2 font-bold">Title</p>
               <p className="min-h-10 text-sm text-zinc-600 opacity-100 transition-opacity">
-                {fauxData[activePost].title}
+                {posts[activePost].title}
               </p>
             </header>
             <div className="w-auto">
               <p className="mb-2 font-bold">Published</p>
-              <p className="text-sm text-zinc-600">
-                {fauxData[activePost].date}
-              </p>
+              <p className="text-sm text-zinc-600">{posts[activePost].date}</p>
             </div>
           </div>
           <div className="w-full">
             <p className="mb-2 font-bold">Description</p>
             <p className="min-h-32 text-sm text-zinc-600">
-              {fauxData[activePost].description}
+              {posts[activePost].description}
             </p>
             <Button
               as="a"
               className="group text-sm"
               text={'Read more'}
               type={'primary'}
-              href={createSlug(fauxData[activePost].title)}
+              href={createSlug(posts[activePost].title)}
             >
               <div className="relative flex size-3.5 justify-center overflow-hidden text-inherit">
                 <ArrowRight
@@ -123,7 +106,7 @@ const Page = () => {
       </Section>
       <Section className="mt-10">
         <h2 className="mb-12 text-xl font-medium">Older Posts</h2>
-        {fauxData.slice(4, fauxData.length).map((post, index) => (
+        {posts.slice(4, posts.length).map((post: any, index: number) => (
           <Post
             date={post.date}
             href={createSlug(post.title)}
