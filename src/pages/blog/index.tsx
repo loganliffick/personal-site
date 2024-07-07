@@ -15,9 +15,13 @@ export const getStaticProps = async () => {
   results.forEach((result) => {
     publishedPosts.push({
       id: result.id,
+      // @ts-ignore
       title: result.properties.Title.title[0].plain_text,
+      // @ts-ignore
       date: result.properties.Date.date.start,
+      // @ts-ignore
       cover: result.cover.external?.url ?? '/',
+      // @ts-ignore
       description: result.properties.Description.rich_text[0].text.content,
     })
   })

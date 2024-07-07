@@ -5,8 +5,14 @@ const client = new Client({
 })
 
 const posts = async () => {
+  const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE
+
+  if (!databaseId) {
+    throw new Error('api key not set')
+  }
+
   const myPosts = await client.databases.query({
-    database_id: process.env.NEXT_PUBLIC_NOTION_DATABASE,
+    database_id: databaseId,
     filter: {
       property: 'Published',
       checkbox: {
