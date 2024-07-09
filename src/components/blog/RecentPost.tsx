@@ -39,7 +39,10 @@ const RecentPost = (props: {
 
   return (
     <Link
-      className="reveal sm:scaleFade animate-revealSm transition-all duration-300 ease-bounce sm:-mr-10 sm:animate-scaleFadeBlog sm:hover:mr-0"
+      className={cn(
+        'reveal sm:scaleFade transition-all duration-300 ease-bounce sm:-mr-10 sm:hover:mr-0',
+        { 'animate-revealSm sm:animate-scaleFadeBlog': isImageLoaded },
+      )}
       style={{ animationDelay: props.offset + 's' }}
       href={props.href}
       onMouseEnter={props.setActivePost}
@@ -64,7 +67,7 @@ const RecentPost = (props: {
 
         <Image
           src={props.image}
-          className={cn('fade object-cover', { 'animate-fade': isImageLoaded })}
+          className="object-cover"
           fill
           priority
           sizes="100"
