@@ -4,6 +4,7 @@ import Section from 'components/Section'
 import Post from 'components/blog/Post'
 import RecentPost from 'components/blog/RecentPost'
 import { posts } from 'lib/blog'
+import moment from 'moment'
 import { ArrowRight } from 'phosphor-react'
 import { useState } from 'react'
 import slugify from 'slugify'
@@ -12,16 +13,12 @@ export const getStaticProps = async () => {
   let { results } = await posts()
   let publishedPosts = [] as any[]
 
-  results.forEach((result) => {
+  results.forEach((result: any) => {
     publishedPosts.push({
       id: result.id,
-      // @ts-ignore
       title: result.properties.Title.title[0].plain_text,
-      // @ts-ignore
       date: result.properties.Date.date.start,
-      // @ts-ignore
       cover: result.cover.external?.url ?? '/',
-      // @ts-ignore
       description: result.properties.Description.rich_text[0].text.content,
     })
   })
@@ -40,9 +37,9 @@ const createSlug = (text: string): string => {
   return slug
 }
 
-const createDate = (text: string): string => {
-  const slug = '/blog/' + slugify(text, { lower: true })
-  return slug
+const createDate = (text: string) => {
+  const date = moment(text).format('LL')
+  return date
 }
 
 const Page = ({ posts }: any) => {
@@ -57,7 +54,7 @@ const Page = ({ posts }: any) => {
           {posts.slice(0, 4).map((post: any, index: number) => (
             <RecentPost
               activePost={activePost}
-              date={post.date}
+              date={createDate(post.date)}
               description={post.description}
               href={createSlug(post.title)}
               id={index}
@@ -79,7 +76,9 @@ const Page = ({ posts }: any) => {
             </header>
             <div className="w-auto">
               <p className="mb-2 font-bold">Published</p>
-              <p className="text-sm text-zinc-600">{posts[activePost].date}</p>
+              <p className="text-sm text-zinc-600">
+                {createDate(posts[activePost].date)}
+              </p>
             </div>
           </div>
           <div className="w-full">
@@ -112,7 +111,7 @@ const Page = ({ posts }: any) => {
         <h2 className="mb-12 text-xl font-medium">Older Posts</h2>
         {posts.slice(4, posts.length).map((post: any, index: number) => (
           <Post
-            date={post.date}
+            date={createDate(post.date)}
             href={createSlug(post.title)}
             key={index}
             title={post.title}

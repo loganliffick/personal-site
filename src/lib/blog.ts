@@ -8,7 +8,7 @@ const posts = async () => {
   const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE
 
   if (!databaseId) {
-    throw new Error('api key not set')
+    throw new Error('db not found...')
   }
 
   const myPosts = await client.databases.query({
