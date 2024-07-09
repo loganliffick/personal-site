@@ -9,24 +9,24 @@ import React, { useState } from 'react'
 import slugify from 'slugify'
 import { cn } from 'utils/tw'
 
-export const getStaticPaths = async () => {
-  let { results } = await posts()
+// export const getStaticPaths = async () => {
+//   let { results } = await posts()
 
-  return {
-    paths: results.map((post: any) => {
-      return {
-        params: {
-          slug: slugify(
-            post.properties.Title.title[0].plain_text,
-          ).toLowerCase(),
-        },
-      }
-    }),
-    fallback: false,
-  }
-}
+//   return {
+//     paths: results.map((post: any) => {
+//       return {
+//         params: {
+//           slug: slugify(
+//             post.properties.Title.title[0].plain_text,
+//           ).toLowerCase(),
+//         },
+//       }
+//     }),
+//     fallback: false,
+//   }
+// }
 
-export const getStaticProps = async ({ params: { slug } }: any) => {
+export const getServerSideProps = async ({ params: { slug } }: any) => {
   let { results: postResults } = (await posts()) as any
 
   // finds a post that matches slug
@@ -66,6 +66,7 @@ const renderBlock = (block: any) => {
     case 'image':
       const alt = block['image'].caption[0]?.text.content
       const [isImageLoaded, setIsImageLoaded] = useState(false)
+      console.log(block)
 
       return (
         <Image
