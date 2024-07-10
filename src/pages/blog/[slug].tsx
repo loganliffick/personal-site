@@ -66,7 +66,6 @@ const renderBlock = (block: any) => {
     case 'image':
       const alt = block['image'].caption[0]?.text.content
       const [isImageLoaded, setIsImageLoaded] = useState(false)
-      console.log(block)
 
       return (
         <Image

@@ -8,7 +8,7 @@ const TextLink = (props: {
 }) => (
   <Link
     aria-label={props.aria ?? props.text}
-    className="font-semibold text-blue-500 underline sm:hover:text-blue-700"
+    className="font-semibold text-indigo-600 underline sm:hover:text-indigo-700"
     href={props.href}
     rel={props.external ? 'noopener noreferrer' : undefined}
     target={props.external ? '_blank' : undefined}
