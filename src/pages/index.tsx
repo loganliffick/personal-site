@@ -1,6 +1,6 @@
-import Layout from 'components/Layout'
+import Calendar from 'components/Calendar/Calendar'
+import Layout from 'components/Layouts/Layout'
 import Tag from 'components/Tag'
-import Calendar from 'components/calendar/Calendar'
 import { decemberData } from 'lib/activity/2023/dec'
 import { februaryData } from 'lib/activity/2024/feb'
 import { januaryData } from 'lib/activity/2024/jan'

@@ -1,4 +1,4 @@
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
@@ -7,7 +7,7 @@ const Footer = () => {
   const [date, setDate] = useState('string' || undefined)
 
   useEffect(() => {
-    setDate(moment().format('dddd, MMMM D'))
+    setDate(dayjs().format('dddd, MMMM D'))
   }, [])
 
   const { ref, inView } = useInView({

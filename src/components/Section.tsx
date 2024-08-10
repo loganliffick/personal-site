@@ -1,18 +1,20 @@
 import { cn } from 'utils/tw'
 
-const Section = (props: {
+type SectionProps = {
   children?: React.ReactNode
   className?: string
   visualize?: boolean
-}) => (
+}
+
+const Section = ({ children, className, visualize }: SectionProps) => (
   <section
     className={cn(
-      'my-32 flex w-full max-w-lg flex-col items-center text-zinc-800',
-      { 'bg-orange-200': props.visualize },
-      props.className,
+      'my-20 flex w-full max-w-lg flex-col items-center text-zinc-800 sm:my-32',
+      { 'bg-orange-200': visualize },
+      className,
     )}
   >
-    {props.children}
+    {children}
   </section>
 )
 

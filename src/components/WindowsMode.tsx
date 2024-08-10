@@ -1,8 +1,8 @@
-import { WindowsLogo } from 'phosphor-react'
+import { WindowsLogo } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { cn } from 'utils/tw'
 
-const WindowsMode = (props: { children?: React.ReactNode }) => {
+const WindowsMode = () => {
   const [active, setActive] = useState(false)
   return (
     <div className="">

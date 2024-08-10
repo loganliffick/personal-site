@@ -1,5 +1,5 @@
 import Button from 'components/Button'
-import Layout from 'components/Layout'
+import Layout from 'components/Layouts/Layout'
 import Section from 'components/Section'
 import Splt from 'react-spltjs'
 
@@ -22,7 +22,7 @@ const Page = () => (
         This is a throwback, iykyk
       </h2>
       <div className="animate-rotate">
-        <Button text={`Take me home`} as="a" href={'./'} type="primary" />
+        <Button garnish href={'./'} title={`Take me home`} />
       </div>
     </Section>
   </Layout>

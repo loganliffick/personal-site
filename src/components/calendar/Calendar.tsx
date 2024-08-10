@@ -1,18 +1,22 @@
+import Button from 'components/Calendar/Button'
+import Gallery from 'components/Calendar/Gallery'
+import Modal from 'components/Calendar/Modal'
+import TextBlock from 'components/Calendar/TextBlock'
 import Tooltip from 'components/Tooltip'
-import Button from 'components/calendar/Button'
-import Gallery from 'components/calendar/Gallery'
-import Modal from 'components/calendar/Modal'
-import TextBlock from 'components/calendar/TextBlock'
+import dayjs from 'dayjs'
 import useClickOutside from 'hooks/useClickOutside'
 import { MonthDataType } from 'lib/activity/activityTypes'
-import moment from 'moment'
 import Image, { StaticImageData } from 'next/image'
 import placeholder from 'public/images/placeholder.jpg'
 import { Fragment, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
 
-const Calendar = (props: { data: MonthDataType[] }) => {
+type CalendarProps = {
+  data: MonthDataType[]
+}
+
+const Calendar = ({ data }: CalendarProps) => {
   const [calBgColor, setCalBgColor] = useState('none')
   const [takeover, setTakeover] = useState(false)
   const [clip, setClip] = useState(false)
@@ -23,12 +27,13 @@ const Calendar = (props: { data: MonthDataType[] }) => {
     placeholder,
   )
 
-  const currentYear = moment().year(props.data[0].year)
-  const currentMonth = moment(currentYear).month(props.data[0].month)
-  const monthStartDay = moment(currentMonth).startOf('month').isoWeekday()
+  const currentYear = dayjs().year(data[0].year)
+  const currentMonth = dayjs(currentYear).month(data[0].month)
+  const monthStartDay =
+    ((dayjs(currentMonth).startOf('month').day() + 6) % 7) + 1
   const blankTiles = Array.from({ length: monthStartDay - 1 })
 
-  const monthDays = moment().month(props.data[0].month).daysInMonth()
+  const monthDays = dayjs().month(data[0].month).daysInMonth()
   const tiles = Array.from({ length: monthDays })
 
   const clickOutsideRef = useClickOutside(() => {
@@ -79,14 +84,14 @@ const Calendar = (props: { data: MonthDataType[] }) => {
           'reveal xScrollbars mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-zinc-800 p-7 shadow-xl',
           bgColors(calBgColor),
           {
-            'animate-rotate': props.data[0].month % 2 !== 0 && inView,
-            'animate-rotateAlt': props.data[0].month % 2 === 0 && inView,
+            'animate-rotate': data[0].month % 2 !== 0 && inView,
+            'animate-rotateAlt': data[0].month % 2 === 0 && inView,
           },
         )}
         ref={clickOutsideRef}
       >
         <h2 className="reveal -mt-2 animate-revealSm text-sm font-bold tracking-wider text-zinc-300">
-          {moment().month(props.data[0].month).format('MMMM')}
+          {dayjs().month(data[0].month).format('MMMM')}
         </h2>
         <div className="grid w-full grid-cols-7 gap-2">
           {/* Map days of previous month */}
@@ -104,9 +109,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
 
           {/* Map days of current month */}
           {tiles.map((_, index) => {
-            const dayData = props.data[0].days.find(
-              (data) => data.day === index + 1,
-            )
+            const dayData = data[0].days.find((data) => data.day === index + 1)
 
             const [active, setActive] = useState(false)
 

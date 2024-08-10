@@ -1,48 +1,33 @@
+import Post from 'components/Blog/Post'
+import RecentPost from 'components/Blog/RecentPost'
 import Button from 'components/Button'
-import Layout from 'components/Layout'
+import Layout from 'components/Layouts/Layout'
 import Section from 'components/Section'
-import Post from 'components/blog/Post'
-import RecentPost from 'components/blog/RecentPost'
-import { posts } from 'lib/blog'
-import moment from 'moment'
-import { ArrowRight } from 'phosphor-react'
+import dayjs from 'dayjs'
+import getPosts, { postTypes } from 'lib/blog'
+import { GetStaticProps } from 'next'
 import { useState } from 'react'
-import slugify from 'slugify'
 
-export const getStaticProps = async () => {
-  let { results } = await posts()
-  let publishedPosts = [] as any[]
-
-  results.forEach((result: any) => {
-    publishedPosts.push({
-      id: result.id,
-      title: result.properties.Title.title[0].plain_text,
-      date: result.properties.Date.date.start,
-      cover: result.cover.external?.url ?? '/',
-      description: result.properties.Description.rich_text[0].text.content,
-    })
-  })
-
+export const getStaticProps: GetStaticProps<{
+  posts: postTypes
+}> = async () => {
+  const posts = await getPosts()
   return {
-    props: {
-      posts: publishedPosts
-        .sort((a, b) => (a.date > b.date ? 1 : -1))
-        .reverse(),
-    },
+    props: { posts },
   }
 }
 
 const createSlug = (text: string): string => {
-  const slug = '/blog/' + slugify(text, { lower: true })
+  const slug = '/blog/' + text
   return slug
 }
 
 const createDate = (text: string) => {
-  const date = moment(text).format('LL')
+  const date = dayjs(text).format('MMM D, YYYY')
   return date
 }
 
-const Page = ({ posts }: any) => {
+const Page = ({ posts }: { posts: postTypes[] }) => {
   const [activePost, setActivePost] = useState(0)
 
   return (
@@ -51,14 +36,13 @@ const Page = ({ posts }: any) => {
         {/* <JsonView>{posts}</JsonView> */}
         <h2 className="mb-16 text-xl font-medium">Recent Posts</h2>
         <div className="mx-auto flex w-full flex-col gap-10 sm:max-w-min sm:flex-row sm:gap-0">
-          {posts.slice(0, 4).map((post: any, index: number) => (
+          {posts.slice(0, 4).map((post: postTypes, index: number) => (
             <RecentPost
               activePost={activePost}
-              date={createDate(post.date)}
-              description={post.description}
-              href={createSlug(post.title)}
+              date={createDate(post.publishedAt)}
+              href={createSlug(post.slug)}
               id={index}
-              image={post.cover}
+              image={post.coverImage.url}
               key={index}
               offset={`${index * 0.1}`}
               setActivePost={() => setActivePost(index)}
@@ -77,47 +61,37 @@ const Page = ({ posts }: any) => {
             <div className="w-auto">
               <p className="mb-2 font-bold">Published</p>
               <p className="text-sm text-zinc-600">
-                {createDate(posts[activePost].date)}
+                {createDate(posts[activePost].publishedAt)}
               </p>
             </div>
           </div>
           <div className="w-full">
             <p className="mb-2 font-bold">Description</p>
-            <p className="min-h-32 text-sm text-zinc-600">
-              {posts[activePost].description}
+            <p className="min-h-32 text-pretty text-sm text-zinc-600">
+              {posts[activePost].seo.description}
             </p>
             <Button
-              as="a"
-              className="group text-sm"
-              text={'Read more'}
-              type={'primary'}
-              href={createSlug(posts[activePost].title)}
-            >
-              <div className="relative flex size-3.5 justify-center overflow-hidden text-inherit">
-                <ArrowRight
-                  weight="bold"
-                  className="absolute -translate-x-4 transition-transform duration-300 ease-bounce sm:group-hover:translate-x-0"
-                />
-                <ArrowRight
-                  weight="bold"
-                  className="transition-transform duration-300 ease-bounce sm:group-hover:translate-x-4"
-                />
-              </div>
-            </Button>
+              className="text-sm"
+              title={'Read more'}
+              href={createSlug(posts[activePost].slug)}
+              garnish
+            />
           </div>
         </div>
       </Section>
-      <Section className="mt-10">
-        <h2 className="mb-12 text-xl font-medium">Older Posts</h2>
-        {posts.slice(4, posts.length).map((post: any, index: number) => (
-          <Post
-            date={createDate(post.date)}
-            href={createSlug(post.title)}
-            key={index}
-            title={post.title}
-          />
-        ))}
-      </Section>
+      {posts.length > 4 && (
+        <Section className="mt-10">
+          <h2 className="mb-12 text-xl font-medium">Older Posts</h2>
+          {posts.slice(4, posts.length).map((post: any, index: number) => (
+            <Post
+              date={createDate(post.date)}
+              href={createSlug(post.slug)}
+              key={index}
+              title={post.title}
+            />
+          ))}
+        </Section>
+      )}
     </Layout>
   )
 }

@@ -1,14 +1,16 @@
 import Head from 'next/head'
 
-interface MetaTagsProps {
-  title?: string
+type MetaTagsProviderProps = {
   description?: string
+  ogImage?: string
+  title?: string
 }
 
-const MetaTags = ({
+const MetaTagsProvider = ({
   title = 'Logan Liffick',
   description = 'Logan Liffick is a design engineer building brands, systems, and products.',
-}: MetaTagsProps) => (
+  ogImage = 'https://www.loganliffick.com/og.jpg',
+}: MetaTagsProviderProps) => (
   <Head>
     <meta charSet="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -25,11 +27,7 @@ const MetaTags = ({
       content={description}
     />
 
-    <meta
-      property="og:image"
-      key="og:image"
-      content="https://www.loganliffick.com/og.jpg"
-    />
+    <meta property="og:image" key="og:image" content={ogImage} />
     <meta property="og:type" key="og:type" content="website" />
     <meta property="og:site_name" key="og:site_name" content="Logan Liffick" />
     <meta property="og:url" key="og:url" content="https://loganliffick.com" />
@@ -54,4 +52,4 @@ const MetaTags = ({
   </Head>
 )
 
-export default MetaTags
+export default MetaTagsProvider

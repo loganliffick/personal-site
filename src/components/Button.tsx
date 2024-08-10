@@ -1,53 +1,63 @@
-import Link, { LinkProps } from 'next/link'
+import Garnish from 'components/Garnish'
+import Link from 'next/link'
 import { cn } from 'utils/tw'
 
-const Button = (props: {
-  as?: 'a' | 'button'
+type ButtonProps = {
   aria?: string
+  as?: 'a' | 'button'
   children?: React.ReactNode
   className?: string
   external?: boolean
-  href?: LinkProps['href']
+  garnish?: boolean
+  href?: string
   onClick?: () => void
   state?: boolean
-  text: string
-  type: 'primary' | 'secondary'
-}) => {
-  const className = cn(
-    'w-max rounded-2xl px-4 py-2.5 font-medium sm:transition-transform active:scale-95 block',
-    {
-      'bg-white text-zinc-700': props.type === 'primary',
-      'bg-white': props.type === 'primary' && props.state,
+  title: string
+  type?: 'submit' | 'reset' | 'button' | undefined
+  variant?: 'primary' | 'secondary'
+}
 
-      'bg-transparent text-zinc-600 sm:hover:bg-white':
-        props.type === 'secondary',
-      'bg-white text-zinc-800': props.type === 'secondary' && props.state,
+const Button = ({
+  as,
+  aria,
+  children,
+  className,
+  external,
+  garnish = false,
+  href,
+  onClick,
+  state,
+  title,
+  type,
+  variant = 'primary',
+}: ButtonProps) => {
+  const Component = as ?? Link
 
-      'flex items-center justify-center gap-2.5': props.children,
-    },
-    props.className,
-  )
+  return (
+    <Component
+      aria-label={aria ?? title}
+      className={cn(
+        'group flex w-max items-center justify-center gap-2.5 rounded-2xl px-4 py-2.5 font-medium active:scale-95 sm:transition-transform',
+        {
+          'bg-white text-zinc-700': variant === 'primary',
+          'bg-white': variant === 'primary' && state,
 
-  return props.as === 'a' ? (
-    <Link
-      aria-label={props.aria ?? props.text}
-      className={className}
-      href={props.href || ''}
-      rel={props.external ? 'noopener noreferrer' : undefined}
-      target={props.external ? '_blank' : undefined}
+          'bg-transparent text-zinc-600 sm:hover:bg-white':
+            variant === 'secondary',
+          'bg-white text-zinc-800': variant === 'secondary' && state,
+        },
+        className,
+      )}
+      href={href || ''}
+      onClick={onClick}
+      rel={external ? 'noopener noreferrer' : undefined}
+      target={external ? '_blank' : undefined}
+      type={type}
     >
-      {props.text}
-      {props.children}
-    </Link>
-  ) : (
-    <button
-      aria-label={props.aria ?? props.text}
-      className={className}
-      onClick={props.onClick}
-    >
-      {props.text}
-      {props.children}
-    </button>
+      {title}
+      {children}
+      {garnish && <Garnish />}
+    </Component>
   )
 }
 

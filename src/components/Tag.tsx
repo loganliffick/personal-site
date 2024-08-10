@@ -1,7 +1,11 @@
 import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
 
-const Tag = (props: { year: string }) => {
+type TagProps = {
+  year: string
+}
+
+const Tag = ({ year }: TagProps) => {
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -15,7 +19,7 @@ const Tag = (props: { year: string }) => {
       )}
       ref={ref}
     >
-      {props.year}
+      {year}
     </div>
   )
 }

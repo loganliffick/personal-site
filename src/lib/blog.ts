@@ -1,40 +1,123 @@
-import { Client } from '@notionhq/client'
-
-const client = new Client({
-  auth: process.env.NEXT_PUBLIC_NOTION_ACCESS_TOKEN,
-})
-
-const posts = async () => {
-  const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE
-
-  if (!databaseId) {
-    throw new Error('db not found...')
+export interface postTypes {
+  id: string
+  title: string
+  seo: {
+    title: string
+    description: string
   }
+  features: {
+    tableOfContents: {
+      items: {
+        title: string
+        slug: string
+      }[]
+    }
+  }
+  publishedAt: string
+  coverImage: {
+    url: string
+  }
+  slug: string
+  content: {
+    html: string
+  }
+}
 
-  const myPosts = await client.databases.query({
-    database_id: databaseId,
-    filter: {
-      property: 'Published',
-      checkbox: {
-        equals: true,
-      },
+const getPosts = async (slug?: string) => {
+  const response = await fetch('https://gql.hashnode.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify({
+      query: `
+        query SinglePostByPublication {
+          publication(host: "loganliffick.hashnode.dev") {
+            id
+            posts(first: 10) {
+              totalDocuments
+              edges {
+                node {
+                  id
+                  title
+                  seo {
+                    title
+                    description
+                  }
+                  features {
+                    tableOfContents {
+                      items {
+                        title
+                        slug
+                      }
+                    }
+                  }
+                  publishedAt
+                  coverImage {
+                    url
+                  }
+                  slug
+                  content {
+                    html
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+    }),
   })
-  return myPosts
+
+  const { data } = await response.json()
+  const postsList = data.publication.posts.edges
+
+  if (slug) {
+    const post: postTypes | null =
+      postsList.find(
+        (result: { node: { slug: string } }) => result.node.slug === slug,
+      )?.node || null
+
+    return post
+      ? {
+          id: post.id,
+          title: post.title,
+          seo: {
+            title: post.seo.title,
+            description: post.seo.description,
+          },
+          features: {
+            tableOfContents: {
+              items: post.features.tableOfContents.items,
+            },
+          },
+          publishedAt: post.publishedAt,
+          coverImage: {
+            url: post.coverImage.url,
+          },
+          slug: post.slug,
+          content: {
+            html: post.content.html,
+          },
+        }
+      : null
+  } else {
+    const posts = postsList.map(({ node }: { node: postTypes }) => ({
+      id: node.id,
+      title: node.title,
+      seo: {
+        title: node.seo.title,
+        description: node.seo.description,
+      },
+      publishedAt: node.publishedAt,
+      coverImage: {
+        url: node.coverImage.url,
+      },
+      slug: node.slug,
+    }))
+
+    return posts
+  }
 }
 
-const post = async (slug: any) => {
-  const myPost = await client.pages.retrieve({
-    page_id: slug,
-  })
-  return myPost
-}
-
-const blocks = async (slug: any) => {
-  const myBlocks = await client.blocks.children.list({
-    block_id: slug,
-  })
-  return myBlocks
-}
-
-export { blocks, post, posts }
+export default getPosts
