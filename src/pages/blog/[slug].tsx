@@ -1,4 +1,4 @@
-import BackButton from 'components/Blog/BackButton'
+import BackButton from 'components/Blo/BackButton'
 import Layout from 'components/Layouts/Layout'
 import Section from 'components/Section'
 import dayjs from 'dayjs'
