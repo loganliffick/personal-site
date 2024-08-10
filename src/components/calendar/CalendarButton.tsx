@@ -1,11 +1,11 @@
 import { ArrowRight } from '@phosphor-icons/react'
 import Link from 'next/link'
 
-type ButtonProps = {
+type CalendarButtonProps = {
   data: any
 }
 
-const Button = ({ data }: ButtonProps) => (
+const CalendarButton = ({ data }: CalendarButtonProps) => (
   <li className="mx-2">
     <Link
       className="group flex w-full items-center justify-between rounded-2xl bg-white py-1 pl-6 pr-1 text-base font-bold tracking-wide text-zinc-800 transition-[letter-spacing,transform] duration-200 ease-bounce sm:hover:bg-white sm:hover:tracking-widest sm:active:tracking-wide"
@@ -31,4 +31,4 @@ const Button = ({ data }: ButtonProps) => (
   </li>
 )
 
-export default Button
+export default CalendarButton

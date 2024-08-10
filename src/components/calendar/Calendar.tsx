@@ -1,4 +1,4 @@
-import Button from 'components/Calendar/Button'
+import CalendarButton from 'components/Calendar/CalendarButton'
 import Gallery from 'components/Calendar/Gallery'
 import Modal from 'components/Calendar/Modal'
 import TextBlock from 'components/Calendar/TextBlock'
@@ -169,7 +169,7 @@ const Calendar = ({ data }: CalendarProps) => {
                               />
                             )}
                             {contentItem.type === 'LinkButton' && (
-                              <Button data={contentItem.link} />
+                              <CalendarButton data={contentItem.link} />
                             )}
                           </Fragment>
                         ),
