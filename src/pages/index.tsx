@@ -1,4 +1,4 @@
-import Calendar from 'components/Cal/Calendar'
+import Calendar from 'components/Calendar/Calendar'
 import Layout from 'components/Layouts/Layout'
 import Tag from 'components/Tag'
 import { decemberData } from 'lib/activity/2023/dec'

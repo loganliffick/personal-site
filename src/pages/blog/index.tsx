@@ -1,5 +1,5 @@
-import Post from 'components/Blo/Post'
-import RecentPost from 'components/Blo/RecentPost'
+import Post from 'components/Blog/Post'
+import RecentPost from 'components/Blog/RecentPost'
 import Button from 'components/Button'
 import Layout from 'components/Layouts/Layout'
 import Section from 'components/Section'
