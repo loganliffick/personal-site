@@ -2,11 +2,12 @@ import Calendar from 'components/Calendar/Calendar'
 import Layout from 'components/Layouts/Layout'
 import Tag from 'components/Tag'
 import { decemberData } from 'lib/activity/2023/dec'
+import { augData } from 'lib/activity/2024/aug'
 import { februaryData } from 'lib/activity/2024/feb'
 import { januaryData } from 'lib/activity/2024/jan'
 import { mayData } from 'lib/activity/2024/may'
 
-const data24 = [mayData, februaryData, januaryData]
+const data24 = [augData, mayData, februaryData, januaryData]
 const data23 = [decemberData]
 
 const Page = () => (

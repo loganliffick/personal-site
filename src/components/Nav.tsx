@@ -50,7 +50,7 @@ const Nav = () => {
             />
             <ul
               className={cn(
-                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top scale-90 rounded-2xl bg-white p-1 opacity-0 duration-150 ease-bounce',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top scale-90 rounded-2xl bg-white p-1 opacity-0 shadow-lg shadow-zinc-900/5 duration-200 ease-bounce',
                 {
                   'visible scale-100 opacity-100': open,
                 },
