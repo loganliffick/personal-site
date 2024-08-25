@@ -1,10 +1,9 @@
 import { ArrowsOutSimple } from '@phosphor-icons/react'
 import Image, { StaticImageData } from 'next/image'
-import { MouseEventHandler } from 'react'
 
 type GalleryProps = {
   image: StaticImageData
-  onClick: MouseEventHandler<HTMLButtonElement>
+  onClick: () => void
 }
 
 const Gallery = ({ image, onClick }: GalleryProps) => (
