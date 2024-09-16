@@ -37,14 +37,14 @@ const Modal = ({ children, open, setOpen }: ModalProps) => {
     open && (
       <section
         className={cn(
-          'fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-violet-500/10 backdrop-blur-sm duration-200',
+          'fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-zinc-500/10 backdrop-blur-sm duration-200',
           { 'animate-fadeSm': open },
         )}
         ref={menuRef}
       >
         <article
           className={cn(
-            'relative mx-6 w-full max-w-md rounded-3xl bg-white p-6 text-zinc-800 shadow-md shadow-violet-500/10',
+            'relative mx-6 w-full max-w-md rounded-3xl bg-white p-6 text-zinc-800 shadow-md shadow-zinc-500/10',
             {
               'animate-revealSm': open,
             },

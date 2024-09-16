@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^14.2.6",
+    "@outerbase/sdk": "^1.0.20",
     "@phosphor-icons/react": "^2.1.7",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
