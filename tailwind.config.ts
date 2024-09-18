@@ -86,13 +86,7 @@ const config: Config = {
 
         bouncy: {
           to: {
-            transform: 'translateY(-8px)',
-          },
-        },
-
-        bouncyLite: {
-          to: {
-            transform: 'translateY(-4px)',
+            transform: 'translateX(50px)',
           },
         },
       },
@@ -116,6 +110,8 @@ const config: Config = {
 
         rotate: 'rotate 1s cubic-bezier(0.5,-0.5,0.1,1.8) forwards',
         rotateAlt: 'rotateAlt 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
+
+        bouncy: 'bouncy 3s ease infinite alternate',
       },
     },
   },

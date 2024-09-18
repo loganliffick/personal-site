@@ -2,7 +2,7 @@ import { Outerbase, OuterbaseConnection } from '@outerbase/sdk'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const connection: OuterbaseConnection = new OuterbaseConnection({
-  apiKey: process.env.OB_API_KEY || '',
+  apiKey: process.env.NEXT_PUBLIC_OB_API_KEY || '',
 })
 
 export const db = Outerbase(connection)
