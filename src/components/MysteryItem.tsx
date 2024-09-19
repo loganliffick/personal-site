@@ -1,4 +1,5 @@
 // import Modal from 'components/Modal'
+import { Heart, X } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { cn } from 'utils/tw'
 
@@ -38,7 +39,7 @@ const Gradients = () => (
       viewBox="0 0 443 495"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="animate-bouncy absolute -bottom-44 -left-20 scale-75 mix-blend-overlay"
+      className="absolute -bottom-44 -left-20 scale-75 animate-bouncy mix-blend-overlay"
     >
       <path
         d="M426.531 253.899C481.647 274.462 386.39 427.633 293.031 475.898C160.531 544.398 -25.8753 403.49 61.3572 371.439C217.857 313.939 12.9606 246.53 1.3574 166.44C-19.1426 24.9396 197.324 60.4811 328.531 4.89857C422.857 -35.0604 229.531 180.398 426.531 253.899Z"
@@ -321,6 +322,7 @@ const Envelope = (props: { onClick?: () => void; state: boolean }) => (
 const MysteryItem = () => {
   const [active, setActive] = useState(false)
   const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -335,10 +337,15 @@ const MysteryItem = () => {
       })
 
       if (response.ok) {
-        alert('Successfully subscribed!')
+        // alert('Successfully subscribed!')
+        setSubscribed(true)
+        setTimeout(() => {
+          setSubscribed(false)
+        }, 1500)
+        setActive(false)
         setEmail('') // Reset form after successful submission
       } else {
-        alert('Failed to subscribe.')
+        alert('Failed to subscribe...')
       }
     } catch (error) {
       console.error('Error:', error)
@@ -348,11 +355,43 @@ const MysteryItem = () => {
 
   return (
     <>
-      {/* <Modal open={active} setOpen={setActive}>
-        <h2 className="text-xl font-semibold">Something's on the horizon...</h2>
+      <div
+        className={cn(
+          'invisible fixed bottom-32 left-8 z-[50] flex origin-bottom-left translate-x-10 translate-y-10 scale-0 items-center gap-1 rounded-2xl bg-white p-3 opacity-0 shadow-2xl shadow-zinc-500/10 duration-200 ease-[cubic-bezier(0.8,0.5,0,1.2)]',
+          {
+            'visible translate-x-0 translate-y-0 scale-100 opacity-100 duration-500':
+              subscribed,
+          },
+        )}
+      >
+        <p>Thanks for subscribing</p>
+        <Heart weight="fill" className="text-red-400" size={20} />
+      </div>
+      <div
+        className={cn(
+          'group invisible fixed bottom-40 left-8 z-10 origin-bottom-left translate-x-10 translate-y-20 scale-0 rounded-2xl bg-white p-5 pt-10 opacity-0 shadow-2xl shadow-zinc-500/10 duration-200 ease-[cubic-bezier(0.8,0.5,0,1.2)]',
+          {
+            'visible translate-x-0 translate-y-0 scale-100 opacity-100 duration-[400ms]':
+              active,
+          },
+        )}
+      >
+        <button
+          className="absolute right-2 top-2 flex size-10 items-center justify-center rounded-lg bg-transparent text-zinc-400 transition-transform duration-100 hover:bg-zinc-100/75"
+          onClick={() => setActive(false)}
+        >
+          <X size={18} weight="bold" />
+        </button>
+        <div className="mx-auto mb-5 size-40 rounded-full bg-zinc-100"></div>
+        <header className="mb-4">
+          <h2 className="pr-2 text-xl font-semibold">
+            Something's on the horizon
+          </h2>
+          <p className="pr-2 text-zinc-500">Join the waitlist</p>
+        </header>
         <form onSubmit={handleSubmit} className="text-zinc-800">
           <label htmlFor="email" className="block">
-            <span className="block text-sm font-medium text-zinc-600">
+            <span className="block text-xs font-medium text-zinc-600">
               Email
             </span>
             <input
@@ -362,12 +401,18 @@ const MysteryItem = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full rounded bg-zinc-100 p-2.5 text-sm placeholder:text-zinc-400 focus:outline-none"
-              placeholder="hello@mac.com"
+              placeholder="tim@apple.com"
             />
           </label>
-          <Button title="Subscribe" type="submit" className="bg-zinc-100" />
+          <button
+            title="Subscribe"
+            type="submit"
+            className="relative mt-5 overflow-hidden rounded-full bg-zinc-100 bg-gradient-to-t from-blue-600 to-blue-400 px-4 py-1 font-semibold text-white after:pointer-events-none after:absolute after:left-0 after:top-0 after:h-1/2 after:w-full after:select-none after:bg-white/15 after:blur-[0.5px] active:scale-95"
+          >
+            Subscribe
+          </button>
         </form>
-      </Modal> */}
+      </div>
       <Gradients />
       <Envelope onClick={() => setActive(!active)} state={active} />
     </>
