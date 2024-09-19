@@ -26,7 +26,7 @@ export default async function handler(
     }
 
     // Use res.redirect for client redirection
-    res.redirect(307, '/') // 307 preserves POST method
+    res.redirect(303, '/') // 307 preserves POST method
   } else {
     res.setHeader('Allow', ['POST'])
     return res.status(405).json({ message: 'Method Not Allowed' })
