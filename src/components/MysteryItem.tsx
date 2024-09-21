@@ -1,10 +1,21 @@
-// import Modal from 'components/Modal'
+// wild thought,
+// and hear me out:
+// maybe don't steal this one 😱
+// and sell it for profit 😏
+// after all, my version is *always* better
+// 🖕🖕🖕
+//
+// yours truly,
+// Logan 😘
+
 import { Heart, X } from '@phosphor-icons/react'
+import Loader from 'components/Loader'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { cn } from 'utils/tw'
 
 const Gradients = () => (
-  <div className="fade pointer-events-none fixed bottom-0 left-0 -z-10 animate-fadeXl select-none blur-3xl">
+  <div className="pointer-events-none fixed bottom-0 left-0 -z-10 select-none blur-3xl">
     <svg
       width="599"
       height="513"
@@ -64,7 +75,7 @@ const Gradients = () => (
 )
 
 const Envelope = (props: { onClick?: () => void; state: boolean }) => (
-  <div className="reveal fixed bottom-8 left-8 h-[72px] animate-revealSm">
+  <div className="fixed bottom-8 left-8 h-[72px]">
     <button
       className={cn(
         'relative shadow-xl transition-all hover:-rotate-3 hover:scale-95 hover:shadow-lg active:scale-90 active:shadow-md',
@@ -320,12 +331,23 @@ const Envelope = (props: { onClick?: () => void; state: boolean }) => (
 )
 
 const MysteryItem = () => {
-  const [active, setActive] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
   const [subscribed, setSubscribed] = useState(false)
+
+  // control where newsletter shows up
+  const router = useRouter()
+  const currentPage = router.pathname
+  const excludedPages = ['/blog/']
+
+  if (excludedPages.some((prefix) => currentPage.startsWith(prefix))) {
+    return null
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setLoading(true)
 
     try {
       const response = await fetch('/api/addEntry', {
@@ -339,11 +361,12 @@ const MysteryItem = () => {
       if (response.ok) {
         // alert('Successfully subscribed!')
         setSubscribed(true)
+        setLoading(false)
+        setMenuOpen(false)
+        setEmail('') // Reset form after successful submission
         setTimeout(() => {
           setSubscribed(false)
         }, 1500)
-        setActive(false)
-        setEmail('') // Reset form after successful submission
       } else {
         alert('Failed to subscribe...')
       }
@@ -364,7 +387,7 @@ const MysteryItem = () => {
           },
         )}
       >
-        <p>Thanks for subscribing</p>
+        <p>Success! Thanks for subscribing</p>
         <Heart weight="fill" className="text-red-400" size={20} />
       </div>
       <div
@@ -372,18 +395,28 @@ const MysteryItem = () => {
           'group invisible fixed bottom-40 left-8 z-10 origin-bottom-left translate-x-10 translate-y-20 scale-0 rounded-2xl bg-white p-5 pt-10 opacity-0 shadow-2xl shadow-zinc-500/10 duration-200 ease-[cubic-bezier(0.8,0.5,0,1.2)]',
           {
             'visible translate-x-0 translate-y-0 scale-100 opacity-100 duration-[400ms]':
-              active,
+              menuOpen,
           },
         )}
       >
         <button
           className="absolute right-2 top-2 flex size-10 items-center justify-center rounded-lg bg-transparent text-zinc-400 transition-transform duration-100 hover:bg-zinc-100/75"
-          onClick={() => setActive(false)}
+          onClick={() => setMenuOpen(false)}
         >
           <X size={18} weight="bold" />
         </button>
-        <div className="mx-auto mb-5 size-40 rounded-full bg-zinc-100"></div>
-        <header className="mb-4">
+        <div className="relative mx-auto mb-4 flex size-40 items-center justify-center overflow-hidden rounded-full bg-zinc-100 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-full after:border-8 after:border-white/20">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute -bottom-0.5 -left-1 scale-[2.4]"
+          >
+            <source src={'/videos/ollie.mp4'} type="video/mp4" />
+          </video>
+        </div>
+        <header className="mb-3">
           <h2 className="pr-2 text-xl font-semibold">
             Something's on the horizon
           </h2>
@@ -407,14 +440,17 @@ const MysteryItem = () => {
           <button
             title="Subscribe"
             type="submit"
-            className="relative mt-5 overflow-hidden rounded-full bg-zinc-100 bg-gradient-to-t from-blue-600 to-blue-400 px-4 py-1 font-semibold text-white after:pointer-events-none after:absolute after:left-0 after:top-0 after:h-1/2 after:w-full after:select-none after:bg-white/15 after:blur-[0.5px] active:scale-95"
+            className="relative mt-5 flex items-center gap-2 overflow-hidden rounded-full bg-zinc-100 bg-gradient-to-t from-blue-600 to-blue-400 px-4 py-1 font-semibold text-white after:pointer-events-none after:absolute after:left-0 after:top-0 after:h-1/2 after:w-full after:select-none after:bg-white/15 after:blur-[0.5px] active:scale-95"
           >
             Subscribe
+            <span className={cn('-mr-1 hidden', { block: loading })}>
+              <Loader />
+            </span>
           </button>
         </form>
       </div>
       <Gradients />
-      <Envelope onClick={() => setActive(!active)} state={active} />
+      <Envelope onClick={() => setMenuOpen(!menuOpen)} state={menuOpen} />
     </>
   )
 }
