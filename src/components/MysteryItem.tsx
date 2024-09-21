@@ -11,7 +11,7 @@
 import { Heart, X } from '@phosphor-icons/react'
 import Loader from 'components/Loader'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { cn } from 'utils/tw'
 
 const Gradients = () => (
@@ -335,6 +335,7 @@ const MysteryItem = () => {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [subscribed, setSubscribed] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   // control where newsletter shows up
   const router = useRouter()
@@ -368,7 +369,10 @@ const MysteryItem = () => {
           setSubscribed(false)
         }, 1500)
       } else {
-        alert('Failed to subscribe...')
+        alert('Unable to subscribe, your email may already be subscribed.')
+        setMenuOpen(false)
+        setLoading(false)
+        setEmail('')
       }
     } catch (error) {
       console.error('Error:', error)
@@ -435,6 +439,7 @@ const MysteryItem = () => {
               required
               className="w-full rounded bg-zinc-100 p-2.5 text-sm placeholder:text-zinc-400 focus:outline-none"
               placeholder="tim@apple.com"
+              ref={inputRef}
             />
           </label>
           <button
@@ -450,7 +455,15 @@ const MysteryItem = () => {
         </form>
       </div>
       <Gradients />
-      <Envelope onClick={() => setMenuOpen(!menuOpen)} state={menuOpen} />
+      <Envelope
+        onClick={() => {
+          setMenuOpen(!menuOpen),
+            setTimeout(() => {
+              inputRef.current?.focus()
+            }, 200)
+        }}
+        state={menuOpen}
+      />
     </>
   )
 }

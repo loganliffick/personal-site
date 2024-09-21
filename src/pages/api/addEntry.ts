@@ -15,18 +15,40 @@ export default async function handler(
     const formData = await req.body
     const email = formData.email
 
-    const { data, error } = await db
-      .insert({ email: email })
-      .into('signups')
-      .query()
+    try {
+      // Check if the email already exists in the 'signups' table
+      const { data: existingEmails, error: fetchError } = await db
+        .selectFrom([{ table: 'signups', columns: ['email'] }])
+        .where(`email = '${email}'`)
+        .query()
 
-    if (error) {
-      console.error('Error inserting data:', error)
-      return res.status(500).json({ error: 'Failed to insert data' })
+      if (fetchError) {
+        console.error('Error fetching existing data:', fetchError)
+        return res.status(500).json({ error: 'Failed to fetch data' })
+      }
+
+      // If email already exists, return early
+      if (existingEmails.length > 0) {
+        return res.status(400).json({ error: 'Email already registered' })
+      }
+
+      // Proceed with insertion if email is unique
+      const { data, error } = await db
+        .insert({ email: email })
+        .into('signups')
+        .query()
+
+      if (error) {
+        console.error('Error inserting data:', error)
+        return res.status(500).json({ error: 'Failed to insert data' })
+      }
+
+      // Redirect after successful insertion
+      res.redirect(303, '/') // 303 is for redirection after successful POST
+    } catch (err) {
+      console.error('Unexpected error:', err)
+      return res.status(500).json({ error: 'An unexpected error occurred' })
     }
-
-    // Use res.redirect for client redirection
-    res.redirect(303, '/') // 307 preserves POST method
   } else {
     res.setHeader('Allow', ['POST'])
     return res.status(405).json({ message: 'Method Not Allowed' })
