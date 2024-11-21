@@ -44,7 +44,7 @@ export default async function handler(
       }
 
       // Redirect after successful insertion
-      res.redirect(303, '/') // 303 is for redirection after successful POST
+      res.status(200).json({ message: 'Signup successful' })
     } catch (err) {
       console.error('Unexpected error:', err)
       return res.status(500).json({ error: 'An unexpected error occurred' })
