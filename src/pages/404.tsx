@@ -1,24 +1,22 @@
 import Button from 'components/Button'
 import Layout from 'components/Layouts/Layout'
 import Section from 'components/Section'
-import Splt from 'react-spltjs'
-
-const myArray = [['text-blue-500'], ['text-indigo-500'], ['text-violet-500']]
 
 const Page = () => (
   <Layout>
     <Section>
       <h1 className="mb-3 font-mono text-8xl font-black">
-        <Splt
-          array={myArray}
-          text="404"
-          className="inline-block animate-revealLg"
-          speed={0.5}
-          offset={0.2}
-          ease="cubic-bezier(0,-1,0,3)"
-        />
+        <span className="reveal inline-block animate-[reveal_1s_cubic-bezier(0.2,-0.25,0,1.6)_forwards] text-blue-500">
+          4
+        </span>
+        <span className="reveal inline-block animate-[reveal_1s_0.1s_cubic-bezier(0.2,-0.25,0,1.6)_forwards] text-indigo-500">
+          0
+        </span>
+        <span className="reveal inline-block animate-[reveal_1s_0.2s_cubic-bezier(0.2,-0.25,0,1.6)_forwards] text-violet-500">
+          4
+        </span>
       </h1>
-      <h2 className="mb-12 animate-revealSm text-zinc-500">
+      <h2 className="mb-12 animate-revealSm text-zinc-600">
         This is a throwback, iykyk
       </h2>
       <div className="animate-rotate">

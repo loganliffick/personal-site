@@ -11,7 +11,7 @@
 import { Heart, X } from '@phosphor-icons/react'
 import Loader from 'components/Loader'
 import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from 'utils/tw'
 
 const Gradients = () => (
@@ -78,7 +78,7 @@ const Envelope = (props: { onClick?: () => void; state: boolean }) => (
   <div className="fixed bottom-8 left-8 h-[72px]">
     <button
       className={cn(
-        'relative shadow-xl transition-all hover:-rotate-3 hover:scale-95 hover:shadow-lg active:scale-90 active:shadow-md',
+        'relative shadow-xl transition-all focus-within:outline-none hover:-rotate-3 hover:scale-95 hover:shadow-lg active:scale-90 active:shadow-md',
         {
           '-rotate-3 scale-90 shadow-md': props.state,
         },
@@ -346,6 +346,20 @@ const MysteryItem = () => {
     return null
   }
 
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && menuOpen) {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
@@ -409,8 +423,20 @@ const MysteryItem = () => {
         >
           <X size={18} weight="bold" />
         </button>
-        <div className="relative mx-auto mb-4 flex size-40 items-center justify-center overflow-hidden rounded-full bg-zinc-100 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-full after:border-8 after:border-white/20">
-          <video
+
+        <div className="absolute z-10 flex h-1/2 w-2/3">
+          <div className="flex size-full rotate-6 flex-col items-center justify-center gap-4 rounded-sm bg-gradient-to-tl from-yellow-100 to-yellow-50 shadow-lg">
+            <div className="absolute -top-1 left-1/2 size-8 -translate-x-1/2 rounded-full bg-gradient-to-tl from-red-500 to-red-400 shadow-[-2px_2px_0px_#991b1b]">
+              <div className="absolute -top-0.5 left-2/3 size-6 -translate-x-1/2 rounded-full bg-gradient-to-tl from-red-500 to-red-400 shadow-[-2.5px_2.5px_0px_#991b1b]" />
+            </div>
+            <p className="text-lg font-medium text-zinc-900">
+              Taking a break <br /> :shrug:
+            </p>
+          </div>
+        </div>
+
+        <div className="relative mx-auto mb-4 flex size-40 items-center justify-center overflow-hidden rounded-full bg-indigo-500 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:rounded-full after:border-8 after:border-white/20">
+          {/* <video
             autoPlay
             loop
             muted
@@ -418,7 +444,7 @@ const MysteryItem = () => {
             className="absolute -bottom-0.5 -left-1 scale-[2.4]"
           >
             <source src={'/videos/ollie.mp4'} type="video/mp4" />
-          </video>
+          </video> */}
         </div>
         <header className="mb-3">
           <h2 className="pr-2 text-xl font-semibold">
@@ -432,6 +458,7 @@ const MysteryItem = () => {
               Email
             </span>
             <input
+              disabled
               type="email"
               id="email"
               value={email}
@@ -445,7 +472,8 @@ const MysteryItem = () => {
           <button
             title="Subscribe"
             type="submit"
-            className="relative mt-5 flex items-center gap-2 overflow-hidden rounded-full bg-zinc-100 bg-gradient-to-t from-blue-600 to-blue-400 px-4 py-1 font-semibold text-white after:pointer-events-none after:absolute after:left-0 after:top-0 after:h-1/2 after:w-full after:select-none after:bg-white/15 after:blur-[0.5px] active:scale-95"
+            className="relative mt-5 flex items-center gap-2 overflow-hidden rounded-full bg-zinc-100 bg-gradient-to-t from-blue-600 to-blue-400 px-4 py-1 font-semibold text-white after:pointer-events-none after:absolute after:left-0 after:top-0 after:h-1/2 after:w-full after:select-none after:bg-white/15 after:blur-[0.5px] active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100"
+            disabled
           >
             Subscribe
             <span className={cn('-mr-1 hidden', { block: loading })}>
