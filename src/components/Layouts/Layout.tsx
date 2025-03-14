@@ -1,7 +1,6 @@
 import Footer from 'components/Footer'
 import FontProvider from 'components/Layouts/Providers/FontProvider'
 import MetaTagsProvider from 'components/Layouts/Providers/MetaTagsProvider'
-import MysteryItem from 'components/MysteryItem'
 import Nav from 'components/Nav'
 
 type LayoutProps = {
@@ -17,7 +16,7 @@ const Layout = ({ children, metaTags }: LayoutProps) => (
       <main className="flex h-full w-full flex-col items-center justify-center px-6 sm:px-10">
         {children}
       </main>
-      <MysteryItem />
+      {/* <MysteryItem /> */}
       <Footer />
     </div>
   </FontProvider>
