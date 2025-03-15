@@ -1,3 +1,5 @@
+// archive
+
 import Post from 'components/Blog/Post'
 import RecentPost from 'components/Blog/RecentPost'
 import Button from 'components/Button'
