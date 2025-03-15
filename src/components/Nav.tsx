@@ -1,8 +1,8 @@
-import Button from 'components/Button'
-import useClickOutside from 'hooks/useClickOutside'
+import { Button } from '@/components/ds/Button'
+import { useClickOutside } from '@/hooks/useClickOutside'
+import { cn } from '@/utils/tw'
 import Link, { LinkProps } from 'next/link'
 import { useState } from 'react'
-import { cn } from 'utils/tw'
 
 type MenuItemProps = {
   external?: boolean
@@ -24,7 +24,7 @@ const MenuItem = ({ external = true, href, title }: MenuItemProps) => (
   </li>
 )
 
-const Nav = () => {
+export const Nav = () => {
   const [open, setOpen] = useState(false)
 
   const menuRef = useClickOutside(() => {
@@ -44,13 +44,13 @@ const Nav = () => {
               onClick={() => {
                 setOpen(!open)
               }}
-              state={open}
+              // state={open}
               title="Contact"
               variant="secondary"
             />
             <ul
               className={cn(
-                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top scale-90 rounded-2xl bg-white p-1 opacity-0 shadow-lg shadow-zinc-900/5 duration-200 ease-bounce',
+                'ease-bounce invisible absolute top-14 right-0 block w-36 min-w-max origin-top scale-90 rounded-2xl bg-white p-1 opacity-0 shadow-lg shadow-zinc-900/5 duration-200',
                 {
                   'visible scale-100 opacity-100': open,
                 },
@@ -71,5 +71,3 @@ const Nav = () => {
     </header>
   )
 }
-
-export default Nav

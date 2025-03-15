@@ -1,4 +1,4 @@
-import { cn } from 'utils/tw'
+import { cn } from '@/utils/tw'
 
 type SectionProps = {
   children?: React.ReactNode
@@ -6,7 +6,7 @@ type SectionProps = {
   visualize?: boolean
 }
 
-const Section = ({ children, className, visualize }: SectionProps) => (
+export const Section = ({ children, className, visualize }: SectionProps) => (
   <section
     className={cn(
       'my-20 flex w-full max-w-lg flex-col items-center text-zinc-800 sm:my-32',
@@ -17,5 +17,3 @@ const Section = ({ children, className, visualize }: SectionProps) => (
     {children}
   </section>
 )
-
-export default Section

@@ -1,28 +1,19 @@
+import { cn } from '@/utils/tw'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
-import { useInView } from 'react-intersection-observer'
-import { cn } from 'utils/tw'
 
-const Footer = () => {
+export const Footer = () => {
   const [date, setDate] = useState<string>()
 
   useEffect(() => {
     setDate(dayjs().format('dddd, MMMM D'))
   }, [])
 
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: false,
-  })
-
   return (
-    <footer
-      className="flex w-full items-center justify-center px-6 pb-12 pt-40 text-zinc-500 sm:px-10"
-      ref={ref}
-    >
+    <footer className="flex w-full items-center justify-center px-6 pt-40 pb-12 text-zinc-500 sm:px-10">
       <div
         className={cn('fade flex w-full max-w-lg items-center justify-center', {
-          'animate-fade': inView && date !== undefined,
+          'animate-fade': date !== undefined,
         })}
       >
         <p>{date}</p>
@@ -30,5 +21,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer
