@@ -6,7 +6,7 @@ import { Section } from '@/components/Section'
 export default function Page() {
   return (
     <Section>
-      <p>hello worlds</p>
+      <p>hello world</p>
       <Button title={'click me to do something'} />
     </Section>
   )
