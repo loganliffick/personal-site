@@ -8,24 +8,24 @@
     "start": "next start"
   },
   "dependencies": {
-    "@next/third-parties": "^15.2.2",
+    "@next/third-parties": "^15.2.3",
     "@phosphor-icons/react": "^2.1.7",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
-    "next": "^15.2.2",
+    "next": "^15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.14",
-    "@types/node": "^22.13.10",
-    "@types/react": "^19.0.10",
+    "@tailwindcss/postcss": "^4.0.15",
+    "@types/node": "^22.13.11",
+    "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.14",
+    "tailwindcss": "^4.0.15",
     "typescript": "^5.8.2"
   }
 }

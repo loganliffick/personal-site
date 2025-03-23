@@ -1,3 +1,5 @@
+'use client'
+
 import { useTooltip } from '@/providers/TooltipProvider'
 import { cn } from '@/utils/tw'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
