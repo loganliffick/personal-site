@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <Section>
       <p>Blog</p>
-      <Button title={'click me to do something'} />
+      {/* <Button title={'click me to do something'} /> */}
     </Section>
   )
 }
