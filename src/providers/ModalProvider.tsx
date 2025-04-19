@@ -1,22 +1,22 @@
 'use client'
 
 import { Modal } from '@/components/ds/Modal'
-import { createContext, ReactNode, useContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 type ModalContextType = {
   isOpen: boolean
-  content: ReactNode
-  openModal: (content: ReactNode) => void
+  content: React.ReactNode
+  openModal: (content: React.ReactNode) => void
   closeModal: () => void
 }
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined)
 
-export const ModalProvider = ({ children }: { children: ReactNode }) => {
+export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [content, setContent] = useState<ReactNode>(null)
+  const [content, setContent] = useState<React.ReactNode>(null)
 
-  const openModal = (content: ReactNode) => {
+  const openModal = (content: React.ReactNode) => {
     setContent(content)
     setIsOpen(true)
   }
