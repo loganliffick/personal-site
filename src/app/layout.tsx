@@ -1,9 +1,10 @@
+import { Footer } from '@/components/Footer'
 import { Providers } from '@/providers'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const geist = Geist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Logan Liffick',
@@ -21,10 +22,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`bg-base-200 ${inter.className} text-300 antialiased transition-colors selection:bg-blue-600 selection:text-white dark:bg-neutral-950 dark:text-neutral-100`}
+      className={`bg-neutral-50 ${geist.className} text-300 antialiased transition-colors selection:bg-neutral-300/50 dark:bg-neutral-950 dark:text-neutral-100`}
     >
-      <body>
-        <Providers>{children}</Providers>
+      <body className="flex min-h-screen flex-col">
+        <Providers>
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

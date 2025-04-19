@@ -10,7 +10,7 @@
 /* Tailwind config */
 @theme {
   /* Fonts */
-  --font-sans: 'Inter', 'sans-serif';
+  --font-sans: 'Geist', 'sans-serif';
 
   /* Easings */
   --ease-bounce: cubic-bezier(0.2, -0.25, 0, 1.6);
@@ -268,7 +268,7 @@
 .scaleFade {
   animation: scaleFade 0.5s var(--ease-bounce) forwards;
   opacity: 0;
-  transform: rotate(12deg) scale(0.75);
+  transform: rotate(100deg) scale(0.5);
 
   @media (prefers-reduced-motion) {
     animation: none;

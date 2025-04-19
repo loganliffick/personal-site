@@ -9,7 +9,7 @@ type SectionProps = {
 export const Section = ({ children, className, visualize }: SectionProps) => (
   <section
     className={cn(
-      'my-20 flex w-full max-w-lg flex-col items-center text-zinc-800 sm:my-32',
+      'relative flex w-full flex-col px-6 py-20',
       { 'bg-orange-200': visualize },
       className,
     )}
