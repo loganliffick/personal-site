@@ -4,7 +4,10 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import './globals.css'
 
-const geist = Geist({ subsets: ['latin'] })
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: 'Logan Liffick',
@@ -22,7 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`bg-neutral-50 ${geist.className} text-300 antialiased transition-colors selection:bg-neutral-300/50 dark:bg-neutral-950 dark:text-neutral-100`}
+      className={`bg-base-bg ${geistSans.variable} text-base-1000 antialiased transition-colors selection:bg-neutral-300/50`}
     >
       <body className="flex min-h-screen flex-col">
         <Providers>

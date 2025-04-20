@@ -1,180 +1,65 @@
 @import 'tailwindcss';
 
-/* Custom variants */
 @custom-variant dark (&:where(.dark, .dark *));
-@custom-variant interactive (&:where(.interactive, .interactive *));
+/* @custom-variant interactive (&:where(.interactive, .interactive *));
 @custom-variant toggle (&:where(.toggle, .toggle *));
 @custom-variant square (&:where(.square, .square *));
-@custom-variant circular (&:where(.circular, .circular *));
+@custom-variant circular (&:where(.circular, .circular *)); */
 
-/* Tailwind config */
+:root {
+  --base-100: var(--color-white);
+  --base-200: var(--color-neutral-50);
+  --base-1000: var(--color-neutral-950);
+
+  --border: var(--color-neutral-200);
+  --bg: var(--color-neutral-50);
+  --text-strong: var(--color-neutral-950);
+  --text-medium: var(--color-neutral-600);
+  --text-soft: var(--color-neutral-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-neutral-925: oklch(0.175 0 0);
+
+    --base-100: var(--color-neutral-925);
+    --base-200: var(--color-neutral-900);
+    --base-1000: var(--color-white);
+
+    --border: var(--color-neutral-900);
+    --bg: var(--color-black);
+    --text-strong: var(--color-white);
+    --text-medium: var(--color-neutral-300);
+    --text-soft: var(--color-neutral-400);
+  }
+}
+
 @theme {
-  /* Fonts */
-  --font-sans: 'Geist', 'sans-serif';
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 
-  /* Easings */
+  --color-base-100: var(--base-100);
+  --color-base-200: var(--base-200);
+  --color-base-1000: var(--base-1000);
+
+  --color-base-border: var(--border);
+  --color-base-bg: var(--bg);
+  --text-color-base-strong: var(--text-strong);
+  --text-color-base-medium: var(--text-medium);
+  --text-color-base-soft: var(--text-soft);
+
   --ease-bounce: cubic-bezier(0.2, -0.25, 0, 1.6);
-
-  /* Transitions */
-  --default-transition-duration: 100ms;
-
-  /* Base colors */
-  --color-black: #000;
-  --color-white: #fff;
-
-  --color-neutral-50: oklch(0.985 0 0);
-  --color-neutral-100: oklch(0.97 0 0);
-  --color-neutral-150: oklch(0.96 0 0) /*new */;
-  --color-neutral-200: oklch(0.922 0 0);
-  --color-neutral-250: oklch(0.9 0 0) /* new */;
-  --color-neutral-300: oklch(0.87 0 0);
-  --color-neutral-400: oklch(0.708 0 0);
-  --color-neutral-450: oklch(0.62 0 0) /* new */;
-  --color-neutral-500: oklch(0.556 0 0);
-  --color-neutral-600: oklch(0.439 0 0);
-  --color-neutral-700: oklch(0.371 0 0);
-  --color-neutral-750: oklch(0.31 0 0) /* new */;
-  --color-neutral-800: oklch(0.269 0 0);
-  --color-neutral-850: oklch(0.23 0 0) /* new */;
-  --color-neutral-900: oklch(0.205 0 0);
-  --color-neutral-925: oklch(0.175 0 0) /* new */;
-  --color-neutral-950: oklch(0.145 0 0);
-
-  --color-red-650: oklch(0.55 0.238 27.4);
-  --color-red-750: oklch(0.46 0.195 27.2);
-
-  --color-blue-400: oklch(0.707 0.165 254.624);
-  --color-blue-800: oklch(0.424 0.199 265.638);
-
-  /* Component colors */
-
-  /* Base colors */
-  --color-base-100: var(--color-white);
-  --color-base-200: var(--color-neutral-50);
-  --color-base-300: var(--color-neutral-100);
-  --color-base-400: var(--color-neutral-200);
-  --color-base-500: var(--color-neutral-300);
-  --color-base-1000: var(--color-neutral-900);
-
-  --color-stroke: var(--color-neutral-200);
-  --color-stroke-active: var(--color-neutral-300);
-  --color-stroke-input: var(--color-neutral-400);
-
-  /* Text colors */
-  --text-color-100: var(--color-neutral-500);
-  --text-color-200: var(--color-neutral-700);
-  --text-color-300: var(--color-neutral-900);
-  --text-color-destructive: var(--color-red-600);
-  --text-color-inverted: var(--color-white);
-
-  /* bp-btn */
-  --color-btn-primary-bg: var(--color-neutral-750);
-  --color-btn-primary-bg-hover: var(--color-neutral-850);
-  --color-btn-primary-border: var(--color-neutral-500);
-  --color-btn-primary-border-hover: var(--color-neutral-600);
-
-  --color-btn-ghost-bg-hover: var(--color-neutral-150);
-
-  --color-btn-destructive-bg: var(--color-red-600);
-  --color-btn-destructive-bg-hover: var(--color-red-650);
-  --color-btn-destructive-border: var(--color-red-400);
-  --color-btn-destructive-border-hover: var(--color-red-500);
-
-  /* Focus colors */
-  --color-focus: var(--color-blue-400);
 }
 
-.btn {
-  &.btn-primary {
-    @apply text-inverted border-transparent bg-blue-600 shadow-xs;
-
-    @variant interactive {
-      @apply not-disabled:hover:bg-blue-700;
-
-      @variant toggle {
-        @apply not-disabled:border-btn-primary-border-hover not-disabled:bg-btn-primary-bg-hover;
-      }
-    }
-  }
-  /* &.btn-primary {
-    @apply border-blue-200 bg-blue-50 text-blue-700 shadow-xs;
-
-    @variant interactive {
-      @apply not-disabled:hover:border-blue-300 not-disabled:hover:bg-blue-100;
-
-      @variant toggle {
-        @apply not-disabled:border-btn-primary-border-hover not-disabled:bg-btn-primary-bg-hover;
-      }
-    }
-  } */
-
-  &.btn-secondary {
-    @apply bg-base-100 text-300 border-stroke shadow-xs;
-
-    @variant interactive {
-      @apply not-disabled:hover:border-stroke-active not-disabled:hover:bg-base-200;
-
-      @variant toggle {
-        @apply not-disabled:border-stroke-active not-disabled:bg-base-200;
-      }
-    }
-  }
-
-  &.btn-ghost {
-    @apply text-200 border-transparent bg-transparent;
-
-    @variant interactive {
-      @apply not-disabled:hover:bg-base-300 not-disabled:hover:text-300;
-
-      @variant toggle {
-        @apply not-disabled:bg-base-300;
-      }
-    }
-  }
-
-  /* &.btn-destructive {
-    @apply border-red-200 bg-red-50 text-red-700;
-
-    @variant interactive {
-      @apply not-disabled:hover:border-red-300 not-disabled:hover:bg-red-100;
-
-      @variant toggle {
-        @apply not-disabled:border-red-300 not-disabled:bg-red-100;
-      }
-    }
-  } */
-
-  &.btn-destructive {
-    @apply border-transparent bg-red-600 text-white;
-
-    @variant interactive {
-      @apply not-disabled:hover:bg-red-700;
-
-      @variant toggle {
-        @apply not-disabled:border-red-300 not-disabled:bg-red-100;
-      }
-    }
-  }
-
-  @apply border;
-
-  @variant interactive {
-    @apply cursor-pointer transition-colors;
-  }
-}
-
-/* Use for elements that require a tab-focus state (most elements) */
-.add-focus {
+/* .add-focus {
   @apply focus-visible:ring-focus outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring *:in-focus:opacity-100;
-}
+} */
 
-/* Use for elements that require a disabled state */
-.add-disable {
+/* .add-disable {
   @apply disabled:text-base-100 disabled:cursor-not-allowed;
-}
+} */
 
-/* Use size variants for elements that need to match certain heights */
-.add-size-sm {
+/* .add-size-sm {
   @apply h-8 rounded-lg px-2.5 text-xs;
 
   @variant square {
@@ -208,7 +93,7 @@
   @variant circular {
     @apply flex size-10 items-center justify-center rounded-full px-0;
   }
-}
+} */
 
 /* Animations */
 

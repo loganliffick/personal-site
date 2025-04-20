@@ -15,7 +15,7 @@ export const PostCard = ({ data }: PostCardProps) => {
   return (
     <Link
       href={`/${type}/${slug}`}
-      className="flex items-center justify-between rounded-lg border border-neutral-200 bg-white p-4 shadow-xs"
+      className="bg-base-100 border-base-border flex items-center justify-between rounded-lg border p-4 shadow-xs"
     >
       <header className="flex items-center gap-2">
         {type === 'blog' ? (
@@ -27,7 +27,7 @@ export const PostCard = ({ data }: PostCardProps) => {
         <h3 className="text-sm font-medium">{title}</h3>
       </header>
 
-      <p className="text-sm text-neutral-500">
+      <p className="text-base-soft text-sm">
         {dayjs(date).format('MMMM DD, YYYY')}
       </p>
     </Link>
