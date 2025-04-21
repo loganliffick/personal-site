@@ -9,7 +9,7 @@ type TextLinkProps = {
 export const TextLink = ({ external, href, title }: TextLinkProps) => {
   return (
     <Link
-      className="focus:underline focus:outline-none sm:hover:opacity-80"
+      className="underline-offset-2 hover:underline focus:underline focus:outline-none"
       href={href}
       rel={external ? 'noopener noreferrer' : undefined}
       target={external ? '_blank' : undefined}

@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant supports-hover {
+  @supports (@media (hover: hover) {&: hover}) {
+    @slot;
+  }
+}
 /* @custom-variant interactive (&:where(.interactive, .interactive *));
 @custom-variant toggle (&:where(.toggle, .toggle *));
 @custom-variant square (&:where(.square, .square *));
@@ -153,17 +158,17 @@
 .scaleFade {
   animation: scaleFade 0.5s var(--ease-bounce) forwards;
   opacity: 0;
-  transform: rotate(100deg) scale(0.5);
+  transform: scale(0.5);
 
   @media (prefers-reduced-motion) {
     animation: none;
     opacity: 1;
-    transform: rotate(0deg) scale(1);
+    transform: scale(1);
   }
 }
 @keyframes scaleFade {
   to {
-    transform: rotate(0deg) scale(1);
+    transform: scale(1);
     opacity: 1;
   }
 }
