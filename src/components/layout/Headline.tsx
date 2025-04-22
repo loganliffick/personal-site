@@ -12,11 +12,11 @@ export const Headline = ({ date, subhead, title }: HeadlineProps) => {
       <h1 className="mb-1 text-xl font-medium tracking-tight text-balance">
         {title}
       </h1>
-      <h2 className="text-base-medium text-balance">{subhead}</h2>
+      <h2 className="text-base-medium">{subhead}</h2>
       {date && (
         <p className="text-base-medium">
           Published on{' '}
-          <span className="text-base-1000 font-medium">
+          <span className="text-base-1000">
             {dayjs(date).format('MMMM DD, YYYY')}
           </span>
           .

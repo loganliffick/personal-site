@@ -20,7 +20,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="flex w-full items-center justify-center bg-red-200/0 px-6 pt-40 pb-10">
+    <footer className="flex w-full items-center justify-center bg-red-200/0 px-6 py-10 md:pt-40">
       <div className="flex w-full max-w-xl flex-wrap-reverse items-center justify-between text-sm">
         <p className="text-base-soft select-none">© {currentYear}</p>
         <nav className="-mr-1.5 flex gap-0.5">
@@ -40,8 +40,8 @@ export const Footer = () => {
             <div className="absolute -top-10 -left-1/2 -translate-x-1/2 sm:left-1/2">
               <div
                 className={cn(
-                  'bg-base-100 border-base-border set-fade fade-sm flex w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
-                  { 'trigger-fade': isCopied },
+                  'bg-base-100 border-base-border set-fade fade-sm hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
+                  { 'trigger-fade flex': isCopied },
                 )}
                 onAnimationEnd={() =>
                   setTimeout(() => {

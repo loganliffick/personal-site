@@ -68,7 +68,6 @@ export default function Page() {
               <li>Philips Hue Play Lightstrip</li>
             </ul>
           </Article>
-          <div className="h-[1000px]" />
         </Inset>
       </Section>
     </Main>
