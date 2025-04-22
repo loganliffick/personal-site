@@ -39,7 +39,12 @@ export default async function Page() {
 
           <ul className="flex flex-col gap-2.5">
             {posts.map((post, index) => (
-              <PostCard data={{ ...post }} key={index} />
+              <PostCard
+                className="reveal reveal-sm"
+                data={{ ...post }}
+                key={index}
+                style={{ animationDelay: `${index / 20}s` }}
+              />
             ))}
           </ul>
         </Inset>

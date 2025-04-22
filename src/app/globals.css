@@ -1,11 +1,6 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
-@custom-variant supports-hover {
-  @supports (@media (hover: hover) {&: hover}) {
-    @slot;
-  }
-}
 /* @custom-variant interactive (&:where(.interactive, .interactive *));
 @custom-variant toggle (&:where(.toggle, .toggle *));
 @custom-variant square (&:where(.square, .square *));
@@ -14,6 +9,7 @@
 :root {
   --base-100: var(--color-white);
   --base-200: var(--color-neutral-50);
+  --base-300: var(--color-neutral-100);
   --base-1000: var(--color-neutral-950);
 
   --border: var(--color-neutral-200);
@@ -29,6 +25,7 @@
 
     --base-100: var(--color-neutral-925);
     --base-200: var(--color-neutral-900);
+    --base-300: var(--color-neutral-800);
     --base-1000: var(--color-white);
 
     --border: var(--color-neutral-900);
@@ -45,6 +42,7 @@
 
   --color-base-100: var(--base-100);
   --color-base-200: var(--base-200);
+  --color-base-300: var(--base-300);
   --color-base-1000: var(--base-1000);
 
   --color-base-border: var(--border);
@@ -56,9 +54,9 @@
   --ease-bounce: cubic-bezier(0.2, -0.25, 0, 1.6);
 }
 
-/* .add-focus {
-  @apply focus-visible:ring-focus outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring *:in-focus:opacity-100;
-} */
+.add-focus {
+  @apply focus-visible:ring-base-1000 outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring *:in-focus:opacity-100;
+}
 
 /* .add-disable {
   @apply disabled:text-base-100 disabled:cursor-not-allowed;
@@ -100,7 +98,7 @@
   }
 } */
 
-/* Animations */
+/* animation */
 
 .set-fade {
   opacity: 0;
@@ -110,19 +108,17 @@
     opacity: 1;
   }
 }
-
 .trigger-fade {
   animation: fade 0.3s forwards;
 
   &.fade-sm {
-    animation-duration: 0.1s;
+    animation-duration: 0.2s;
   }
 
   &.fade-lg {
     animation-duration: 0.5s;
   }
 }
-
 @keyframes fade {
   to {
     opacity: 1;
@@ -132,10 +128,10 @@
 .reveal {
   animation: reveal 0.8s cubic-bezier(0.3, 0, 0, 1) forwards;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
 
   &.reveal-sm {
-    animation-duration: 0.4s;
+    animation-duration: 0.5s;
   }
 
   &.reveal-lg {

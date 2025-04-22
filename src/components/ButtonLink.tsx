@@ -18,7 +18,7 @@ export const ButtonLink = ({
   return (
     <Slot
       as={as}
-      className="cursor-pointer px-2.5 py-1.5 underline-offset-2 hover:underline focus:underline focus:outline-none"
+      className="cursor-pointer px-2.5 py-1.5 underline-offset-2 focus:outline-none focus-visible:underline sm:hover:underline"
       onClick={onClick && onClick}
       href={href && href}
       rel={external ? 'noopener noreferrer' : undefined}

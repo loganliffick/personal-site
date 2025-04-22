@@ -15,7 +15,11 @@ export const Headline = ({ date, subhead, title }: HeadlineProps) => {
       <h2 className="text-base-medium text-balance">{subhead}</h2>
       {date && (
         <p className="text-base-medium">
-          Published on {dayjs(date).format('MMMM DD, YYYY')}.
+          Published on{' '}
+          <span className="text-base-1000 font-medium">
+            {dayjs(date).format('MMMM DD, YYYY')}
+          </span>
+          .
         </p>
       )}
     </header>
