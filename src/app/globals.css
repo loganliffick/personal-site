@@ -10,10 +10,12 @@
   --base-100: var(--color-white);
   --base-200: var(--color-neutral-50);
   --base-300: var(--color-neutral-100);
+  --base-400: var(--color-neutral-400);
   --base-1000: var(--color-neutral-950);
 
-  --border: var(--color-neutral-200);
   --bg: var(--color-neutral-50);
+  --border: var(--color-neutral-200);
+
   --text-strong: var(--color-neutral-950);
   --text-medium: var(--color-neutral-600);
   --text-soft: var(--color-neutral-500);
@@ -22,17 +24,20 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-neutral-925: oklch(0.175 0 0);
+    --color-neutral-350: oklch(0.64 0 0);
 
-    --base-100: var(--color-neutral-925);
-    --base-200: var(--color-neutral-900);
-    --base-300: var(--color-neutral-800);
+    --base-100: var(--color-neutral-900);
+    --base-200: var(--color-neutral-800);
+    --base-300: var(--color-neutral-700);
+    --base-400: var(--color-neutral-600);
     --base-1000: var(--color-white);
 
-    --border: var(--color-neutral-900);
     --bg: var(--color-black);
+    --border: var(--color-neutral-800);
+
     --text-strong: var(--color-white);
-    --text-medium: var(--color-neutral-300);
-    --text-soft: var(--color-neutral-400);
+    --text-medium: var(--color-neutral-400);
+    --text-soft: var(--color-neutral-350);
   }
 }
 
@@ -43,10 +48,12 @@
   --color-base-100: var(--base-100);
   --color-base-200: var(--base-200);
   --color-base-300: var(--base-300);
+  --color-base-400: var(--base-400);
   --color-base-1000: var(--base-1000);
 
-  --color-base-border: var(--border);
   --color-base-bg: var(--bg);
+  --color-base-border: var(--border);
+
   --text-color-base-strong: var(--text-strong);
   --text-color-base-medium: var(--text-medium);
   --text-color-base-soft: var(--text-soft);
@@ -104,11 +111,10 @@
   opacity: 0;
 
   @media (prefers-reduced-motion) {
-    animation: none;
     opacity: 1;
   }
 }
-.trigger-fade {
+.fade {
   animation: fade 0.3s forwards;
 
   &.fade-sm {
@@ -117,6 +123,10 @@
 
   &.fade-lg {
     animation-duration: 0.5s;
+  }
+
+  @media (prefers-reduced-motion) {
+    animation: none;
   }
 }
 @keyframes fade {
@@ -166,5 +176,30 @@
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+.blog-article {
+  h2 {
+    @apply mt-10 mb-3 text-xl font-medium tracking-tight first-of-type:pt-0;
+  }
+
+  p {
+    @apply text-base-medium my-3 leading-[1.8em];
+  }
+
+  ul {
+    li {
+      &::marker {
+        color: var(--base-400);
+      }
+      @apply text-base-medium mt-3;
+    }
+
+    @apply list-disc;
+  }
+
+  a {
+    @apply text-base-1000 font-medium;
   }
 }

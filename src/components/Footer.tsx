@@ -41,7 +41,7 @@ export const Footer = () => {
               <div
                 className={cn(
                   'bg-base-100 border-base-border set-fade fade-sm hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
-                  { 'trigger-fade flex': isCopied },
+                  { 'fade flex': isCopied },
                 )}
                 onAnimationEnd={() =>
                   setTimeout(() => {

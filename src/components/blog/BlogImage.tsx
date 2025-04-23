@@ -1,13 +1,22 @@
+import Image from 'next/image'
+
 type BlogImageProps = {
-  className?: string
+  alt: string
+  src: string
 }
 
-export const BlogImage = ({ className }: BlogImageProps) => {
+export const BlogImage = ({ alt, src }: BlogImageProps) => {
   return (
-    <div className="aspect-square w-full overflow-hidden rounded-xl">
-      <div className="flex size-full items-center justify-center bg-neutral-300">
-        img
-      </div>
-    </div>
+    <Image
+      alt={alt}
+      src={src}
+      width={576}
+      height={576}
+      className="fade pointer-events-none relative my-8 size-auto w-full overflow-hidden rounded-lg select-none"
+      priority
+      // loading="lazy"
+      // placeholder="blur"
+      // blurDataURL={src}
+    />
   )
 }
