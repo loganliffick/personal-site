@@ -1,5 +1,4 @@
 import { Footer } from '@/components/Footer'
-import { Providers } from '@/providers'
 import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import './globals.css'
@@ -28,10 +27,8 @@ export default function RootLayout({
       className={`bg-base-bg ${geistSans.variable} text-base-1000 selection:bg-base-selection/50 antialiased transition-colors`}
     >
       <body className="flex min-h-screen flex-col">
-        <Providers>
-          {children}
-          <Footer />
-        </Providers>
+        {children}
+        <Footer />
       </body>
     </html>
   )

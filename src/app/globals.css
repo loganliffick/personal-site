@@ -1,10 +1,6 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
-/* @custom-variant interactive (&:where(.interactive, .interactive *));
-@custom-variant toggle (&:where(.toggle, .toggle *));
-@custom-variant square (&:where(.square, .square *));
-@custom-variant circular (&:where(.circular, .circular *)); */
 
 :root {
   --base-100: var(--color-white);
@@ -65,51 +61,12 @@
   --color-base-selection: var(--base-selection);
 
   --ease-bounce: cubic-bezier(0.2, -0.25, 0, 1.6);
+  --ease-bounce-lite: cubic-bezier(0, 0, 0, 1.1);
 }
 
 .add-focus {
   @apply focus-visible:ring-base-1000 outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring *:in-focus:opacity-100;
 }
-
-/* .add-disable {
-  @apply disabled:text-base-100 disabled:cursor-not-allowed;
-} */
-
-/* .add-size-sm {
-  @apply h-8 rounded-lg px-2.5 text-xs;
-
-  @variant square {
-    @apply flex size-8 items-center justify-center px-0;
-  }
-
-  @variant circular {
-    @apply flex size-8 items-center justify-center rounded-full px-0;
-  }
-}
-
-.add-size-md {
-  @apply h-9 rounded-lg px-3 text-sm;
-
-  @variant square {
-    @apply flex size-9 items-center justify-center px-0;
-  }
-
-  @variant circular {
-    @apply flex size-9 items-center justify-center rounded-full px-0;
-  }
-}
-
-.add-size-base {
-  @apply h-10 rounded-lg px-4;
-
-  @variant square {
-    @apply flex size-10 items-center justify-center px-0;
-  }
-
-  @variant circular {
-    @apply flex size-10 items-center justify-center rounded-full px-0;
-  }
-} */
 
 /* animation */
 
@@ -143,7 +100,7 @@
 
 .set-reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(0px);
 
   @media (prefers-reduced-motion) {
     opacity: 1;
@@ -153,18 +110,21 @@
 .reveal {
   animation: reveal 0.8s cubic-bezier(0.3, 0, 0, 1) forwards;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
 
   &.reveal-xs {
     animation-duration: 0.25s;
+    transform: translateY(10px);
   }
 
   &.reveal-sm {
     animation-duration: 0.5s;
+    transform: translateY(30px);
   }
 
   &.reveal-lg {
     animation-duration: 1.2s;
+    transform: translateY(50px);
   }
 
   @media (prefers-reduced-motion) {

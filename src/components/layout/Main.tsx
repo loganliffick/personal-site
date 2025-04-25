@@ -1,3 +1,3 @@
 export const Main = ({ children }: React.PropsWithChildren) => {
-  return <main className="relative flex grow items-start">{children}</main>
+  return <main className="flex grow items-start">{children}</main>
 }

@@ -6,7 +6,6 @@ import { Inset } from '@/components/layout/Inset'
 import { Main } from '@/components/layout/Main'
 import { Section } from '@/components/layout/Section'
 import { TextLink } from '@/components/TextLink'
-import setupImg from './assets/setup.webp'
 
 export const metadata = {
   title: 'My Workspace',
@@ -66,7 +65,10 @@ export default function Page() {
               />{' '}
               editions.
             </p>
-            <BlogImage src={setupImg.src} alt="Computer setup" />
+            <BlogImage
+              src={'/images/blog/my-workspace/setup.webp'}
+              alt="Computer setup"
+            />
             <h2>Updates for 2024</h2>
             <p>
               As a taller person, I've been a fan of third party monitor arms

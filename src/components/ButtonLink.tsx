@@ -1,4 +1,4 @@
-import { Slot } from '@/components/ds/Slot'
+import { Slot } from '@/components/Slot'
 
 type ButtonLinkProps = {
   as?: React.ElementType
