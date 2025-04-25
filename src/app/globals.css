@@ -43,7 +43,6 @@
 
 @theme {
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 
   --color-base-100: var(--base-100);
   --color-base-200: var(--base-200);

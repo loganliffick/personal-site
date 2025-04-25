@@ -28,7 +28,7 @@ export const PostCard = ({ className, data, style }: PostCardProps) => {
           )}
 
           <h3 className="text-sm font-medium">{title}</h3>
-          <div className="relative ml-1 flex size-4 items-center justify-center">
+          <div className="relative ml-1 hidden size-4 items-center justify-center sm:flex">
             <div className="bg-base-300 absolute flex size-6 items-center justify-center overflow-hidden rounded-full opacity-0 transition-opacity group-focus-visible:opacity-100 sm:group-hover:opacity-100">
               <ArrowRight
                 weight="bold"
@@ -40,7 +40,12 @@ export const PostCard = ({ className, data, style }: PostCardProps) => {
         </header>
 
         <p className="text-base-soft text-sm">
-          {dayjs(date).format('MMMM DD, YYYY')}
+          <span className="block sm:hidden">
+            {dayjs(date).format('MMM DD, YYYY')}
+          </span>
+          <span className="hidden sm:block">
+            {dayjs(date).format('MMMM DD, YYYY')}
+          </span>
         </p>
       </Link>
     </li>
