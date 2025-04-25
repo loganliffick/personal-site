@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`bg-base-bg ${geistSans.variable} text-base-1000 antialiased transition-colors selection:bg-neutral-300/50`}
+      className={`bg-base-bg ${geistSans.variable} text-base-1000 selection:bg-base-selection/50 antialiased transition-colors`}
     >
       <body className="flex min-h-screen flex-col">
         <Providers>

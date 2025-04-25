@@ -40,7 +40,7 @@ export const Footer = () => {
             <div className="absolute -top-10 -left-1/2 -translate-x-1/2 sm:left-1/2">
               <div
                 className={cn(
-                  'bg-base-100 border-base-border set-fade fade-sm hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
+                  'bg-base-100 border-base-border reveal reveal-xs hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
                   { 'fade flex': isCopied },
                 )}
                 onAnimationEnd={() =>

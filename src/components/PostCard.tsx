@@ -18,7 +18,7 @@ export const PostCard = ({ className, data, style }: PostCardProps) => {
     <li className={className} style={style}>
       <Link
         href={`/${type}/${slug}`}
-        className="bg-base-100 border-base-border add-focus group flex flex-wrap items-center justify-between rounded-lg border p-4 shadow-xs select-none"
+        className="bg-base-100 border-base-border add-focus group flex flex-wrap items-center justify-between rounded-md border p-4 shadow-xs select-none"
       >
         <header className="flex items-center gap-2 *:shrink-0">
           {type === 'blog' ? (

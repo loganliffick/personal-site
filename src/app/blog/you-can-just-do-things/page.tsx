@@ -6,12 +6,11 @@ import { Inset } from '@/components/layout/Inset'
 import { Main } from '@/components/layout/Main'
 import { Section } from '@/components/layout/Section'
 import { TextLink } from '@/components/TextLink'
-import setupImg from './assets/setup.webp'
 
 export const metadata = {
-  title: 'My Workspace',
-  date: '2024-01-12',
-  description: 'Breaking down my M-F habitat.',
+  title: 'You can just do things',
+  date: '2024-12-22',
+  description: 'Stop thinking & start doing.',
 }
 
 export default function Page() {
@@ -26,7 +25,7 @@ export default function Page() {
             date={metadata.date}
           />
           <Article>
-            <h2>Third space</h2>
+            <h2>You in fact can just do things</h2>
             <p>
               I've been obsessed with creating the perfect sanctuary since the
               world went remote. A space that works for how I work where I can
@@ -66,46 +65,6 @@ export default function Page() {
               />{' '}
               editions.
             </p>
-            <BlogImage src={setupImg.src} alt="Computer setup" />
-            <h2>Updates for 2024</h2>
-            <p>
-              As a taller person, I've been a fan of third party monitor arms
-              for as long as I can remember. In the past, I've opted for sturdy
-              pole-arm mounts for their simplicity and price-point, but more
-              recently found myself hunting for a more premium product.
-            </p>
-            <p>Enter the Fully Jarvis arm.</p>
-            <p>
-              The desk itself is a Fully Jarvis and I trust their products —no
-              matter who's selling them, so I kept it in the family and
-              purchased their monitor arm after some scrupulous research. Many
-              thanks to{' '}
-              <TextLink
-                external
-                href="https://www.youtube.com/watch?v=-UBBm8dUNP8"
-                title="Watts' review"
-              />{' '}
-              for helping me pull the trigger.
-            </p>
-            <p>
-              Additionally, I added backdrop lighting with a few pieces from the
-              Philips Hue collection to help ease eye strain and give the room a
-              little ambiance.
-            </p>
-            <p>
-              On the less-technical side, I picked up a Studio Neat Mark One pen
-              and a few Baron Fig notebooks.
-            </p>
-            <h2>Studio details</h2>
-            <ul>
-              <li>Apple Studio Display</li>
-              <li>16" Macbook pro M4</li>
-              <li>Apple Magic Keyboard & Trackpad</li>
-              <li>Fully Jarvis standing desk frame</li>
-              <li>Birch butcher's block countertop</li>
-              <li>Fully Jarvis dual monitor arm</li>
-              <li>Philips Hue Play Lightstrip</li>
-            </ul>
           </Article>
         </Inset>
       </Section>
