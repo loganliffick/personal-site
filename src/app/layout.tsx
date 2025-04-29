@@ -1,10 +1,10 @@
 import { Footer } from '@/components/Footer'
 import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
 })
 
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`bg-base-bg ${geistSans.variable} text-base-1000 selection:bg-base-selection/50 antialiased transition-colors`}
+      className={`bg-base-bg ${inter.variable} text-base-strong selection:bg-base-selection/50 antialiased transition-colors`}
     >
       <body className="flex min-h-screen flex-col">
         {children}

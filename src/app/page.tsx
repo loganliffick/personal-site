@@ -18,15 +18,15 @@ export default async function Page() {
             title="Logan Liffick"
             subhead={
               <>
-                Design Engineer M-F with{' '}
-                <TextLink href="https://vercel.com" title="▲Vercel" external />.
-                <Br /> Previously with{' '}
+                Currently working as a design engineer at{' '}
+                <TextLink href="https://vercel.com" title="Vercel" external />.
+                <Br /> Previously, I worked at{' '}
                 <TextLink
                   href="https://outerbase.com"
                   title="Outerbase"
                   external
                 />
-                , <span className="cursor-not-allowed">Makelog</span>, &{' '}
+                , Makelog, &{' '}
                 <TextLink
                   href="https://digitalocean.com"
                   title="DigitalOcean"
@@ -39,12 +39,7 @@ export default async function Page() {
 
           <ul className="flex flex-col gap-2.5">
             {posts.map((post, index) => (
-              <PostCard
-                className="reveal reveal-sm"
-                data={{ ...post }}
-                key={index}
-                style={{ animationDelay: `${index / 20}s` }}
-              />
+              <PostCard data={{ ...post }} key={index} />
             ))}
           </ul>
         </Inset>

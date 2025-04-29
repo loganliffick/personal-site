@@ -1,20 +1,37 @@
+import { Slot } from '@/components/Slot'
+import { cn } from '@/utils/tw'
 import Link from 'next/link'
 
 type TextLinkProps = {
+  as?: React.ElementType
+  className?: string
   external?: boolean
-  href: string
+  href?: string
+  onClick?: () => void
   title: string
 }
 
-export const TextLink = ({ external, href, title }: TextLinkProps) => {
+export const TextLink = ({
+  as = Link,
+  className,
+  external,
+  href,
+  onClick,
+  title,
+}: TextLinkProps) => {
   return (
-    <Link
-      className="underline-offset-2 focus:outline-none focus-visible:underline sm:hover:underline"
+    <Slot
+      as={as}
+      className={cn(
+        'cursor-pointer underline decoration-current/20 underline-offset-2 transition-[text-decoration-color] focus:outline-none focus-visible:decoration-current/80 sm:hover:decoration-current/80',
+        className,
+      )}
       href={href}
+      onClick={onClick}
       rel={external ? 'noopener noreferrer' : undefined}
       target={external ? '_blank' : undefined}
     >
       {title}
-    </Link>
+    </Slot>
   )
 }

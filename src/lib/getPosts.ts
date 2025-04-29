@@ -5,6 +5,7 @@ export type PostMeta = {
   date: string
   slug: string
   title: string
+  description: string
   type: 'blog' | 'experiment'
 }
 
@@ -21,7 +22,7 @@ export const getSortedPosts = async (): Promise<PostMeta[]> => {
 
 const extractMetadata = (
   fileContent: string,
-): { title: string; date: string } | null => {
+): { title: string; date: string; description: string } | null => {
   const match = fileContent.match(/export const metadata = ({[\s\S]*?})/)
   if (!match) return null
 
@@ -55,6 +56,7 @@ const loadMetaFrom = async (
       return {
         slug,
         title: meta.title,
+        description: meta.description,
         date: meta.date,
         type,
       }

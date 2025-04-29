@@ -36,18 +36,18 @@ export const BlogImage = ({ alt, src }: BlogImageProps) => {
       <Image
         alt={alt}
         className={cn(
-          'fade ease-bounce-lite overflow-hidden rounded-md transition-transform duration-300 select-none sm:cursor-zoom-in',
+          'ease-bounce-lite overflow-hidden rounded-md transition-transform duration-300 select-none sm:cursor-zoom-in',
           {
             'duration-400 sm:translate-y-4 sm:scale-130 sm:cursor-zoom-out':
               toggled,
           },
         )}
         draggable={false}
-        height={576}
+        height={672}
         priority
         ref={ref}
         src={src}
-        width={576}
+        width={672}
       />
     </button>
   )

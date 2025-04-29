@@ -6,15 +6,14 @@
   --base-100: var(--color-white);
   --base-200: var(--color-neutral-50);
   --base-300: var(--color-neutral-100);
-  --base-400: var(--color-neutral-400);
+  --base-400: var(--color-neutral-200);
   --base-1000: var(--color-neutral-950);
 
   --bg: var(--color-neutral-50);
   --border: var(--color-neutral-200);
 
-  --text-strong: var(--color-neutral-950);
-  --text-medium: var(--color-neutral-600);
-  --text-soft: var(--color-neutral-500);
+  --text-strong: var(--color-neutral-900);
+  --text-soft: var(--color-neutral-600);
 
   --base-selection: var(--color-neutral-300);
 }
@@ -34,15 +33,14 @@
     --border: var(--color-neutral-800);
 
     --text-strong: var(--color-white);
-    --text-medium: var(--color-neutral-400);
-    --text-soft: var(--color-neutral-350);
+    --text-soft: var(--color-neutral-400);
 
     --base-selection: var(--color-neutral-600);
   }
 }
 
 @theme {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
 
   --color-base-100: var(--base-100);
   --color-base-200: var(--base-200);
@@ -54,7 +52,6 @@
   --color-base-border: var(--border);
 
   --text-color-base-strong: var(--text-strong);
-  --text-color-base-medium: var(--text-medium);
   --text-color-base-soft: var(--text-soft);
 
   --color-base-selection: var(--base-selection);
@@ -64,7 +61,7 @@
 }
 
 .add-focus {
-  @apply focus-visible:ring-base-1000 outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring *:in-focus:opacity-100;
+  @apply focus-visible:ring-base-1000/35 outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring focus-visible:transition-shadow *:in-focus:opacity-100;
 }
 
 /* animation */
@@ -78,6 +75,7 @@
 }
 .fade {
   animation: fade 0.3s forwards;
+  opacity: 0;
 
   &.fade-sm {
     animation-duration: 0.2s;
@@ -159,11 +157,11 @@
 
 .blog-article {
   h2 {
-    @apply mt-10 mb-3 text-xl font-medium tracking-tight first-of-type:pt-0;
+    @apply mt-20 mb-8 text-lg font-medium tracking-tight first-of-type:pt-0;
   }
 
   p {
-    @apply text-base-medium my-3 leading-[1.8em] text-pretty;
+    @apply text-base-soft my-4 leading-[1.8em] text-pretty;
   }
 
   ul {
@@ -171,13 +169,9 @@
       &::marker {
         color: var(--base-400);
       }
-      @apply text-base-medium mt-3;
+      @apply text-base-soft mt-4;
     }
 
     @apply list-disc;
-  }
-
-  a {
-    @apply text-base-1000 font-medium;
   }
 }

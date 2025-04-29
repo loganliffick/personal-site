@@ -1,9 +1,8 @@
 'use client'
 
-import { ButtonLink } from '@/components/ButtonLink'
+import { TextLink } from '@/components/TextLink'
 import { cn } from '@/utils/tw'
 import { Clipboard } from '@phosphor-icons/react'
-import Link from 'next/link'
 import { useState } from 'react'
 
 export const Footer = () => {
@@ -20,18 +19,18 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="flex w-full items-center justify-center bg-red-200/0 px-6 py-10 md:pt-40">
-      <div className="flex w-full max-w-xl flex-wrap-reverse items-center justify-between text-sm">
+    <footer className="flex w-full items-center justify-center bg-red-200/0 px-6 py-10">
+      <div className="flex w-full max-w-2xl flex-wrap-reverse items-center justify-between text-sm">
         <p className="text-base-soft select-none">© {currentYear}</p>
-        <nav className="-mr-1.5 flex gap-0.5">
-          <ButtonLink
-            as={Link}
+        <nav className="-mr-3 flex gap-0.5">
+          <TextLink
+            className="px-3 py-1.5"
             external
             href="https://x.com/logan_liffick"
             title="X"
           />
-          <ButtonLink
-            as={Link}
+          <TextLink
+            className="px-3 py-1.5"
             external
             href="https://github.com/loganliffick"
             title="Github"
@@ -49,14 +48,15 @@ export const Footer = () => {
                   }, 1000)
                 }
               >
-                <Clipboard weight="bold" />
-                <p className="font-medium">Copied to clipboard</p>
+                <Clipboard />
+                <p>Copied to clipboard</p>
               </div>
             </div>
-            <ButtonLink
+            <TextLink
               as={'button'}
-              title="Email"
+              className="px-3 py-1.5"
               onClick={() => copyText()}
+              title="Email"
             />
           </div>
         </nav>
