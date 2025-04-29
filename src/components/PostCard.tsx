@@ -1,21 +1,19 @@
 'use client'
 
 import { PostMeta } from '@/lib/getPosts'
-import { ArrowRight, Book, Flask } from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 
 type PostCardProps = {
-  className?: string
   data: PostMeta
-  style?: React.CSSProperties
 }
 
-export const PostCard = ({ className, data, style }: PostCardProps) => {
+export const PostCard = ({ data }: PostCardProps) => {
   const { slug, type, title, description, date } = data
 
   return (
-    <li className="-mr-8" style={style}>
+    <li className="sm:-mr-8">
       <Link
         href={`/${type}/${slug}`}
         className="add-focus group -ml-4 flex w-full flex-col items-start justify-between rounded-md px-4 py-3 select-none sm:flex-row"
