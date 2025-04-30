@@ -7,7 +7,7 @@ export const BackButton = () => {
   return (
     <div className="sticky top-8 z-50 sm:h-0">
       <Link
-        className="fade border-base-border bg-base-100 text-base-soft add-focus absolute -top-0.5 right-0 flex items-center justify-center gap-1 rounded-full border py-1 pr-3 pl-2.5 text-sm shadow-xs transition-transform md:-left-14 md:size-9 md:p-0 md:hover:scale-95"
+        className="fade border-base-border bg-base-bg-depth text-base-soft add-focus absolute -top-0.5 right-0 flex items-center justify-center gap-1 rounded-full border py-1 pr-3 pl-2.5 text-sm shadow-xs transition-transform md:-left-14 md:size-8 md:p-0 md:hover:scale-95"
         style={{ animationDelay: '500ms' }}
         href={'/'}
       >

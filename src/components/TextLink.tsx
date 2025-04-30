@@ -23,7 +23,7 @@ export const TextLink = ({
     <Slot
       as={as}
       className={cn(
-        'cursor-pointer underline decoration-current/20 underline-offset-2 transition-[text-decoration-color] focus:outline-none focus-visible:decoration-current/80 sm:hover:decoration-current/80',
+        'cursor-pointer underline decoration-current/30 underline-offset-2 transition-[text-decoration-color] focus:outline-none focus-visible:decoration-current/70 sm:hover:decoration-current/70',
         className,
       )}
       href={href}

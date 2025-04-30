@@ -13,16 +13,16 @@ export const PostCard = ({ data }: PostCardProps) => {
   const { slug, type, title, description, date } = data
 
   return (
-    <li className="sm:-mr-8">
+    <li className="md:-mr-8">
       <Link
         href={`/${type}/${slug}`}
-        className="add-focus group -ml-4 flex w-full flex-col items-start justify-between rounded-md px-4 py-3 select-none sm:flex-row"
+        className="add-focus group -ml-3 flex w-full flex-col items-start justify-between rounded-md p-3 select-none sm:flex-row md:-ml-4 md:px-4"
       >
         <header>
           <div className="flex items-center gap-2">
             <h3 className="text-base-strong font-medium">{title}</h3>
-            <div className="relative ml-1 hidden size-4 items-center justify-center sm:flex">
-              <div className="bg-base-400 absolute flex size-6 items-center justify-center overflow-hidden rounded-full opacity-0 transition-opacity group-focus-visible:opacity-100 sm:group-hover:opacity-100">
+            <div className="relative ml-1.5 hidden size-4 items-center justify-center sm:flex">
+              <div className="bg-base-200 absolute flex size-6 items-center justify-center overflow-hidden rounded-full opacity-0 transition-opacity group-focus-visible:opacity-100 sm:group-hover:opacity-100">
                 <ArrowRight
                   weight="bold"
                   size={14}

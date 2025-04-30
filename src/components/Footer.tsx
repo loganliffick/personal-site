@@ -19,9 +19,9 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="flex w-full items-center justify-center bg-red-200/0 px-6 py-10">
-      <div className="flex w-full max-w-2xl flex-wrap-reverse items-center justify-between text-sm">
-        <p className="text-base-soft select-none">© {currentYear}</p>
+    <footer className="flex w-full items-center justify-center px-6 py-10">
+      <div className="text-base-soft flex w-full max-w-2xl flex-wrap-reverse items-center justify-between text-sm">
+        <p className="select-none">© {currentYear}</p>
         <nav className="-mr-3 flex gap-0.5">
           <TextLink
             className="px-3 py-1.5"
@@ -39,7 +39,7 @@ export const Footer = () => {
             <div className="absolute -top-10 -left-1/2 -translate-x-1/2 sm:left-1/2">
               <div
                 className={cn(
-                  'bg-base-100 border-base-border reveal reveal-xs hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
+                  'bg-base-bg-depth border-base-border reveal reveal-xs hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
                   { 'fade flex': isCopied },
                 )}
                 onAnimationEnd={() =>

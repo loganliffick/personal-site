@@ -30,13 +30,13 @@ export const BlogImage = ({ alt, src }: BlogImageProps) => {
 
   return (
     <button
-      className="add-focus relative my-8 block overflow-visible rounded-md focus-visible:!ring-2 focus-visible:ring-offset-4"
+      className="add-focus ring-offset-base-bg relative my-8 block overflow-visible rounded focus-visible:!ring focus-visible:ring-offset-6"
       onClick={() => setToggled(!toggled)}
     >
       <Image
         alt={alt}
         className={cn(
-          'ease-bounce-lite overflow-hidden rounded-md transition-transform duration-300 select-none sm:cursor-zoom-in',
+          'ease-bounce-lite overflow-hidden rounded transition-transform duration-300 select-none sm:cursor-zoom-in',
           {
             'duration-400 sm:translate-y-4 sm:scale-130 sm:cursor-zoom-out':
               toggled,

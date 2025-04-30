@@ -4,12 +4,12 @@
 
 :root {
   --base-100: var(--color-white);
-  --base-200: var(--color-neutral-50);
-  --base-300: var(--color-neutral-100);
-  --base-400: var(--color-neutral-200);
+  --base-200: var(--color-neutral-200);
   --base-1000: var(--color-neutral-950);
 
   --bg: var(--color-neutral-50);
+  --bg-depth: var(--color-white);
+
   --border: var(--color-neutral-200);
 
   --text-strong: var(--color-neutral-900);
@@ -20,19 +20,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-neutral-925: oklch(0.175 0 0);
-    --color-neutral-350: oklch(0.64 0 0);
-
     --base-100: var(--color-neutral-900);
     --base-200: var(--color-neutral-800);
-    --base-300: var(--color-neutral-700);
-    --base-400: var(--color-neutral-600);
     --base-1000: var(--color-white);
 
     --bg: var(--color-black);
+    --bg-depth: var(--color-neutral-900);
+
     --border: var(--color-neutral-800);
 
-    --text-strong: var(--color-white);
+    --text-strong: var(--color-neutral-100);
     --text-soft: var(--color-neutral-400);
 
     --base-selection: var(--color-neutral-600);
@@ -44,11 +41,11 @@
 
   --color-base-100: var(--base-100);
   --color-base-200: var(--base-200);
-  --color-base-300: var(--base-300);
-  --color-base-400: var(--base-400);
   --color-base-1000: var(--base-1000);
 
   --color-base-bg: var(--bg);
+  --color-base-bg-depth: var(--bg-depth);
+
   --color-base-border: var(--border);
 
   --text-color-base-strong: var(--text-strong);
@@ -167,7 +164,7 @@
   ul {
     li {
       &::marker {
-        color: var(--base-400);
+        color: var(--text-soft);
       }
       @apply text-base-soft mt-4;
     }
