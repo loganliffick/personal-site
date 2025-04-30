@@ -43,12 +43,12 @@ export const BlogImage = ({ alt, src }: BlogImageProps) => {
 
   return (
     <button
-      className="add-focus ring-offset-base-bg pointer-events-none my-8 block overflow-visible rounded focus-visible:!ring focus-visible:ring-offset-6 sm:pointer-events-auto"
+      className="add-focus ring-offset-base-bg pointer-events-none my-8 block overflow-visible rounded focus-visible:!ring focus-visible:ring-offset-6 lg:pointer-events-auto"
       onClick={() => setToggled(!toggled)}
     >
       <div
         className={cn(
-          'bg-base-bg/40 invisible fixed top-0 left-0 z-50 hidden h-screen w-full cursor-zoom-out opacity-0 backdrop-blur-[1px] transition-opacity duration-400 select-none sm:block',
+          'bg-base-bg/40 invisible fixed top-0 left-0 z-50 hidden h-screen w-full cursor-zoom-out opacity-0 backdrop-blur-[1px] transition-opacity duration-400 select-none lg:block',
           { 'visible opacity-100': toggled },
         )}
         ref={ref}
@@ -56,9 +56,9 @@ export const BlogImage = ({ alt, src }: BlogImageProps) => {
       <Image
         alt={alt}
         className={cn(
-          'ease-bounce-lite relative z-100 overflow-hidden rounded transition-all duration-400 select-none sm:cursor-zoom-in',
+          'ease-bounce-lite relative overflow-hidden rounded transition-all duration-400 select-none lg:cursor-zoom-in',
           {
-            'shadow-xl duration-300 sm:-translate-y-4 sm:scale-130 sm:cursor-zoom-out':
+            'z-100 shadow-xl duration-300 lg:-translate-y-4 lg:scale-130 lg:cursor-zoom-out':
               toggled,
           },
         )}
