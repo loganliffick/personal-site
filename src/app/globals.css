@@ -11,6 +11,7 @@
   --bg-depth: var(--color-white);
 
   --border: var(--color-neutral-200);
+  --marker: var(--color-neutral-300);
 
   --text-strong: var(--color-neutral-900);
   --text-soft: var(--color-neutral-600);
@@ -28,6 +29,7 @@
     --bg-depth: var(--color-neutral-900);
 
     --border: var(--color-neutral-800);
+    --marker: var(--color-neutral-700);
 
     --text-strong: var(--color-neutral-100);
     --text-soft: var(--color-neutral-400);
@@ -164,7 +166,7 @@
   ul {
     li {
       &::marker {
-        color: var(--text-soft);
+        color: var(--marker);
       }
       @apply text-base-soft mt-4;
     }

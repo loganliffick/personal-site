@@ -1,5 +1,5 @@
+import { IconArrowRight } from '@/components/Icons'
 import { PostMeta } from '@/lib/getPosts'
-import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 
@@ -19,13 +19,9 @@ export const PostCard = ({ data }: PostCardProps) => {
         <header>
           <div className="flex items-center gap-2">
             <h3 className="text-base-strong font-medium">{title}</h3>
-            <div className="relative ml-1.5 hidden size-4 items-center justify-center sm:flex">
+            <div className="relative ml-1 hidden size-4 items-center justify-center sm:flex">
               <div className="bg-base-200 absolute flex size-6 items-center justify-center overflow-hidden rounded-full opacity-0 transition-opacity group-focus-visible:opacity-100 sm:group-hover:opacity-100">
-                <ArrowRight
-                  weight="bold"
-                  size={14}
-                  className="ease-bounce text-base-soft -translate-x-5 transition-transform duration-200 group-focus-visible:translate-x-0 sm:group-hover:translate-x-0"
-                />
+                <IconArrowRight className="ease-bounce text-base-soft size-3.5 -translate-x-5 transition-transform duration-200 group-focus-visible:translate-x-0 sm:group-hover:translate-x-0" />
               </div>
             </div>
           </div>
