@@ -1,7 +1,5 @@
-'use client'
-
 import { PostMeta } from '@/lib/getPosts'
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 
