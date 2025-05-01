@@ -3,9 +3,9 @@ import path from 'path'
 
 export type PostMeta = {
   date: string
+  description: string
   slug: string
   title: string
-  description: string
 }
 
 export const getPosts = async (): Promise<PostMeta[]> => {
@@ -39,10 +39,10 @@ const loadMetaFrom = async (): Promise<PostMeta[]> => {
         if (!meta.title || !meta.date) return null
 
         return {
+          date: meta.date,
+          description: meta.description ?? '',
           slug,
           title: meta.title,
-          description: meta.description ?? '',
-          date: meta.date,
         }
       } catch {
         return null
