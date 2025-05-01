@@ -1,17 +1,13 @@
 import { BackButton } from '@/components/BackButton'
-import { BlogImage } from '@/components/blog/BlogImage'
-import { Article } from '@/components/layout/Article'
+import { Article } from '@/components/blog/Article'
 import { Headline } from '@/components/layout/Headline'
 import { Inset } from '@/components/layout/Inset'
 import { Main } from '@/components/layout/Main'
 import { Section } from '@/components/layout/Section'
 import { TextLink } from '@/components/TextLink'
+import * as meta from './metadata.json'
 
-export const metadata = {
-  title: 'You can just do things',
-  date: '2024-12-22',
-  description: 'Stop thinking & start doing.',
-}
+export const metadata = meta
 
 export default function Page() {
   return (

@@ -5,10 +5,10 @@ import { Main } from '@/components/layout/Main'
 import { Section } from '@/components/layout/Section'
 import { PostCard } from '@/components/PostCard'
 import { TextLink } from '@/components/TextLink'
-import { getSortedPosts } from '@/lib/getPosts'
+import { getPosts } from '@/lib/getPosts'
 
 export default async function Page() {
-  const posts = await getSortedPosts()
+  const posts = await getPosts()
 
   return (
     <Main>

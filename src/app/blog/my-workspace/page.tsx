@@ -1,17 +1,14 @@
 import { BackButton } from '@/components/BackButton'
+import { Article } from '@/components/blog/Article'
 import { BlogImage } from '@/components/blog/BlogImage'
-import { Article } from '@/components/layout/Article'
 import { Headline } from '@/components/layout/Headline'
 import { Inset } from '@/components/layout/Inset'
 import { Main } from '@/components/layout/Main'
 import { Section } from '@/components/layout/Section'
 import { TextLink } from '@/components/TextLink'
+import * as meta from './metadata.json'
 
-export const metadata = {
-  title: 'My Workspace',
-  date: '2024-01-12',
-  description: 'Breaking down my M-F habitat.',
-}
+export const metadata = meta
 
 export default function Page() {
   return (

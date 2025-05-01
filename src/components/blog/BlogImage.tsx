@@ -56,7 +56,7 @@ export const BlogImage = ({ alt, src }: BlogImageProps) => {
       <Image
         alt={alt}
         className={cn(
-          'ease-bounce-lite relative overflow-hidden rounded transition-all duration-400 select-none lg:cursor-zoom-in',
+          'ease-bounce-lite relative overflow-hidden rounded transition-all duration-400 will-change-transform select-none lg:cursor-zoom-in',
           {
             'z-100 shadow-xl duration-300 lg:-translate-y-4 lg:scale-130 lg:cursor-zoom-out':
               toggled,

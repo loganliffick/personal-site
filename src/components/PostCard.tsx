@@ -8,12 +8,12 @@ type PostCardProps = {
 }
 
 export const PostCard = ({ data }: PostCardProps) => {
-  const { slug, type, title, description, date } = data
+  const { slug, title, description, date } = data
 
   return (
     <li className="md:-mr-8">
       <Link
-        href={`/${type}/${slug}`}
+        href={`/blog/${slug}`}
         className="add-focus group -ml-3 flex w-full flex-col items-start justify-between rounded-md p-3 select-none sm:flex-row md:-ml-4 md:px-4"
       >
         <header>
