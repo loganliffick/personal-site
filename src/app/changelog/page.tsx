@@ -1,10 +1,7 @@
-'use client'
-
 import { Headline } from '@/components/layout/Headline'
 import { Inset } from '@/components/layout/Inset'
 import { Main } from '@/components/layout/Main'
 import { Section } from '@/components/layout/Section'
-import { useRouter, useSearchParams } from 'next/navigation'
 
 const cards = [
   'Card 1',
@@ -37,19 +34,20 @@ const Card = ({
   </div>
 )
 
-export default function Page() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { page?: string }
+}) {
+  const awaitedParams = await searchParams
 
-  const page = parseInt(searchParams.get('page') || '1', 10)
+  const page = parseInt(awaitedParams.page || '1', 10)
   const itemsPerPage = 2
   const startIndex = (page - 1) * itemsPerPage
   const endIndex = page * itemsPerPage
 
-  const handleNextPage = () => {
-    const nextPage = page + 1
-    router.push(`?page=${nextPage}`)
-  }
+  const paginatedCards = cards.slice(startIndex, endIndex)
+  const hasMore = endIndex < cards.length
 
   return (
     <Main>
@@ -57,7 +55,7 @@ export default function Page() {
         <Inset>
           <Headline title={'Paginated links'} subhead={'Testing pag.'} />
           <div className="bg-base-200 flex w-full flex-col gap-2 overflow-hidden rounded-lg p-4">
-            {cards.slice(startIndex, endIndex).map((result, index) => {
+            {paginatedCards.map((result, index) => {
               const id = `${startIndex + index}`
               return (
                 <Card
@@ -70,13 +68,13 @@ export default function Page() {
             })}
           </div>
 
-          {endIndex < cards.length && (
-            <button
-              className="bg-base-1000 text-base-100 mt-4 cursor-pointer rounded-full px-4 py-1.5 font-medium"
-              onClick={handleNextPage}
+          {hasMore && (
+            <a
+              href={`?page=${page + 1}`}
+              className="bg-base-1000 text-base-100 mt-4 inline-block cursor-pointer rounded-full px-4 py-1.5 font-medium"
             >
               Show more
-            </button>
+            </a>
           )}
         </Inset>
       </Section>
