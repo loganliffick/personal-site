@@ -34,11 +34,13 @@ const Card = ({
   </div>
 )
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { page?: string }
-}) {
+interface PageProps {
+  searchParams: {
+    page?: string
+  }
+}
+
+export default async function Page({ searchParams }: PageProps) {
   const awaitedParams = await searchParams
 
   const page = parseInt(awaitedParams.page || '1', 10)
