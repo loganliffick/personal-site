@@ -34,16 +34,13 @@ const Card = ({
   </div>
 )
 
-interface PageProps {
-  searchParams: {
-    page?: string
-  }
-}
-
-export default async function Page({ searchParams }: PageProps) {
-  const awaitedParams = await searchParams
-
-  const page = parseInt(awaitedParams.page || '1', 10)
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}) {
+  const params = await searchParams
+  const page = parseInt(params.page || '1', 10)
   const itemsPerPage = 2
   const startIndex = (page - 1) * itemsPerPage
   const endIndex = page * itemsPerPage
