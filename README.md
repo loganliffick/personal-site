@@ -2,6 +2,6 @@
 
 <div align="center">
   
-![My Badge](https://loganliffick.vercel.app/images/badge.svg)
+![My Badge](https://loganliffick.vercel.app/images/program-badge.svg)
   
 </div>
