@@ -1,3 +1,4 @@
+import { BackButton } from '@/components/BackButton'
 import { Headline } from '@/components/layout/Headline'
 import { Inset } from '@/components/layout/Inset'
 import { Main } from '@/components/layout/Main'
@@ -52,7 +53,13 @@ export default async function Page({
     <Main>
       <Section>
         <Inset>
-          <Headline title={'Paginated links'} subhead={'Testing pag.'} />
+          <BackButton />
+          <Headline
+            title={'Paginated links'}
+            subhead={
+              'Achieving crawlable card layouts without leaving the page.'
+            }
+          />
           <div className="bg-base-200 flex w-full flex-col gap-2 overflow-hidden rounded-lg p-4">
             {paginatedCards.map((result, index) => {
               const id = `${startIndex + index}`

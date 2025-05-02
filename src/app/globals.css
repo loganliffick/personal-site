@@ -123,6 +123,11 @@
     transform: translateY(50px);
   }
 
+  &.reveal-reverse {
+    animation-duration: 0.4s;
+    transform: translateY(-10px);
+  }
+
   @media (prefers-reduced-motion) {
     animation: none;
     opacity: 1;

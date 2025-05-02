@@ -1,7 +1,5 @@
 ## 2025 edition
 
-<div align="center">
-  
-![My Badge 2](https://loganliffick.vercel.app/images/program-badge.svg)
-  
-</div>
+<p> /\_/\ </P>
+<p> ( o.o ) </P>
+<p> > ^ < </P>
