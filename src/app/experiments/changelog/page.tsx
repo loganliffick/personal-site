@@ -27,7 +27,7 @@ const Card = ({
   title?: string
 }) => (
   <div
-    className="reveal reveal-sm border-base-border rounded-md border bg-white px-4 py-2 shadow-xs"
+    className="reveal reveal-sm border-base-border bg-base-100 text-base-strong rounded-md border px-4 py-2 shadow-xs"
     id={id}
     style={style}
   >

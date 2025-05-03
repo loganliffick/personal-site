@@ -63,8 +63,9 @@ export default function Page() {
               editions.
             </p>
             <BlogImage
-              src={'/images/blog/my-workspace/setup.webp'}
               alt="Computer setup"
+              priority={true}
+              src={'/images/blog/my-workspace/setup.webp'}
             />
             <h2>Updates for 2024</h2>
             <p>
