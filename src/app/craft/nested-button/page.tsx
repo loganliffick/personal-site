@@ -29,7 +29,7 @@ export default function Page() {
         <Inset>
           <BackButton />
           <Headline
-            title={'Textarea takeover'}
+            title={'Nested button'}
             subhead={'Testing a full page takeover.'}
           />
           <div className="gap-2">
