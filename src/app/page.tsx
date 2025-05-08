@@ -60,12 +60,12 @@ export default async function Page() {
                   title="X"
                   external
                 />
-                .
+                . Feel free to dm me.
               </>
             }
           />
 
-          <Headline title="From the lab" subhead="" />
+          {/* <Headline title="From the lab" subhead="" /> */}
 
           {/* <ul className="flex flex-col gap-2.5">
             {posts.map((post, index) => (
