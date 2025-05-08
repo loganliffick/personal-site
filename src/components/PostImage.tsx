@@ -1,12 +1,12 @@
 import Image from 'next/image'
 
-type BlogImageProps = {
+type PostImageProps = {
   alt: string
   priority?: boolean
   src: string
 }
 
-export const BlogImage = ({ alt, priority = false, src }: BlogImageProps) => {
+export const PostImage = ({ alt, priority = false, src }: PostImageProps) => {
   return (
     <Image
       alt={alt}

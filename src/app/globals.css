@@ -63,6 +63,9 @@
   @apply focus-visible:ring-base-1000/35 outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring focus-visible:transition-shadow *:in-focus:opacity-100;
 }
 
+.add-focus-text {
+  @apply ring-offset-base-bg focus-visible:ring-base-1000/75 rounded-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+}
 /* animation */
 
 .set-fade {
@@ -174,7 +177,7 @@
   }
 
   p {
-    @apply text-base-soft my-4 leading-[1.8em] text-pretty;
+    @apply text-base-soft my-4 leading-relaxed text-pretty;
   }
 
   ul {

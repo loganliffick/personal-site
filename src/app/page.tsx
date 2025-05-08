@@ -1,9 +1,9 @@
-import { Br } from '@/components/layout/Br'
-import { Headline } from '@/components/layout/Headline'
-import { Inset } from '@/components/layout/Inset'
-import { Main } from '@/components/layout/Main'
-import { Section } from '@/components/layout/Section'
+import { Br } from '@/components/Br'
+import { Headline } from '@/components/Headline'
+import { Inset } from '@/components/Inset'
+import { Main } from '@/components/Main'
 import { PostCard } from '@/components/PostCard'
+import { Section } from '@/components/Section'
 import { TextLink } from '@/components/TextLink'
 import { getPosts } from '@/lib/getPosts'
 
@@ -15,11 +15,12 @@ export default async function Page() {
       <Section>
         <Inset>
           <Headline
-            title="Logan Liffick"
+            title="About"
             subhead={
               <>
-                Currently working as a design engineer at{' '}
-                <TextLink href="https://vercel.com" title="Vercel" external />.
+                I am a design engineer at{' '}
+                <TextLink href="https://vercel.com" title="Vercel" external />{' '}
+                helping to make the web faster.
                 <Br /> Previously, I worked at{' '}
                 <TextLink
                   href="https://outerbase.com"
@@ -37,11 +38,40 @@ export default async function Page() {
             }
           />
 
-          <ul className="flex flex-col gap-2.5">
+          <Headline
+            title="Latest"
+            subhead={
+              <>
+                On the side, I'm building out{' '}
+                <span className="cursor-help font-mono">▓▓▓▒▒░░░</span> and
+                forever working on my{' '}
+                <TextLink href="/workspace" title="workspace" />.
+              </>
+            }
+          />
+
+          <Headline
+            title="Connect"
+            subhead={
+              <>
+                You can find me on{' '}
+                <TextLink
+                  href="https://x.com/logan_liffick"
+                  title="X"
+                  external
+                />
+                .
+              </>
+            }
+          />
+
+          <Headline title="From the lab" subhead="" />
+
+          {/* <ul className="flex flex-col gap-2.5">
             {posts.map((post, index) => (
               <PostCard data={{ ...post }} key={index} />
             ))}
-          </ul>
+          </ul> */}
         </Inset>
       </Section>
     </Main>

@@ -7,7 +7,13 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://loganliffick.com/blog/</loc>
+        <loc>https://loganliffick.com/lab/</loc>
+        <lastmod>2025-05-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://loganliffick.com/workspace/</loc>
         <lastmod>2025-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

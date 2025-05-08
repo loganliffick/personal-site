@@ -1,8 +1,8 @@
 import { BackButton } from '@/components/BackButton'
-import { Headline } from '@/components/layout/Headline'
-import { Inset } from '@/components/layout/Inset'
-import { Main } from '@/components/layout/Main'
-import { Section } from '@/components/layout/Section'
+import { Headline } from '@/components/Headline'
+import { Inset } from '@/components/Inset'
+import { Main } from '@/components/Main'
+import { Section } from '@/components/Section'
 
 const cards = [
   'Card 1',

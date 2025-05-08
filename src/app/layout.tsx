@@ -1,4 +1,5 @@
 import { Footer } from '@/components/Footer'
+import { Nav } from '@/components/Nav'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -27,6 +28,7 @@ export default function RootLayout({
       className={`bg-base-bg ${inter.variable} text-base-strong selection:bg-base-selection/50 antialiased transition-colors`}
     >
       <body className="flex min-h-screen flex-col">
+        <Nav />
         {children}
         <Footer />
       </body>

@@ -1,10 +1,10 @@
+import { Article } from '@/components/Article'
 import { BackButton } from '@/components/BackButton'
-import { Article } from '@/components/blog/Article'
-import { BlogImage } from '@/components/blog/BlogImage'
-import { Headline } from '@/components/layout/Headline'
-import { Inset } from '@/components/layout/Inset'
-import { Main } from '@/components/layout/Main'
-import { Section } from '@/components/layout/Section'
+import { Headline } from '@/components/Headline'
+import { Inset } from '@/components/Inset'
+import { Main } from '@/components/Main'
+import { PostImage } from '@/components/PostImage'
+import { Section } from '@/components/Section'
 import { TextLink } from '@/components/TextLink'
 import * as meta from './metadata.json'
 
@@ -16,11 +16,7 @@ export default function Page() {
       <Section>
         <Inset>
           <BackButton />
-          <Headline
-            title={metadata.title}
-            subhead={metadata.description}
-            date={metadata.date}
-          />
+          <Headline title={metadata.title} subhead={metadata.description} />
           <Article>
             <h2>Third space</h2>
             <p>
@@ -62,10 +58,10 @@ export default function Page() {
               />{' '}
               editions.
             </p>
-            <BlogImage
+            <PostImage
               alt="Computer setup"
               priority={true}
-              src={'/images/blog/my-workspace/setup.webp'}
+              src={'/images/workspace/setup.webp'}
             />
             <h2>Updates for 2024</h2>
             <p>
