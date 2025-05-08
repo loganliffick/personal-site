@@ -1,6 +1,9 @@
+'use client'
+
 import { Main } from '@/components/layout/Main'
 import { cn } from '@/utils/tw'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const vercelImages = [
   '/og.jpg',
@@ -66,16 +69,93 @@ const PicLink = (props: { title?: string; images: string[] }) => {
   )
 }
 
+const myImages = [
+  [
+    '/og.jpg',
+    '/images/blog/my-workspace/setup.webp',
+    '/images/blog/my-workspace/setup.webp',
+  ],
+  [
+    '/images/blog/my-workspace/setup.webp',
+    '/images/blog/my-workspace/setup.webp',
+    '/og.jpg',
+  ],
+]
+
 export default function Page() {
+  const [images, setImages] = useState(myImages[0])
+  const [active, setActive] = useState(false)
+
+  const handleMouseEnter = (id: number) => {
+    setImages(myImages[id])
+    setActive(true)
+  }
+
+  const handleMouseLeave = () => {
+    setActive(false)
+  }
+
   return (
     <Main>
-      <section className="w-full">
-        <div className="flex h-screen w-full items-center justify-center">
-          <h1 className="max-w-xl text-3xl leading-[2.7rem] font-semibold tracking-tighter">
+      <section className="w-full px-6">
+        <div className="relative mx-auto mt-40 flex w-full max-w-2xl flex-col items-center justify-center gap-2 bg-green-400/0">
+          <div
+            className={cn('absolute -left-20 size-20 bg-red-200/0', {
+              '-right-20 left-auto': images === myImages[1],
+            })}
+          >
+            {images.map((image, index) => (
+              <div
+                className={cn('absolute', {
+                  'aspect-[3/4] h-80 -translate-x-20 -rotate-12': index === 0,
+                  'aspect-[4/3] w-64 -translate-x-10 -translate-y-40 rotate-12':
+                    index === 1,
+                  'aspect-square h-40 -translate-x-40 rotate-30': index === 2,
+                })}
+                key={`${index} + ${images.toString()}`}
+              >
+                <Image
+                  src={image}
+                  fill
+                  className={cn(
+                    'ease-bounce set-scaleFade relative scale-75 rounded object-cover shadow-xl grayscale-100 transition-all duration-500',
+                    {
+                      scaleFade: active,
+                      'duration-300': index === 0,
+                      'duration-400': index === 1,
+                      'duration-500': index === 2,
+                    },
+                  )}
+                  alt="test"
+                />
+              </div>
+            ))}
+          </div>
+          <h1 className="text-base-strong text-3xl leading-[2.7rem] font-semibold tracking-tighter">
             Hi, i'm Logan Liffick. I work at{' '}
-            <PicLink title="Vercel" images={vercelImages} /> as a Design
-            Engineer. Previously i worked at Outerbase, Makelog, and
-            Digitalocean.
+            {/* <PicLink title="Vercel" images={vercelImages} /> as a Design */}
+            <button
+              className=""
+              onMouseEnter={() => handleMouseEnter(0)}
+              onMouseLeave={() => handleMouseLeave()}
+            >
+              Vercel
+            </button>{' '}
+            as a Design Engineer. Previously i worked at{' '}
+            <button
+              className=""
+              onMouseEnter={() => handleMouseEnter(1)}
+              onMouseLeave={() => handleMouseLeave()}
+            >
+              Outerbase
+            </button>
+            , Makelog, and Digitalocean.
+          </h1>
+          <h1 className="text-base-strong text-3xl leading-[2.7rem] font-semibold tracking-tighter">
+            I'm working on some other stuff right now too, like X and Y.
+          </h1>
+          <h1 className="text-base-strong text-3xl leading-[2.7rem] font-semibold tracking-tighter">
+            I'm also writing about this stuff, and also some of this.
           </h1>
         </div>
       </section>

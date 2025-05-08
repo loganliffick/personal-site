@@ -141,6 +141,15 @@
   }
 }
 
+.set-scaleFade {
+  opacity: 0;
+  transform: scale(0);
+
+  @media (prefers-reduced-motion) {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .scaleFade {
   animation: scaleFade 0.5s var(--ease-bounce) forwards;
   opacity: 0;
