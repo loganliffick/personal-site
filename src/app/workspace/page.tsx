@@ -1,6 +1,5 @@
 import { Article } from '@/components/Article'
-import { BackButton } from '@/components/BackButton'
-import { Headline } from '@/components/Headline'
+// import { BackButton } from '@/components/BackButton'
 import { Inset } from '@/components/Inset'
 import { Main } from '@/components/Main'
 import { PostImage } from '@/components/PostImage'
@@ -14,10 +13,12 @@ export default function Page() {
   return (
     <Main>
       <Section>
-        <Inset>
-          <BackButton />
-          <Headline title={metadata.title} subhead={metadata.description} />
-          <Article>
+        <Inset format>
+          {/* <BackButton /> */}
+
+          <h2>{metadata.title}</h2>
+          <p>{metadata.description}</p>
+          {/* <Article>
             <h2>Third space</h2>
             <p>
               I've been obsessed with creating the perfect sanctuary since the
@@ -102,7 +103,7 @@ export default function Page() {
               <li>Fully Jarvis dual monitor arm</li>
               <li>Philips Hue Play Lightstrip</li>
             </ul>
-          </Article>
+          </Article> */}
         </Inset>
       </Section>
     </Main>

@@ -59,6 +59,8 @@
   --ease-bounce-lite: cubic-bezier(0, 0, 0, 1.1);
 }
 
+/* accessibility */
+
 .add-focus {
   @apply focus-visible:ring-base-1000/35 outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring focus-visible:transition-shadow *:in-focus:opacity-100;
 }
@@ -66,6 +68,18 @@
 .add-focus-text {
   @apply ring-offset-base-bg focus-visible:ring-base-1000/75 rounded-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
 }
+
+/* formatting */
+
+.format-text {
+  h2 {
+    @apply font-medium text-balance;
+  }
+  p {
+    @apply text-base-soft mt-2 mb-16 leading-relaxed text-pretty last-of-type:mb-0;
+  }
+}
+
 /* animation */
 
 .set-fade {
@@ -168,26 +182,5 @@
   to {
     transform: scale(1);
     opacity: 1;
-  }
-}
-
-.blog-article {
-  h2 {
-    @apply mt-20 mb-8 text-lg font-medium tracking-tight first-of-type:pt-0;
-  }
-
-  p {
-    @apply text-base-soft my-4 leading-relaxed text-pretty;
-  }
-
-  ul {
-    li {
-      &::marker {
-        color: var(--marker);
-      }
-      @apply text-base-soft mt-4;
-    }
-
-    @apply list-disc;
   }
 }
