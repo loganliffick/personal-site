@@ -12,9 +12,9 @@ export default function Page() {
         <Inset format>
           <h2>About</h2>
           <p>
-            I am a design engineer at{' '}
+            I'm a design engineer at{' '}
             <TextLink href="https://vercel.com" title="Vercel" external />{' '}
-            helping to make the web faster.
+            helping make the web better.
             <Br /> Previously, I worked at{' '}
             <TextLink href="https://outerbase.com" title="Outerbase" external />
             , Makelog, &{' '}
