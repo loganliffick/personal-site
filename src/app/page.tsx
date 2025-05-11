@@ -28,7 +28,7 @@ export default function Page() {
 
           <h2>Latest</h2>
           <p>
-            On the side, I'm building out <RedactedText /> and forever working
+            On the side, I'm building <RedactedText /> and endlessly iterating
             on my <TextLink href="/workspace" title="workspace" />.
           </p>
 
