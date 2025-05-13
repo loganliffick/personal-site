@@ -94,7 +94,7 @@
   opacity: 0;
 
   &.fade-sm {
-    animation-duration: 0.2s;
+    animation-duration: 0.1s;
   }
 
   &.fade-lg {

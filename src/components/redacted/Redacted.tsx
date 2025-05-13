@@ -9,6 +9,7 @@ const LENGTH = 8
 const Redacted = () => {
   const [text, setText] = useState(generateRandomText())
   const [mounted, setMounted] = useState(false)
+  const [chatActive, setChatActive] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -28,9 +29,9 @@ const Redacted = () => {
   return (
     <button
       className="add-focus-text relative cursor-help font-mono"
-      onClick={() => console.log('Here')}
+      onClick={() => setChatActive(true)}
     >
-      <Chat active={true} />
+      <Chat active={chatActive} setActive={() => setChatActive(false)} />
       {text}
     </button>
   )
