@@ -1,5 +1,6 @@
 'use client'
 
+import { Chat } from '@/components/redacted/Chat'
 import { useEffect, useState } from 'react'
 
 const CHARS = ['▓', '▒', '░']
@@ -26,9 +27,10 @@ const Redacted = () => {
   }
   return (
     <button
-      className="add-focus-text cursor-help font-mono"
+      className="add-focus-text relative cursor-help font-mono"
       onClick={() => console.log('Here')}
     >
+      <Chat active={true} />
       {text}
     </button>
   )
