@@ -14,13 +14,14 @@ export const metadata: Metadata = {
   description:
     'Logan Liffick is a design engineer building brands, systems, and products.',
   openGraph: {
-    title: 'Your Page Title',
-    description: 'Your page description',
+    title: 'Logan Liffick',
+    description:
+      'Logan Liffick is a design engineer building brands, systems, and products.',
     url: 'https://loganliffick.com',
     siteName: 'Logan Liffick',
     images: [
       {
-        url: 'https://www.loganliffick.com/og.jpg',
+        url: 'https://loganliffick.com/og.jpg',
         alt: '© logan_liffick',
       },
     ],
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     creator: '@logan_liffick',
     images: [
       {
-        url: 'https://www.loganliffick.com/og.jpg',
+        url: 'https://loganliffick.com/og.jpg',
         alt: '© logan_liffick',
       },
     ],
