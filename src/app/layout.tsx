@@ -13,8 +13,42 @@ export const metadata: Metadata = {
   title: 'Logan Liffick',
   description:
     'Logan Liffick is a design engineer building brands, systems, and products.',
-  icons: { icon: '/favicon.svg' },
-  openGraph: { images: 'https://www.loganliffick.com/og.jpg' },
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Your page description',
+    url: 'https://loganliffick.com',
+    siteName: 'Logan Liffick',
+    images: [
+      {
+        url: 'https://www.loganliffick.com/og.jpg',
+        alt: '© logan_liffick',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@logan_liffick',
+    creator: '@logan_liffick',
+    images: [
+      {
+        url: 'https://www.loganliffick.com/og.jpg',
+        alt: '© logan_liffick',
+      },
+    ],
+  },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 }
 
 export default function RootLayout({
