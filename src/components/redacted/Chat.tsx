@@ -13,7 +13,7 @@ const Message = (props: {
   text?: string
   typing?: boolean
 }) => (
-  <div className="reveal reveal-xs bg-base-bg-depth w-max rounded-xl px-3 py-1 shadow-sm">
+  <div className="reveal reveal-xs bg-base-bg-depth max-w-max rounded-xl px-3 py-1 text-left shadow-sm">
     {props.typing ? (
       <div className="inline-flex items-center gap-1">
         <Dot />
@@ -33,24 +33,24 @@ export const Chat = ({
   active: boolean
   setActive: () => void
 }) => {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(3)
 
   useEffect(() => {
     if (!active) return
     const durations = [2000, 1000, 3500, 4000]
     const delay = durations[step] || 2500
 
-    if (step < 4) {
-      const timeout = setTimeout(() => setStep(step + 1), delay)
-      return () => clearTimeout(timeout)
-    }
+    // if (step < 4) {
+    //   const timeout = setTimeout(() => setStep(step + 1), delay)
+    //   return () => clearTimeout(timeout)
+    // }
 
-    if (step === 4) {
-      setActive()
-      setTimeout(() => {
-        setStep(0)
-      }, 500)
-    }
+    // if (step === 4) {
+    //   setActive()
+    //   setTimeout(() => {
+    //     setStep(0)
+    //   }, 500)
+    // }
   }, [active, step])
 
   return (

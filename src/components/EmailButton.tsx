@@ -21,8 +21,8 @@ export const EmailButton = () => {
       <div className="absolute -top-10 -left-1/2 -translate-x-1/2 sm:left-1/2">
         <div
           className={cn(
-            'bg-base-bg-depth text-base-strong border-base-border reveal reveal-xs hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
-            { 'fade flex': isCopied },
+            'bg-base-bg-depth text-base-strong border-base-border reveal-xs hidden w-max shrink-0 items-center gap-1.5 rounded-lg border py-1.5 pr-3 pl-2.5 shadow-xs',
+            { 'reveal flex': isCopied },
           )}
           onAnimationEnd={() =>
             setTimeout(() => {

@@ -1,6 +1,7 @@
 'use client'
 
 import { Chat } from '@/components/redacted/Chat'
+import { cn } from '@/utils/tw'
 import { useEffect, useState } from 'react'
 
 const CHARS = ['▓', '▒', '░']
@@ -9,7 +10,7 @@ const LENGTH = 8
 const Redacted = () => {
   const [text, setText] = useState(generateRandomText())
   const [mounted, setMounted] = useState(false)
-  const [chatActive, setChatActive] = useState(false)
+  const [chatActive, setChatActive] = useState(true)
 
   useEffect(() => {
     setMounted(true)
@@ -28,7 +29,9 @@ const Redacted = () => {
   }
   return (
     <button
-      className="add-focus-text relative cursor-help font-mono"
+      className={cn('add-focus-text cursor-help font-mono', {
+        'cursor-auto': chatActive,
+      })}
       onClick={() => setChatActive(true)}
     >
       <Chat active={chatActive} setActive={() => setChatActive(false)} />

@@ -1,4 +1,3 @@
-import { Br } from '@/components/Br'
 import { Inset } from '@/components/Inset'
 import { Main } from '@/components/Main'
 import { RedactedText } from '@/components/redacted/index'
@@ -13,9 +12,9 @@ export default function Page() {
           <h2>About</h2>
           <p>
             I'm a design engineer at{' '}
-            <TextLink href="https://vercel.com" title="Vercel" external />{' '}
-            helping make the web better.
-            <Br /> Previously, I worked at{' '}
+            <TextLink href="https://vercel.com" title="Vercel" external />,
+            where I make building for the web more enjoyable. Previously, I
+            worked at{' '}
             <TextLink href="https://outerbase.com" title="Outerbase" external />
             , Makelog, &{' '}
             <TextLink
@@ -27,7 +26,7 @@ export default function Page() {
           </p>
 
           <h2>Latest</h2>
-          <p>
+          <p className="relative">
             On the side, I'm building <RedactedText /> and constantly
             redesigning my <TextLink href="/workspace" title="workspace" />.
           </p>
