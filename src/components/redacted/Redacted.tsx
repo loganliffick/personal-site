@@ -10,7 +10,7 @@ const LENGTH = 8
 const Redacted = () => {
   const [text, setText] = useState(generateRandomText())
   const [mounted, setMounted] = useState(false)
-  const [chatActive, setChatActive] = useState(true)
+  const [chatActive, setChatActive] = useState(false)
 
   useEffect(() => {
     setMounted(true)

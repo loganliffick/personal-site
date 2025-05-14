@@ -1,6 +1,6 @@
 'use client'
 
-import { BackButton } from '@/components/BackButton'
+import { BackButton } from '@/components/archive/BackButton'
 // import { Headline } from '@/components/Headline'
 import {
   IconArrowLeft,

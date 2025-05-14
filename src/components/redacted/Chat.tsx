@@ -33,31 +33,31 @@ export const Chat = ({
   active: boolean
   setActive: () => void
 }) => {
-  const [step, setStep] = useState(3)
+  const [step, setStep] = useState(0)
 
   useEffect(() => {
     if (!active) return
     const durations = [2000, 1000, 3500, 4000]
     const delay = durations[step] || 2500
 
-    // if (step < 4) {
-    //   const timeout = setTimeout(() => setStep(step + 1), delay)
-    //   return () => clearTimeout(timeout)
-    // }
+    if (step < 4) {
+      const timeout = setTimeout(() => setStep(step + 1), delay)
+      return () => clearTimeout(timeout)
+    }
 
-    // if (step === 4) {
-    //   setActive()
-    //   setTimeout(() => {
-    //     setStep(0)
-    //   }, 500)
-    // }
+    if (step === 4) {
+      setActive()
+      setTimeout(() => {
+        setStep(0)
+      }, 500)
+    }
   }, [active, step])
 
   return (
     <div
       className={cn(
-        'ease-bounce invisible absolute bottom-10 flex origin-bottom-left scale-25 flex-col justify-end gap-2 font-sans font-medium opacity-0 duration-300',
-        { 'visible scale-100 opacity-100': active },
+        'ease-bounce invisible absolute bottom-16 flex scale-105 flex-col justify-end gap-2 font-sans font-medium opacity-0 blur duration-800 sm:bottom-10',
+        { 'visible scale-100 opacity-100 blur-none': active },
       )}
     >
       <Message

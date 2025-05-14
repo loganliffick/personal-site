@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -60,10 +59,6 @@
 }
 
 /* accessibility */
-
-.add-focus {
-  @apply focus-visible:ring-base-1000/35 outline-none focus:opacity-100 focus-visible:!z-50 focus-visible:ring focus-visible:transition-shadow *:in-focus:opacity-100;
-}
 
 .add-focus-text {
   @apply ring-offset-base-bg focus-visible:ring-base-1000/75 rounded-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;

@@ -1,4 +1,4 @@
-import { BackButton } from '@/components/BackButton'
+import { BackButton } from '@/components/archive/BackButton'
 import { Inset } from '@/components/Inset'
 import { Main } from '@/components/Main'
 import { Section } from '@/components/Section'
