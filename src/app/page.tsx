@@ -13,10 +13,10 @@ export default function Page() {
           <p>
             I'm a design engineer at{' '}
             <TextLink href="https://vercel.com" title="Vercel" external />,
-            where I make building for the web more enjoyable. Previously, I
+            where I help make building for the web more enjoyable. Previously, I
             worked at{' '}
             <TextLink href="https://outerbase.com" title="Outerbase" external />
-            , Makelog, &{' '}
+            , Makelog, and{' '}
             <TextLink
               href="https://digitalocean.com"
               title="DigitalOcean"

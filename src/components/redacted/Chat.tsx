@@ -13,7 +13,7 @@ const Message = (props: {
   text?: string
   typing?: boolean
 }) => (
-  <div className="reveal reveal-xs bg-base-bg-depth max-w-max rounded-xl px-3 py-1 text-left shadow-sm">
+  <div className="reveal reveal-xs bg-base-200 text-base-strong max-w-max rounded-xl px-3 py-1 text-left">
     {props.typing ? (
       <div className="inline-flex items-center gap-1">
         <Dot />
@@ -21,7 +21,7 @@ const Message = (props: {
         <Dot delay={props.active ? 200 : 0} />
       </div>
     ) : (
-      <span className="">{props.text}</span>
+      <span>{props.text}</span>
     )}
   </div>
 )
@@ -56,7 +56,7 @@ export const Chat = ({
   return (
     <div
       className={cn(
-        'ease-bounce invisible absolute bottom-16 flex scale-105 flex-col justify-end gap-2 font-sans font-medium opacity-0 blur duration-800 sm:bottom-10',
+        'ease-bounce invisible absolute bottom-16 flex scale-105 flex-col justify-end gap-2 font-sans opacity-0 blur duration-800 sm:bottom-10',
         { 'visible scale-100 opacity-100 blur-none': active },
       )}
     >
