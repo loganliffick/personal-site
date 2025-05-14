@@ -68,7 +68,7 @@ export const Chat = ({
       {step > 1 && (
         <Message
           active={active}
-          text={"we aren't talking about it yet 💀"}
+          text={"we aren't talking about it yet 🤫"}
           typing={step === 2 ? true : false}
         />
       )}
