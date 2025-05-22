@@ -8,7 +8,7 @@
 
 <br />
 <br />
-<a href="vercel.com/oss">
+<a href="https://vercel.com/oss">
   
   ![badge](https://loganliffick.vercel.app/images/badge.svg)
   
