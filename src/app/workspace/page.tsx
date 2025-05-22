@@ -10,10 +10,10 @@ export default function Page() {
     <Main>
       <Section>
         <Inset format>
-          {/* <BackButton /> */}
-
           <h2>{metadata.title}</h2>
           <p>{metadata.description}</p>
+
+          <div>content</div>
         </Inset>
       </Section>
     </Main>
