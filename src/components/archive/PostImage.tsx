@@ -8,14 +8,15 @@ type PostImageProps = {
 
 export const PostImage = ({ alt, priority = false, src }: PostImageProps) => {
   return (
-    <Image
-      alt={alt}
-      className="relative my-8 overflow-hidden rounded select-none"
-      draggable={false}
-      height={672}
-      priority={priority}
-      src={src}
-      width={672}
-    />
+    <div className="relative my-8 aspect-[4/4] w-full overflow-hidden rounded sm:aspect-[3/2]">
+      <Image
+        alt={alt}
+        src={src}
+        fill
+        className="object-cover select-none"
+        priority={priority}
+        draggable={false}
+      />
+    </div>
   )
 }
