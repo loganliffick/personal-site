@@ -1,4 +1,10 @@
 {
   "title": "Workspace",
-  "description": "A place to create."
+  "description": "Logan Liffick's home workspace.",
+  "images": [
+    {
+      "url": "https://loganliffick.com/images/workspace/workspace-og.jpg",
+      "alt": "© logan_liffick"
+    }
+  ]
 }
