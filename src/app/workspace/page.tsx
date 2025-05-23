@@ -2,7 +2,22 @@ import { Inset } from '@/components/Inset'
 import { Main } from '@/components/Main'
 import { Section } from '@/components/Section'
 import * as meta from './metadata.json'
-import { PostImage } from '@/components/PostImage'
+import { PostImage } from '@/components/image/PostImage'
+
+const points = [
+  {
+    posX: 320,
+    posY: 150,
+    text: 'Apple Studio Display',
+    link: 'https://apple.com/studio-display/',
+  },
+  {
+    posX: 470,
+    posY: 210,
+    text: 'Jarvis dual monitor arm',
+    link: 'https://store.hermanmiller.com/office-furniture-desk-accessories-organization/jarvis-dual-monitor-arm/2548840.html',
+  },
+]
 
 export const metadata = meta
 
@@ -17,6 +32,7 @@ export default function Page() {
             src="/images/workspace/ws-0.webp"
             alt="Desk overview"
             priority
+            explorePoints={{ points }}
           />
           <PostImage
             src="/images/workspace/ws-2.webp"
