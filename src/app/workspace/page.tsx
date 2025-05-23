@@ -2,7 +2,7 @@ import { Inset } from '@/components/Inset'
 import { Main } from '@/components/Main'
 import { Section } from '@/components/Section'
 import * as meta from './metadata.json'
-import { PostImage } from '@/components/archive/PostImage'
+import { PostImage } from '@/components/PostImage'
 
 export const metadata = meta
 
