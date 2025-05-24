@@ -1,7 +1,5 @@
 'use client'
 
-import { BackButton } from '@/components/archive/BackButton'
-// import { Headline } from '@/components/Headline'
 import {
   IconArrowLeft,
   IconArrowRight,
@@ -27,11 +25,6 @@ export default function Page() {
     <Main>
       <Section>
         <Inset>
-          <BackButton />
-          {/* <Headline
-            title={'Nested button'}
-            subhead={'Testing a full page takeover.'}
-          /> */}
           <div className="gap-2">
             <p className="mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
