@@ -6,6 +6,11 @@ import { PostImage } from '@/components/image/PostImage'
 
 const points = [
   {
+    posX: 155,
+    posY: 120,
+    text: 'Figma hat',
+  },
+  {
     posX: 320,
     posY: 150,
     text: 'Apple Studio Display',
@@ -16,6 +21,12 @@ const points = [
     posY: 210,
     text: 'Jarvis dual monitor arm',
     link: 'https://store.hermanmiller.com/office-furniture-desk-accessories-organization/jarvis-dual-monitor-arm/2548840.html',
+  },
+  {
+    posX: 480,
+    posY: 400,
+    text: 'Baron Fig Mastermind desk pad',
+    link: 'https://baronfig.com/products/mastermind',
   },
 ]
 

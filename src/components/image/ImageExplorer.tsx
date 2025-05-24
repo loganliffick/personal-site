@@ -14,8 +14,8 @@ const PointOfInterest = (props: {
   delay?: number
 }) => (
   <button
-    className={cn('group add-focus set-fade absolute z-10 rounded-full', {
-      fade: props.active,
+    className={cn('group add-focus set-scaleFade absolute z-10 rounded-full', {
+      scaleFade: props.active,
     })}
     onClick={(e) => e.currentTarget.blur()}
     style={{
@@ -28,7 +28,7 @@ const PointOfInterest = (props: {
 
     <span
       className={cn(
-        'bg-base-bg-depth border-base-border absolute bottom-6 left-1/2 z-50 flex w-max -translate-x-1/2 translate-y-1 items-center gap-3 rounded-lg border px-3 py-2 text-sm opacity-0 shadow-xs duration-100 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 before:absolute before:top-8 before:left-0 before:hidden before:size-full before:bg-transparent group-hover:before:block after:pointer-events-none after:absolute after:top-0 after:left-0 after:-z-10 after:size-full after:bg-transparent after:ring-8 after:ring-transparent has-focus-within:translate-y-0 has-focus-within:opacity-100',
+        'bg-base-bg-depth border-base-border pointer-events-none absolute bottom-6 left-1/2 z-50 flex w-max -translate-x-1/2 translate-y-1 items-center gap-3 rounded-lg border px-3 py-2 text-sm opacity-0 shadow-xs transition-all duration-150 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 before:absolute before:top-8 before:left-0 before:hidden before:size-full before:bg-transparent group-hover:before:block has-focus-within:translate-y-0 has-focus-within:opacity-100',
         { 'py-1 pr-1 pl-3': props.link },
       )}
     >
@@ -73,7 +73,7 @@ export const ImageExplorer = ({ points }: ImageExplorerProps) => {
           setActive(!active), e.currentTarget.blur()
         }}
       >
-        <IconShoppingBag className="size-4" strokeWidth={3} />
+        <IconShoppingBag className="size-4" strokeWidth={2} />
       </button>
 
       {active &&
@@ -81,7 +81,7 @@ export const ImageExplorer = ({ points }: ImageExplorerProps) => {
           <PointOfInterest
             key={index}
             active={active}
-            delay={index * 75}
+            delay={index * 100}
             {...point}
           />
         ))}
