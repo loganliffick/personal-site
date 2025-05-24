@@ -1,0 +1,199 @@
+{
+  "ws-0": [
+    {
+      "posX": 40,
+      "posY": 320,
+      "text": "Article Gabriola Bench",
+      "link": "https://www.article.com/product/21476/gabriola-60-bench-ivory-boucle"
+    },
+    {
+      "posX": 155,
+      "posY": 120,
+      "text": "Figma hat"
+    },
+    {
+      "posX": 320,
+      "posY": 150,
+      "text": "Apple Studio Display",
+      "link": "https://apple.com/studio-display/"
+    },
+    {
+      "posX": 470,
+      "posY": 210,
+      "text": "Jarvis dual monitor arm",
+      "link": "https://store.hermanmiller.com/office-furniture-desk-accessories-organization/jarvis-dual-monitor-arm/2548840.html"
+    },
+    {
+      "posX": 480,
+      "posY": 400,
+      "text": "Baron Fig Mastermind desk pad",
+      "link": "https://baronfig.com/products/mastermind"
+    }
+  ],
+
+  "ws-2": [
+    {
+      "posX": 40,
+      "posY": 380,
+      "text": "Birch, treated with Minwax",
+      "link": "https://www.minwax.com/en/products/protective-finishes/fast-drying-polyurethane"
+    },
+    {
+      "posX": 220,
+      "posY": 340,
+      "text": "Acacia wood trays",
+      "link": "https://www.amazon.com/Serving-Platters-Kitchen-Decorative-Charcuterie/dp/B0CQ8HLFBC"
+    },
+    {
+      "posX": 450,
+      "posY": 120,
+      "text": "Mountain wallpaper",
+      "link": "https://unsplash.com/photos/photo-of-mountain-covered-with-mist-8_LZ9UWTKLE"
+    }
+  ],
+
+  "ws-3": [
+    {
+      "posX": 340,
+      "posY": 200,
+      "text": "Overly expensive Apple Thunderbolt cable",
+      "link": "https://www.apple.com/shop/product/MW5H3AM/A/thunderbolt-4-usb%E2%80%91c-pro-cable-3-m"
+    },
+    {
+      "posX": 440,
+      "posY": 50,
+      "text": "Valspar Thorntree"
+    },
+    {
+      "posX": 560,
+      "posY": 130,
+      "text": "Philips Hue Lightstrip",
+      "link": "https://www.amazon.com/Philips-Hue-Lightstrip-Compatible-Assistant/dp/B0B9SY152K?th=1"
+    },
+    {
+      "posX": 550,
+      "posY": 320,
+      "text": "M4 Macbook Pro",
+      "link": "https://www.apple.com/us-edu/shop/buy-mac/macbook-pro/16-inch-space-black-standard-display-apple-m4-pro-with-14-core-cpu-and-20-core-gpu-48gb-memory-512gb"
+    }
+  ],
+
+  "ws-1": [
+    {
+      "posX": 430,
+      "posY": 300,
+      "text": "Studio Neat Mark One pen",
+      "link": "https://www.studioneat.com/products/markone?srsltid=AfmBOoqyMSWZW7djucuP9pV0oUmbuJPY7OX2jOye9mgKG5LxQrhbjdtq"
+    },
+    {
+      "posX": 490,
+      "posY": 330,
+      "text": "AirPods Pro",
+      "link": "https://www.apple.com/us-edu/shop/buy-airpods/airpods-pro-2"
+    },
+    {
+      "posX": 120,
+      "posY": 420,
+      "text": "Apple Magic keyboard & trackpad"
+    }
+  ],
+
+  "ws-4": [
+    {
+      "posX": 200,
+      "posY": 260,
+      "text": "Stockpile 3 curve cabinet",
+      "link": "https://lauradavidsondirect.com/products/stockpile-file-cabinet-black"
+    },
+    {
+      "posX": 400,
+      "posY": 100,
+      "text": "Bamboo organizer",
+      "link": "https://www.amazon.com/MobileVision-Bamboo-Desktop-Folder-Organizer/dp/B01BX9X4IQ/"
+    },
+    {
+      "posX": 560,
+      "posY": 80,
+      "text": "2015 Macbook Pro"
+    }
+  ],
+
+  "ws-5": [
+    {
+      "posX": 180,
+      "posY": 180,
+      "text": "Restored 1st gen iPod Touch",
+      "link": "https://mothers.com/products/mag-aluminum-polish"
+    }
+  ],
+
+  "ws-7": [
+    {
+      "posX": 380,
+      "posY": 300,
+      "text": "Brevitē backpack",
+      "link": "https://brevite.co/products/the-brevite-backpack"
+    }
+  ],
+
+  "ws-9": [
+    {
+      "posX": 300,
+      "posY": 380,
+      "text": "Ikea Eket system",
+      "link": "https://www.ikea.com/us/en/cat/eket-storage-system-59283/"
+    },
+    {
+      "posX": 440,
+      "posY": 270,
+      "text": "Rose Colored Gaming Game Boy Advance stand",
+      "link": "https://rosecoloredgaming.com/products/game-boy-advance-display-stand"
+    },
+    {
+      "posX": 500,
+      "posY": 50,
+      "text": "Glass whiteboard",
+      "link": "https://www.amazon.com/dp/B01BE178E4/"
+    }
+  ],
+
+  "ws-6": [
+    {
+      "posX": 170,
+      "posY": 60,
+      "text": "Logo Modernism",
+      "link": "https://www.amazon.com/Logo-Modernism-English-French-German/dp/3836545306"
+    },
+    {
+      "posX": 200,
+      "posY": 240,
+      "text": "The art of Howl's Moving Castle",
+      "link": "https://www.amazon.com/Art-Howls-Moving-Castle/dp/1421500493/"
+    },
+    {
+      "posX": 320,
+      "posY": 220,
+      "text": "Random assorted mechs"
+    },
+    {
+      "posX": 70,
+      "posY": 380,
+      "text": "Adventure Time: The Art of Ooo",
+      "link": "https://www.amazon.com/Adventure-Time-Art-Chris-McDonnell/dp/1419704508"
+    }
+  ],
+
+  "ws-8": [
+    {
+      "posX": 300,
+      "posY": 110,
+      "text": "A gift from my Mom"
+    },
+    {
+      "posX": 200,
+      "posY": 300,
+      "text": "Assorted Mohawk quarterly editions",
+      "link": "https://www.mohawkconnects.com/inspiration/maker-quarterly"
+    }
+  ]
+}

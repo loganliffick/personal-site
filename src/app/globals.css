@@ -4,6 +4,7 @@
 :root {
   --base-100: var(--color-white);
   --base-200: var(--color-neutral-200);
+  --base-300: var(--color-neutral-300);
   --base-1000: var(--color-neutral-950);
 
   --bg: var(--color-neutral-50);
@@ -22,6 +23,7 @@
   :root {
     --base-100: var(--color-neutral-900);
     --base-200: var(--color-neutral-800);
+    --base-300: var(--color-neutral-700);
     --base-1000: var(--color-white);
 
     --bg: var(--color-black);
@@ -42,6 +44,7 @@
 
   --color-base-100: var(--base-100);
   --color-base-200: var(--base-200);
+  --color-base-300: var(--base-300);
   --color-base-1000: var(--base-1000);
 
   --color-base-bg: var(--bg);

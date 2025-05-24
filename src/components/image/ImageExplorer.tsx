@@ -14,8 +14,8 @@ const PointOfInterest = (props: {
   delay?: number
 }) => (
   <button
-    className={cn('group add-focus set-scaleFade absolute z-10 rounded-full', {
-      scaleFade: props.active,
+    className={cn('group add-focus set-scaleFade absolute rounded-full', {
+      'scaleFade hover:z-100': props.active,
     })}
     onClick={(e) => e.currentTarget.blur()}
     style={{
@@ -24,7 +24,7 @@ const PointOfInterest = (props: {
       animationDelay: `${props.delay ?? 0}ms`,
     }}
   >
-    <span className="block size-4 origin-center rounded-full bg-white transition-transform after:absolute after:top-0 after:left-0 after:size-full after:animate-ping after:rounded-full after:bg-white group-focus-within:after:animate-none group-hover:after:animate-none group-focus:after:animate-none" />
+    <span className="block size-4 origin-center rounded-full bg-white transition-transform after:absolute after:top-0 after:left-0 after:size-full after:animate-ping after:rounded-full after:bg-white after:transition-opacity group-focus-within:after:opacity-0 group-hover:after:opacity-0 group-focus:after:opacity-0" />
 
     <span
       className={cn(
@@ -35,7 +35,7 @@ const PointOfInterest = (props: {
       <span className="z-10 cursor-text">{props.text}</span>
       {props.link && (
         <Link
-          className="bg-base-200 hover:bg-base-200/75 text-base-strong focus-visible:ring-base-1000/75 rounded px-2.5 py-1 font-medium transition-colors outline-none focus-visible:ring-2"
+          className="bg-base-200 hover:bg-base-300 text-base-strong focus-visible:ring-base-1000/75 rounded px-2.5 py-1 font-medium transition-colors outline-none focus-visible:ring-2"
           href={props.link}
           onClick={(e) => e.currentTarget.blur()}
           rel="noopener noreferrer"
@@ -66,7 +66,7 @@ export const ImageExplorer = ({ points }: ImageExplorerProps) => {
     <div className="group/explorer absolute z-10 hidden size-full sm:block">
       <button
         className={cn(
-          'add-focus absolute right-4 bottom-4 z-10 cursor-pointer rounded-full border border-white/20 bg-white/15 p-2 text-sm font-medium text-white opacity-0 transition-all duration-100 group-hover/explorer:opacity-100 hover:bg-white/25 active:scale-90',
+          'add-focus absolute right-4 bottom-4 z-10 cursor-pointer rounded-full border border-white/20 bg-white/15 p-2 text-sm font-medium text-white opacity-0 transition-all duration-100 group-hover/explorer:opacity-100 hover:bg-white/25 active:scale-95',
           { 'bg-white/25 opacity-100': active },
         )}
         onClick={(e) => {
@@ -81,7 +81,7 @@ export const ImageExplorer = ({ points }: ImageExplorerProps) => {
           <PointOfInterest
             key={index}
             active={active}
-            delay={index * 100}
+            delay={index * 75}
             {...point}
           />
         ))}
