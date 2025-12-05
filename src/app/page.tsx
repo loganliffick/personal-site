@@ -15,7 +15,7 @@ export default function Page() {
             <TextLink href="https://vercel.com" title="Vercel" external />,
             where I help make building for the web more enjoyable. Previously, I
             worked at{' '}
-            <TextLink href="https://outerbase.com" title="Outerbase" external />
+            <TextLink href="https://www.cloudflare.com/press/press-releases/2025/cloudflare-acquires-outerbase-to-expand-developer-experience/" title="Outerbase" external />
             , Makelog, and{' '}
             <TextLink
               href="https://digitalocean.com"
