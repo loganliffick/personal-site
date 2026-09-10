@@ -1,4 +1,4 @@
-## 2025 edition
+## 2026 edition
 
 ```text
  /\_/\
