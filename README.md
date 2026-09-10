@@ -2,6 +2,6 @@
 
 ```text
  /\_/\
-( o.o ) < ( new and improved ✌️ )
+( o.o ) < ( it's a wip )
  > ^ <
 ```
